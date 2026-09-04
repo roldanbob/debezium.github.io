@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Content-based routing :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/transformations/content-based-routing.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/transformations/content-based-routing.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,22 +411,17 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/transformations/content-based-routing.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/transformations/content-based-routing.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/transformations/content-based-routing.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/transformations/content-based-routing.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/transformations/content-based-routing.html" data-hash="true">3.2</a>
-                        <a class="version" href="/documentation//reference/3.1/transformations/content-based-routing.html" data-hash="true">3.1</a>
-                        <a class="version" href="/documentation//reference/3.0/transformations/content-based-routing.html" data-hash="true">3.0</a>
-                        <a class="version" href="/documentation//reference/2.7/transformations/content-based-routing.html" data-hash="true">2.7</a>
-                        <a class="version" href="/documentation//reference/2.6/transformations/content-based-routing.html" data-hash="true">2.6</a>
-                        <a class="version" href="/documentation//reference/2.5/transformations/content-based-routing.html" data-hash="true">2.5</a>
-                        <a class="version" href="/documentation//reference/2.4/transformations/content-based-routing.html" data-hash="true">2.4</a>
-                        <a class="version" href="/documentation//reference/2.3/transformations/content-based-routing.html" data-hash="true">2.3</a>
-                        <a class="version" href="/documentation//reference/2.2/transformations/content-based-routing.html" data-hash="true">2.2</a>
-                        <a class="version" href="/documentation//reference/2.1/transformations/content-based-routing.html" data-hash="true">2.1</a>
-                        <a class="version" href="/documentation//reference/2.0/transformations/content-based-routing.html" data-hash="true">2.0</a>
-                        <a class="version" href="/documentation//reference/1.9/transformations/content-based-routing.html" data-hash="true">1.9</a>
+                        <a class="version is-current" href="/documentation/reference/transformations/content-based-routing.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/transformations/content-based-routing.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/transformations/content-based-routing.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/transformations/content-based-routing.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/transformations/content-based-routing.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/transformations/content-based-routing.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/transformations/content-based-routing.html" data-hash="true">3.2</a>
+                        <a class="version" href="/documentation/reference/3.1/transformations/content-based-routing.html" data-hash="true">3.1</a>
+                        <a class="version" href="/documentation/reference/3.0/transformations/content-based-routing.html" data-hash="true">3.0</a>
+                        <a class="version" href="/documentation/reference/2.7/transformations/content-based-routing.html" data-hash="true">2.7</a>
+                        <a class="version" href="/documentation/reference/1.9/transformations/content-based-routing.html" data-hash="true">1.9</a>
         </div>
         |
     </div>
@@ -496,7 +506,7 @@ After you obtain the script engine files, you add them to your Debezium connecto
 <div class="sectionbody">
 <div class="paragraph">
 <p>For security reasons, the content-based routing SMT is not included with the Debezium connector archives.
-Instead, it is provided in a separate artifact, <code>debezium-scripting-3.5.0.Final.tar.gz</code>.</p>
+Instead, it is provided in a separate artifact, <code>debezium-scripting-3.7.0.Beta1.tar.gz</code>.</p>
 </div>
 <div class="paragraph">
 <p>To use the content-based routing SMT with a Debezium connector plug-in, you must explicitly add the SMT artifact to your Kafka Connect environment.
@@ -509,7 +519,7 @@ To ensure that scripting expressions can be run only by authorized users, be sur
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download the <a href="https://repo1.maven.org/maven2/io/debezium/debezium-scripting/3.5.0.Final/debezium-scripting-3.5.0.Final.tar.gz">scripting SMT archive</a></p>
+<p>Download the <a href="https://repo1.maven.org/maven2/io/debezium/debezium-scripting/3.7.0.Beta1/debezium-scripting-3.7.0.Beta1.tar.gz">scripting SMT archive</a></p>
 </li>
 <li>
 <p>Extract the contents of the archive into the Debezium plug-in directories of your Kafka Connect environment.</p>
@@ -754,12 +764,12 @@ the following expression reroutes all update (<code>u</code>) records to the <co
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The Debezium MongoDB connector emits the <code>after</code> and <code>patch</code> fields as serialized JSON documents rather than as structures.<br>
-To use the ContentBasedRouting SMT with the MongoDB connector, you must first unwind the array fields in the JSON into separate documents.<br>
+<p>The Debezium MongoDB connector emits the <code>after</code> and <code>patch</code> fields as serialized JSON documents rather than as structures.
+To use the ContentBasedRouting SMT with the MongoDB connector, you must first unwind the array fields in the JSON into separate documents.
 You can do this by applying the <a href="mongodb-event-flattening.html#new-record-state-extraction" class="xref page">MongoDB <code>ExtractNewDocumentState</code></a> SMT.</p>
 </div>
 <div class="paragraph">
-<p>You could also take the approach of using a JSON parser within an expression to generate separate output documents for each array item.<br>
+<p>You could also take the approach of using a JSON parser within an expression to generate separate output documents for each array item.
 For example, if you use Groovy as the expression language, add the <code>groovy-json</code> artifact to the classpath, and then add an expression such as <code>(new groovy.json.JsonSlurper()).parseText(value.after).last_name == 'Kretchmar'</code>.</p>
 </div>
 </td>
@@ -905,7 +915,7 @@ The Go function must evaluate to a String value or Null.</p>
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

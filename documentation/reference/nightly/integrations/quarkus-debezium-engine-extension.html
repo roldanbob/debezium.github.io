@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Debezium Extensions for Quarkus :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/integrations/quarkus-debezium-engine-extension.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/integrations/quarkus-debezium-engine-extension.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="../transformations/vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../transformations/swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,21 +411,16 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/integrations/quarkus-debezium-engine-extension.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/integrations/quarkus-debezium-engine-extension.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/integrations/quarkus-debezium-engine-extension.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/integrations/quarkus-debezium-engine-extension.html" data-hash="true">3.3</a>
+                        <a class="version is-current" href="/documentation/reference/integrations/quarkus-debezium-engine-extension.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/integrations/quarkus-debezium-engine-extension.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/integrations/quarkus-debezium-engine-extension.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/integrations/quarkus-debezium-engine-extension.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/integrations/quarkus-debezium-engine-extension.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/integrations/quarkus-debezium-engine-extension.html" data-hash="true">3.3</a>
                     <a class="version is-missing" href="#">3.2</a>
                     <a class="version is-missing" href="#">3.1</a>
                     <a class="version is-missing" href="#">3.0</a>
                     <a class="version is-missing" href="#">2.7</a>
-                    <a class="version is-missing" href="#">2.6</a>
-                    <a class="version is-missing" href="#">2.5</a>
-                    <a class="version is-missing" href="#">2.4</a>
-                    <a class="version is-missing" href="#">2.3</a>
-                    <a class="version is-missing" href="#">2.2</a>
-                    <a class="version is-missing" href="#">2.1</a>
-                    <a class="version is-missing" href="#">2.0</a>
                     <a class="version is-missing" href="#">1.9</a>
         </div>
         |
@@ -464,7 +474,15 @@
 <li><a href="#_configuring_debezium_connector">Configuring Debezium Connector</a></li>
 <li><a href="#_capturing_events_from_debezium">Capturing events from Debezium</a>
 <ul class="sectlevel2">
-<li><a href="#_filtering_change_data_capture_events">Filtering Change Data Capture Events</a></li>
+<li><a href="#_filtering_change_data_capture_events">Filtering Change Data Capture Events</a>
+<ul class="sectlevel3">
+<li><a href="#_by_destination">By destination</a></li>
+<li><a href="#_by_custom_filter_strategy">By custom filter strategy</a></li>
+<li><a href="#_by_field_changes">By field changes</a></li>
+<li><a href="#_batch_event_filtering">Batch event filtering</a></li>
+<li><a href="#_fallback_chain">Fallback chain</a></li>
+</ul>
+</li>
 <li><a href="#_deserializer_via_jackson">Deserializer via Jackson</a></li>
 </ul>
 </li>
@@ -548,19 +566,19 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code>quarkus-debezium-postgres</code> extension for <strong>Postgres</strong> Connector</p>
+<p><code>debezium-quarkus-postgres</code> extension for <strong>Postgres</strong> Connector</p>
 </li>
 <li>
-<p><code>quarkus-debezium-mongodb</code> extension for <strong>Mongodb</strong> Connector</p>
+<p><code>debezium-quarkus-mongodb</code> extension for <strong>Mongodb</strong> Connector</p>
 </li>
 <li>
-<p><code>quarkus-debezium-mysql</code> extension for <strong>MySQL</strong> Connector</p>
+<p><code>debezium-quarkus-mysql</code> extension for <strong>MySQL</strong> Connector</p>
 </li>
 <li>
-<p><code>quarkus-debezium-mariadb</code> extension for <strong>MariaDB</strong> Connector</p>
+<p><code>debezium-quarkus-mariadb</code> extension for <strong>MariaDB</strong> Connector</p>
 </li>
 <li>
-<p><code>quarkus-debezium-sqlserver</code> extension for <strong>MS Sql Server</strong> Connector</p>
+<p><code>debezium-quarkus-sqlserver</code> extension for <strong>MS Sql Server</strong> Connector</p>
 </li>
 </ul>
 </div>
@@ -640,8 +658,8 @@
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">    &lt;dependencies&gt;
         &lt;!-- [...] --&gt;
         &lt;dependency&gt;
-            &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-            &lt;artifactId&gt;quarkus-debezium-postgres&lt;/artifactId&gt;
+            &lt;groupId&gt;io.debezium.quarkus&lt;/groupId&gt;
+            &lt;artifactId&gt;debezium-quarkus-postgres&lt;/artifactId&gt;
             &lt;version&gt;${version.debezium}&lt;/version&gt;
         &lt;/dependency&gt;
         &lt;!-- [...] --&gt;
@@ -729,6 +747,8 @@ public class ProductHandler {
 </div>
 <div class="sect2">
 <h3 id="_filtering_change_data_capture_events"><a class="anchor" href="#_filtering_change_data_capture_events"></a>Filtering Change Data Capture Events</h3>
+<div class="sect3">
+<h4 id="_by_destination"><a class="anchor" href="#_by_destination"></a>By destination</h4>
 <div class="paragraph">
 <p>It&#8217;s possible to filter events by <code>destination</code>:</p>
 </div>
@@ -743,6 +763,139 @@ public class ProductHandler {
 <div class="paragraph">
 <p>The default behavior is that a Debezium connector <code>destination</code> is formed from the name of the <code>prefix</code> defined in the configuration with the database name and the name of the table in which the change was made.
 In some cases the <code>destination</code> is redefined using an <a href="https://debezium.io/documentation/reference/stable/transformations/topic-routing.html">SMT</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_by_custom_filter_strategy"><a class="anchor" href="#_by_custom_filter_strategy"></a>By custom filter strategy</h4>
+<div class="paragraph">
+<p>For advanced filtering, you can provide a custom <code>CapturingFilterStrategy</code> that receives the full event and decides whether to capture it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class ProductsOnlyFilter implements CapturingFilterStrategy {
+    @Override
+    public boolean shouldCapture(CapturingEvent&lt;SourceRecord, SourceRecord&gt; event) {
+        return "native.inventory.products".equals(event.destination());
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then reference it in the annotation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Capturing(filter = ProductsOnlyFilter.class)
+    public void capture(CapturingEvent&lt;SourceRecord, SourceRecord&gt; event) {
+        // only receives events accepted by the filter
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>filter</code> attribute is mutually exclusive with <code>destination</code> and <code>engine</code>, validated at build time.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_by_field_changes"><a class="anchor" href="#_by_field_changes"></a>By field changes</h4>
+<div class="paragraph">
+<p>A built-in <code>CapturingFieldsFilterStrategy</code> can filter events based on the state of specific watched fields, where that state depends on the event type:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Create / Read</strong>: captured if any watched field exists in the record schema</p>
+</li>
+<li>
+<p><strong>Update</strong>: captured only if at least one watched field value changed between before and after</p>
+</li>
+<li>
+<p><strong>Delete</strong>: captured if any watched field exists in the before schema</p>
+</li>
+<li>
+<p><strong>Truncate / Message</strong>: not captured (no field-level data)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Extend it and pass the field names to watch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class PriceChangeFilter extends CapturingFieldsFilterStrategy {
+    public PriceChangeFilter() {
+        super(Set.of("name", "price"));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then use it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Capturing(filter = PriceChangeFilter.class)
+    public void capture(CapturingEvent&lt;SourceRecord, SourceRecord&gt; event) {
+        // only receives events where 'name' or 'price' are impacted
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_batch_event_filtering"><a class="anchor" href="#_batch_event_filtering"></a>Batch event filtering</h4>
+<div class="paragraph">
+<p>The filter strategy also works with batch event processing (<code>CapturingEvents&lt;BatchEvent&gt;</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Capturing(filter = PriceChangeFilter.class)
+    public void onBatch(CapturingEvents&lt;BatchEvent&gt; events) {
+        // only receives batch events where at least one record impacts 'name' or 'price'
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For batch events, each record in the batch is individually evaluated by <code>shouldCapture</code> and only matching records are delivered to the filter handler.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fallback_chain"><a class="anchor" href="#_fallback_chain"></a>Fallback chain</h4>
+<div class="paragraph">
+<p>When multiple <code>@Capturing</code> methods are defined, events are dispatched through a fallback chain:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Methods with <code>filter</code> are checked first. The filter&#8217;s <code>shouldCapture</code> decides.</p>
+</li>
+<li>
+<p>Methods with a registered deserializer for the destination (single event only).</p>
+</li>
+<li>
+<p>Methods with <code>destination</code> (exact match, then wildcard <code>*</code> fallback).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>First match wins.
+A <code>@Capturing()</code> with no destination acts as a wildcard and catches any event not matched by the previous levels.
+If no wildcard is defined, unmatched events are skipped.</p>
+</div>
+<div class="paragraph">
+<p>The same fallback chain applies to both single event and batch event processing.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1133,7 +1286,7 @@ The Extension is already equipped with a dev service with an image configured fo
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

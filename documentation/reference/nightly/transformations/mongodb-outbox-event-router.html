@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>MongoDB Outbox Event Router :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/transformations/mongodb-outbox-event-router.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/transformations/mongodb-outbox-event-router.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,22 +411,17 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/transformations/mongodb-outbox-event-router.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/transformations/mongodb-outbox-event-router.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/transformations/mongodb-outbox-event-router.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/transformations/mongodb-outbox-event-router.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/transformations/mongodb-outbox-event-router.html" data-hash="true">3.2</a>
-                        <a class="version" href="/documentation//reference/3.1/transformations/mongodb-outbox-event-router.html" data-hash="true">3.1</a>
-                        <a class="version" href="/documentation//reference/3.0/transformations/mongodb-outbox-event-router.html" data-hash="true">3.0</a>
-                        <a class="version" href="/documentation//reference/2.7/transformations/mongodb-outbox-event-router.html" data-hash="true">2.7</a>
-                        <a class="version" href="/documentation//reference/2.6/transformations/mongodb-outbox-event-router.html" data-hash="true">2.6</a>
-                        <a class="version" href="/documentation//reference/2.5/transformations/mongodb-outbox-event-router.html" data-hash="true">2.5</a>
-                        <a class="version" href="/documentation//reference/2.4/transformations/mongodb-outbox-event-router.html" data-hash="true">2.4</a>
-                        <a class="version" href="/documentation//reference/2.3/transformations/mongodb-outbox-event-router.html" data-hash="true">2.3</a>
-                        <a class="version" href="/documentation//reference/2.2/transformations/mongodb-outbox-event-router.html" data-hash="true">2.2</a>
-                        <a class="version" href="/documentation//reference/2.1/transformations/mongodb-outbox-event-router.html" data-hash="true">2.1</a>
-                        <a class="version" href="/documentation//reference/2.0/transformations/mongodb-outbox-event-router.html" data-hash="true">2.0</a>
-                        <a class="version" href="/documentation//reference/1.9/transformations/mongodb-outbox-event-router.html" data-hash="true">1.9</a>
+                        <a class="version is-current" href="/documentation/reference/transformations/mongodb-outbox-event-router.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/transformations/mongodb-outbox-event-router.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/transformations/mongodb-outbox-event-router.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/transformations/mongodb-outbox-event-router.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/transformations/mongodb-outbox-event-router.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/transformations/mongodb-outbox-event-router.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/transformations/mongodb-outbox-event-router.html" data-hash="true">3.2</a>
+                        <a class="version" href="/documentation/reference/3.1/transformations/mongodb-outbox-event-router.html" data-hash="true">3.1</a>
+                        <a class="version" href="/documentation/reference/3.0/transformations/mongodb-outbox-event-router.html" data-hash="true">3.0</a>
+                        <a class="version" href="/documentation/reference/2.7/transformations/mongodb-outbox-event-router.html" data-hash="true">2.7</a>
+                        <a class="version" href="/documentation/reference/1.9/transformations/mongodb-outbox-event-router.html" data-hash="true">1.9</a>
         </div>
         |
     </div>
@@ -461,6 +471,10 @@
 <li><a href="#_distributed_tracing">Distributed tracing</a></li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The outbox pattern provides a way to safely and reliably exchange data between multiple microservices.
+An outbox pattern implementation ensures that the data that a service stores in its database remains consistent with the data that Debezium publishes for other services to consume.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -475,9 +489,6 @@ For information about using the outbox event router SMT for relational databases
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>The outbox pattern is a way to safely and reliably exchange data between multiple (micro) services. An outbox pattern implementation avoids inconsistencies between a service&#8217;s internal state (as typically persisted in its database) and state in events consumed by services that need the same data.</p>
 </div>
 <div class="paragraph">
 <p>To implement the outbox pattern in a Debezium application, configure a Debezium connector to:</p>
@@ -548,7 +559,7 @@ For future update, to enable updating existing data and inserting outbox event i
   "patch": null,
   "after": "{\"_id\": {\"$oid\": \"596e275826f08b2730779e1f\"}, \"aggregateid\": {\"$oid\": \"b2730779e1f596e275826f08\"}, \"aggregatetype\": \"Order\", \"type\": \"OrderCreated\", \"payload\": {\"_id\": {\"$oid\": \"da8d6de63b7745ff8f4457db\"}, \"lineItems\": [{\"id\": 1, \"item\": \"Debezium in Action\", \"status\": \"ENTERED\", \"quantity\": 2, \"totalPrice\": 39.98}, {\"id\": 2, \"item\": \"Debezium for Dummies\", \"status\": \"ENTERED\", \"quantity\": 1, \"totalPrice\": 29.99}], \"orderDate\": \"2019-01-31T12:13:01\", \"customerId\": 123}}",
   "source": {
-    "version": "3.5.0.Final",
+    "version": "3.7.0.Beta1",
     "connector": "mongodb",
     "name": "fulfillment",
     "ts_ms": 1558965508000,
@@ -609,9 +620,11 @@ To customize behavior, the outbox event router SMT provides numerous <a href="#m
 <p><code>id</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Contains the unique ID of the event. In an outbox message, this value is a header. You can use this ID, for example, to remove duplicate messages.<br>
-<br>
-To obtain the unique ID of the event from a different outbox collection field, set the <a href="#mongodb-outbox-event-router-property-collection-field-event-id"><code>collection.field.event.id</code></a> SMT option in the connector configuration.</p>
+<p>Contains the unique ID of the event. In an outbox message, this value is a header.
+You can use this ID, for example, to remove duplicate messages.</p>
+</div>
+<div class="paragraph">
+<p>To obtain the unique ID of the event from a different outbox collection field, set the <a href="#mongodb-outbox-event-router-property-collection-field-event-id"><code>collection.field.event.id</code></a> SMT option in the connector configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -620,15 +633,20 @@ To obtain the unique ID of the event from a different outbox collection field, s
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Contains a value that the SMT appends to the name of the topic to which the connector emits an outbox message.
-The default behavior is that this value replaces the default <code>${routedByValue}</code> variable in the <a href="#mongodb-outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option.<br>
-<br>
-For example, in a default configuration, the <a href="#mongodb-outbox-event-router-property-route-by-field"><code>route.by.field</code></a> SMT option is set to <code>aggregatetype</code> and the <a href="#mongodb-outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option is set to <code>outbox.event.${routedByValue}</code>.
-Suppose that your application adds two documents to the outbox collection. In the first document, the value in the <code>aggregatetype</code> field is <code>customers</code>.
+The default behavior is that this value replaces the default <code>${routedByValue}</code> variable in the <a href="#mongodb-outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option.</p>
+</div>
+<div class="paragraph">
+<p>For example, in a default configuration, the <a href="#mongodb-outbox-event-router-property-route-by-field"><code>route.by.field</code></a> SMT option is set to <code>aggregatetype</code> and the <a href="#mongodb-outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option is set to <code>outbox.event.${routedByValue}</code>.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that your application adds two documents to the outbox collection.
+In the first document, the value in the <code>aggregatetype</code> field is <code>customers</code>.
 In the second document, the value in the <code>aggregatetype</code> field is <code>orders</code>.
 The connector emits the first document to the <code>outbox.event.customers</code> topic.
-The connector emits the second document to the <code>outbox.event.orders</code> topic.<br>
-<br>
-To obtain this value from a different outbox collection field, set the <a href="#mongodb-outbox-event-router-property-route-by-field"><code>route.by.field</code></a> SMT option in the connector configuration.</p>
+The connector emits the second document to the <code>outbox.event.orders</code> topic.</p>
+</div>
+<div class="paragraph">
+<p>To obtain this value from a different outbox collection field, set the <a href="#mongodb-outbox-event-router-property-route-by-field"><code>route.by.field</code></a> SMT option in the connector configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -638,9 +656,10 @@ To obtain this value from a different outbox collection field, set the <a href="
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Contains the event key, which provides an ID for the payload.
 The SMT uses this value as the key in the emitted outbox message.
-This is important for maintaining correct order in Kafka partitions.<br>
-<br>
-To obtain the event key from a different outbox collection field, set the <a href="#mongodb-outbox-event-router-property-collection-field-event-key"><code>collection.field.event.key</code></a> SMT option in the connector configuration.</p>
+This is important for maintaining correct order in Kafka partitions.</p>
+</div>
+<div class="paragraph">
+<p>To obtain the event key from a different outbox collection field, set the <a href="#mongodb-outbox-event-router-property-collection-field-event-key"><code>collection.field.event.key</code></a> SMT option in the connector configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -652,9 +671,10 @@ To obtain the event key from a different outbox collection field, set the <a hre
 The default structure is JSON.
 By default, the Kafka message value is solely comprised of the <code>payload</code> value.
 However, if the outbox event is configured to include additional fields, the Kafka message value contains an envelope encapsulating both payload and the additional fields, and each field is represented separately.
-For more information, see <a href="#mongodb-outbox-emitting-messages-with-additional-fields">Emitting messages with additional fields</a>.<br>
-<br>
-To obtain the event payload from a different outbox collection field, set the <a href="#mongodb-outbox-event-router-property-collection-field-event-payload"><code>collection.field.event.payload</code></a> SMT option in the connector configuration.</p>
+For more information, see <a href="#mongodb-outbox-emitting-messages-with-additional-fields">Emitting messages with additional fields</a>.</p>
+</div>
+<div class="paragraph">
+<p>To obtain the event payload from a different outbox collection field, set the <a href="#mongodb-outbox-event-router-property-collection-field-event-payload"><code>collection.field.event.payload</code></a> SMT option in the connector configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -662,9 +682,10 @@ To obtain the event payload from a different outbox collection field, set the <a
 <p>Additional custom fields</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Any additional fields from the outbox collection can be <a href="#mongodb-outbox-emitting-messages-with-additional-fields">added to outbox events</a> either within the payload section or as a message header.<br>
-<br>
-One example could be a field <code>eventType</code> which conveys a user-defined value that helps to categorize or organize events.</p>
+<p>Any additional fields from the outbox collection can be <a href="#mongodb-outbox-emitting-messages-with-additional-fields">added to outbox events</a> either within the payload section or as a message header.</p>
+</div>
+<div class="paragraph">
+<p>One example could be a field <code>eventType</code> which conveys a user-defined value that helps to categorize or organize events.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -977,9 +998,11 @@ This ID will be stored in the emitted event&#8217;s headers under the <code>id</
 <p>Collection</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies whether the JSON expansion of a String payload should be done. If no content found or in case of parsing error, the content is kept "as is".<br>
-<br>
-Fore more details, please see the <a href="#mongodb-outbox-expanding-escaped-json-string-as-json">expanding escaped json</a> section.</p>
+<p>Specifies whether the SMT performs JSON expansion of a String payload.
+If no content found or in case of parsing error, the content is kept "as is".</p>
+</div>
+<div class="paragraph">
+<p>For more details, please see the <a href="#mongodb-outbox-expanding-escaped-json-string-as-json">expanding escaped json</a> section.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1007,6 +1030,30 @@ Fore more details, please see the <a href="#mongodb-outbox-expanding-escaped-jso
 </div>
 <div class="paragraph">
 <p>Configuration examples are in <a href="#mongodb-outbox-emitting-messages-with-additional-fields">emitting additional fields in Debezium outbox messages</a>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="mongodb-outbox-event-router-property-collection-field-additional-missing"></a><a href="#mongodb-outbox-event-router-property-collection-field-additional-missing"><code>collection.field.additional.missing</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>error</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Collection, Envelope</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Determines the behavior of the SMT when a field specified by the <code>collection.fields.additional.placement</code> property is not found in the outbox payload. Possible settings are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>error</code> - The SMT throws an exception if a configured additional field is missing.</p>
+</li>
+<li>
+<p><code>ignore</code> - The SMT silently skips the missing field.</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -1049,9 +1096,10 @@ For an example, see the <a href="#mongodb-outbox-route-by-field-example">descrip
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies a regular expression that the outbox SMT applies in the RegexRouter to outbox collection documents.
-This regular expression is part of the setting of the <a href="#mongodb-outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option.<br>
-<br>
-When this property is set to the default <code>Router</code> value, the SMT replaces the default <code>${routedByValue}</code> variable that is set in the <a href="#mongodb-outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> property with the value that is specified for the <a href="#mongodb-outbox-event-router-property-route-by-field"><code>route.by.field</code></a> property.</p>
+This regular expression is part of the setting of the <a href="#mongodb-outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option.</p>
+</div>
+<div class="paragraph">
+<p>When this property is set to the default <code>Router</code> value, the SMT replaces the default <code>${routedByValue}</code> variable that is set in the <a href="#mongodb-outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> property with the value that is specified for the <a href="#mongodb-outbox-event-router-property-route-by-field"><code>route.by.field</code></a> property.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1066,11 +1114,13 @@ When this property is set to the default <code>Router</code> value, the SMT repl
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies the name of the topic to which the connector emits outbox messages.
-The default topic name is prefixed by the string <code>outbox.event.</code>, followed by the value of the <code>aggregatetype</code> field that is assigned to the outbox collection document.<br>
-<br>
-For example, if the <code>aggregatetype</code> value is <code>customers</code>, then connector emits outbox messages to the topic <code>outbox.event.customers</code>.<br>
-<br>
-To change the default name of the destination topic, perform one of the following actions:</p>
+The default topic name is prefixed by the string <code>outbox.event.</code>, followed by the value of the <code>aggregatetype</code> field that is assigned to the outbox collection document.</p>
+</div>
+<div class="paragraph">
+<p>For example, if the <code>aggregatetype</code> value is <code>customers</code>, then connector emits outbox messages to the topic <code>outbox.event.customers</code>.</p>
+</div>
+<div class="paragraph">
+<p>To change the default name of the destination topic, perform one of the following actions:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1160,7 +1210,7 @@ See <a href="/documentation/reference/integrations/tracing">tracing documentatio
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

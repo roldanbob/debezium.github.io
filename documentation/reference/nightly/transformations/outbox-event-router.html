@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Outbox Event Router :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/transformations/outbox-event-router.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/transformations/outbox-event-router.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,22 +411,17 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/transformations/outbox-event-router.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/transformations/outbox-event-router.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/transformations/outbox-event-router.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/transformations/outbox-event-router.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/transformations/outbox-event-router.html" data-hash="true">3.2</a>
-                        <a class="version" href="/documentation//reference/3.1/transformations/outbox-event-router.html" data-hash="true">3.1</a>
-                        <a class="version" href="/documentation//reference/3.0/transformations/outbox-event-router.html" data-hash="true">3.0</a>
-                        <a class="version" href="/documentation//reference/2.7/transformations/outbox-event-router.html" data-hash="true">2.7</a>
-                        <a class="version" href="/documentation//reference/2.6/transformations/outbox-event-router.html" data-hash="true">2.6</a>
-                        <a class="version" href="/documentation//reference/2.5/transformations/outbox-event-router.html" data-hash="true">2.5</a>
-                        <a class="version" href="/documentation//reference/2.4/transformations/outbox-event-router.html" data-hash="true">2.4</a>
-                        <a class="version" href="/documentation//reference/2.3/transformations/outbox-event-router.html" data-hash="true">2.3</a>
-                        <a class="version" href="/documentation//reference/2.2/transformations/outbox-event-router.html" data-hash="true">2.2</a>
-                        <a class="version" href="/documentation//reference/2.1/transformations/outbox-event-router.html" data-hash="true">2.1</a>
-                        <a class="version" href="/documentation//reference/2.0/transformations/outbox-event-router.html" data-hash="true">2.0</a>
-                        <a class="version" href="/documentation//reference/1.9/transformations/outbox-event-router.html" data-hash="true">1.9</a>
+                        <a class="version is-current" href="/documentation/reference/transformations/outbox-event-router.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/transformations/outbox-event-router.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/transformations/outbox-event-router.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/transformations/outbox-event-router.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/transformations/outbox-event-router.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/transformations/outbox-event-router.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/transformations/outbox-event-router.html" data-hash="true">3.2</a>
+                        <a class="version" href="/documentation/reference/3.1/transformations/outbox-event-router.html" data-hash="true">3.1</a>
+                        <a class="version" href="/documentation/reference/3.0/transformations/outbox-event-router.html" data-hash="true">3.0</a>
+                        <a class="version" href="/documentation/reference/2.7/transformations/outbox-event-router.html" data-hash="true">2.7</a>
+                        <a class="version" href="/documentation/reference/1.9/transformations/outbox-event-router.html" data-hash="true">1.9</a>
         </div>
         |
     </div>
@@ -549,7 +559,7 @@ For more information, see <a href="#options-for-applying-the-transformation-sele
     "type": "OrderCreated"
   },
   "source": {
-    "version": "3.5.0.Final",
+    "version": "3.7.0.Beta1",
     "connector": "postgresql",
     "name": "dbserver1-bare",
     "db": "orderdb",
@@ -609,9 +619,11 @@ payload       | jsonb                  |</code></pre>
 <p><code>id</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Contains the unique ID of the event. In an outbox message, this value is a header. You can use this ID, for example, to remove duplicate messages.<br>
-<br>
-To obtain the unique ID of the event from a different outbox table column, set the <a href="#outbox-event-router-property-table-field-event-id"><code>table.field.event.id</code></a>  SMT option in the connector configuration.</p>
+<p>Contains the unique ID of the event. In an outbox message, this value is a header.
+You can use this ID, for example, to remove duplicate messages.</p>
+</div>
+<div class="paragraph">
+<p>To obtain the unique ID of the event from a different outbox table column, set the <a href="#outbox-event-router-property-table-field-event-id"><code>table.field.event.id</code></a>  SMT option in the connector configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -619,15 +631,21 @@ To obtain the unique ID of the event from a different outbox table column, set t
 <p><a id="route-by-field-example"></a><code>aggregatetype</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Contains a value that the SMT appends to the name of the topic to which the connector emits an outbox message. The default behavior is that this value replaces the default <code>${routedByValue}</code> variable in the <a href="#outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option.<br>
-<br>
-For example, in a default configuration, the <a href="#outbox-event-router-property-route-by-field"><code>route.by.field</code></a> SMT option is set to <code>aggregatetype</code> and the <a href="#outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option is set to <code>outbox.event.${routedByValue}</code>.
-Suppose that your application adds two records to the outbox table. In the first record, the value in the <code>aggregatetype</code> column is <code>customers</code>.
+<p>Contains a value that the SMT appends to the name of the topic to which the connector emits an outbox message.
+The default behavior is that this value replaces the default <code>${routedByValue}</code> variable in the <a href="#outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option.</p>
+</div>
+<div class="paragraph">
+<p>For example, in a default configuration, the <a href="#outbox-event-router-property-route-by-field"><code>route.by.field</code></a> SMT option is set to <code>aggregatetype</code> and the <a href="#outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option is set to <code>outbox.event.${routedByValue}</code>.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that your application adds two records to the outbox table.
+In the first record, the value in the <code>aggregatetype</code> column is <code>customers</code>.
 In the second record, the value in the <code>aggregatetype</code> column is <code>orders</code>.
 The connector emits the first record to the <code>outbox.event.customers</code> topic.
-The connector emits the second record to the <code>outbox.event.orders</code> topic.<br>
-<br>
-To obtain this value from a different outbox table column, set the <a href="#outbox-event-router-property-route-by-field"><code>route.by.field</code></a> SMT option in the connector configuration.</p>
+The connector emits the second record to the <code>outbox.event.orders</code> topic.</p>
+</div>
+<div class="paragraph">
+<p>To obtain this value from a different outbox table column, set the <a href="#outbox-event-router-property-route-by-field"><code>route.by.field</code></a> SMT option in the connector configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -637,9 +655,10 @@ To obtain this value from a different outbox table column, set the <a href="#out
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Contains the event key, which provides an ID for the payload.
 The SMT uses this value as the key in the emitted outbox message.
-This is important for maintaining correct order in Kafka partitions.<br>
-<br>
-To obtain the event key from a different outbox table column, set the <a href="#outbox-event-router-property-table-field-event-key"><code>table.field.event.key</code> SMT option</a> in the connector configuration.</p>
+This is important for maintaining correct order in Kafka partitions.</p>
+</div>
+<div class="paragraph">
+<p>To obtain the event key from a different outbox table column, set the <a href="#outbox-event-router-property-table-field-event-key"><code>table.field.event.key</code> SMT option</a> in the connector configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -651,9 +670,10 @@ To obtain the event key from a different outbox table column, set the <a href="#
 The default structure is JSON.
 By default, the Kafka message value is solely comprised of the <code>payload</code> value.
 However, if the outbox event is configured to include additional fields, the Kafka message value contains an envelope encapsulating both payload and the additional fields, and each field is represented separately.
-For more information, see <a href="#emitting-messages-with-additional-fields">Emitting messages with additional fields</a>.<br>
-<br>
-To obtain the event payload from a different outbox table column, set the <a href="#outbox-event-router-property-table-field-event-payload"><code>table.field.event.payload</code></a> SMT option in the connector configuration.</p>
+For more information, see <a href="#emitting-messages-with-additional-fields">Emitting messages with additional fields</a>.</p>
+</div>
+<div class="paragraph">
+<p>To obtain the event payload from a different outbox table column, set the <a href="#outbox-event-router-property-table-field-event-payload"><code>table.field.event.payload</code></a> SMT option in the connector configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -661,9 +681,10 @@ To obtain the event payload from a different outbox table column, set the <a hre
 <p>Additional custom columns</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Any additional columns from the outbox table can be <a href="#emitting-messages-with-additional-fields">added to outbox events</a> either within the payload section or as a message header.<br>
-<br>
-One example could be a column <code>eventType</code> which conveys a user-defined value that helps to categorize or organize events.</p>
+<p>Any additional columns from the outbox table can be <a href="#emitting-messages-with-additional-fields">added to outbox events</a> either within the payload section or as a message header.</p>
+</div>
+<div class="paragraph">
+<p>One example could be a column <code>eventType</code> which conveys a user-defined value that helps to categorize or organize events.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1027,9 +1048,11 @@ This ID will be stored in the emitted event&#8217;s headers under the <code>id</
 <p>Table</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies whether the JSON expansion of a String payload should be done. If no content found or in case of parsing error, the content is kept "as is".<br>
-<br>
-Fore more details, please see the <a href="#expanding-escaped-json-string-as-json">expanding escaped json</a> section.</p>
+<p>Specifies whether the SMT performs JSON expansion of a String payload.
+If no content found or in case of parsing error, the content is kept "as is".</p>
+</div>
+<div class="paragraph">
+<p>For more details, please see the <a href="#expanding-escaped-json-string-as-json">expanding escaped json</a> section.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1052,6 +1075,31 @@ Fore more details, please see the <a href="#expanding-escaped-json-string-as-jso
 </li>
 <li>
 <p><code>optional_bytes</code> - Keep the null value, and treat null as optional bytes of connect.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="outbox-event-router-property-table-json-payload-empty-array-behavior"></a><a href="#outbox-event-router-property-table-json-payload-empty-array-behavior"><code>table.json.payload.empty.array.behavior</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>ignore</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Table</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>When the JSON expansion property <code>table.expand.json.payload</code> is enabled, it determines how a JSON payload containing an empty array value is handled in the outbox table.
+Possible settings are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ignore</code> - Drop the empty array field.</p>
+</li>
+<li>
+<p><code>optional_string</code> - Keep the field as an optional array with an optional string element type.</p>
 </li>
 </ul>
 </div></div></td>
@@ -1085,16 +1133,26 @@ Fore more details, please see the <a href="#expanding-escaped-json-string-as-jso
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a id="outbox-event-router-property-table-fields-additional-error-on-missing"></a><a href="#outbox-event-router-property-table-fields-additional-error-on-missing"><code>table.fields.additional.error.on.missing</code></a></p>
+<p><a id="outbox-event-router-property-table-field-additional-missing"></a><a href="#outbox-event-router-property-table-field-additional-missing"><code>table.field.additional.missing</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>true</code></p>
+<p><code>error</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Table, Envelope</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies whether this transformation throws an error if a field specified by the <code>table.fields.additional.placement</code> property is not found in the Outbox payload.</p>
+<p>Determines the behavior of the SMT when a field specified by the <code>table.fields.additional.placement</code> property is not found in the outbox payload. Possible settings are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>error</code> - The SMT throws an exception if a configured additional field is missing.</p>
+</li>
+<li>
+<p><code>ignore</code> - The SMT silently skips the missing field.</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -1134,9 +1192,11 @@ Fore more details, please see the <a href="#expanding-escaped-json-string-as-jso
 <p>Router</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies a regular expression that the outbox SMT applies in the RegexRouter to outbox table records. This regular expression is part of the setting of the <a href="#outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option.<br>
-<br>
-The default behavior is that the SMT replaces the default <code>${routedByValue}</code> variable in the setting of the <code>route.topic.replacement</code> SMT option with the setting of the <a href="#outbox-event-router-property-route-by-field"><code>route.by.field</code></a> outbox SMT option.</p>
+<p>Specifies a regular expression that the outbox SMT applies in the RegexRouter to outbox table records.
+This regular expression is part of the setting of the <a href="#outbox-event-router-property-route-topic-replacement"><code>route.topic.replacement</code></a> SMT option.</p>
+</div>
+<div class="paragraph">
+<p>The default behavior is that the SMT replaces the default <code>${routedByValue}</code> variable in the setting of the <code>route.topic.replacement</code> SMT option with the setting of the <a href="#outbox-event-router-property-route-by-field"><code>route.by.field</code></a> outbox SMT option.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1151,9 +1211,11 @@ The default behavior is that the SMT replaces the default <code>${routedByValue}
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies the name of the topic to which the connector emits outbox messages.
-The default topic name is <code>outbox.event.</code> followed by the <code>aggregatetype</code> column value in the outbox table record. For example, if the <code>aggregatetype</code> value is <code>customers</code>, the topic name is <code>outbox.event.customers</code>.<br>
-<br>
-To change the topic name, you can:<br></p>
+The default topic name is <code>outbox.event.</code> followed by the <code>aggregatetype</code> column value in the outbox table record.
+For example, if the <code>aggregatetype</code> value is <code>customers</code>, the topic name is <code>outbox.event.customers</code>.</p>
+</div>
+<div class="paragraph">
+<p>To change the topic name, you can:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1243,7 +1305,7 @@ See <a href="/documentation/reference/integrations/tracing">tracing documentatio
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

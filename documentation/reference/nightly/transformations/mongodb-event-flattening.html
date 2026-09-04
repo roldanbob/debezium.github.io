@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>MongoDB New Document State Extraction :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/transformations/mongodb-event-flattening.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/transformations/mongodb-event-flattening.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,22 +411,17 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/transformations/mongodb-event-flattening.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/transformations/mongodb-event-flattening.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/transformations/mongodb-event-flattening.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/transformations/mongodb-event-flattening.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/transformations/mongodb-event-flattening.html" data-hash="true">3.2</a>
-                        <a class="version" href="/documentation//reference/3.1/transformations/mongodb-event-flattening.html" data-hash="true">3.1</a>
-                        <a class="version" href="/documentation//reference/3.0/transformations/mongodb-event-flattening.html" data-hash="true">3.0</a>
-                        <a class="version" href="/documentation//reference/2.7/transformations/mongodb-event-flattening.html" data-hash="true">2.7</a>
-                        <a class="version" href="/documentation//reference/2.6/transformations/mongodb-event-flattening.html" data-hash="true">2.6</a>
-                        <a class="version" href="/documentation//reference/2.5/transformations/mongodb-event-flattening.html" data-hash="true">2.5</a>
-                        <a class="version" href="/documentation//reference/2.4/transformations/mongodb-event-flattening.html" data-hash="true">2.4</a>
-                        <a class="version" href="/documentation//reference/2.3/transformations/mongodb-event-flattening.html" data-hash="true">2.3</a>
-                        <a class="version" href="/documentation//reference/2.2/transformations/mongodb-event-flattening.html" data-hash="true">2.2</a>
-                        <a class="version" href="/documentation//reference/2.1/transformations/mongodb-event-flattening.html" data-hash="true">2.1</a>
-                        <a class="version" href="/documentation//reference/2.0/transformations/mongodb-event-flattening.html" data-hash="true">2.0</a>
-                        <a class="version" href="/documentation//reference/1.9/transformations/mongodb-event-flattening.html" data-hash="true">1.9</a>
+                        <a class="version is-current" href="/documentation/reference/transformations/mongodb-event-flattening.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/transformations/mongodb-event-flattening.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/transformations/mongodb-event-flattening.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/transformations/mongodb-event-flattening.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/transformations/mongodb-event-flattening.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/transformations/mongodb-event-flattening.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/transformations/mongodb-event-flattening.html" data-hash="true">3.2</a>
+                        <a class="version" href="/documentation/reference/3.1/transformations/mongodb-event-flattening.html" data-hash="true">3.1</a>
+                        <a class="version" href="/documentation/reference/3.0/transformations/mongodb-event-flattening.html" data-hash="true">3.0</a>
+                        <a class="version" href="/documentation/reference/2.7/transformations/mongodb-event-flattening.html" data-hash="true">2.7</a>
+                        <a class="version" href="/documentation/reference/1.9/transformations/mongodb-event-flattening.html" data-hash="true">1.9</a>
         </div>
         |
     </div>
@@ -1155,7 +1165,7 @@ The <code>TOMBSTONE</code> record contains only the following value: <code>"valu
 <p>__ (double-underscore)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Set this optional string to prefix a header.</p>
+<p>Specifies an optional string to prefix a header.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1166,14 +1176,14 @@ The <code>TOMBSTONE</code> record contains only the following value: <code>"valu
 <p>No default</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies a comma-separated list, with no spaces, of metadata fields that you want the SMT to add to the header of simplified messages.
-When the original message contains duplicate field names, you can identify the specific field to modify by providing the name of the struct together with the name of the field, for example, <code>source.ts_ms</code>.</p>
+<p>Specifies a comma-separated list, with no spaces, of metadata fields that you want the SMT to add to the header of the simplified Kafka message.
+If the original message contains duplicate field names, you can specify the field to modify by providing the name of the struct together with the name of the field, for example, <code>source.ts_ms</code>.</p>
 </div>
 <div class="paragraph">
-<p>Optionally, you can override the original name of a field and assign it a new name by adding an entry in the following format to the list:<br></p>
+<p>Optionally, you can override the original name of a field and assign it a case-sensitive new name by adding an entry in the following format to the list:</p>
 </div>
 <div class="paragraph">
-<p><code><em>&lt;field_name&gt;</em>:<em>&lt;new_field_name&gt;</em></code>.<br></p>
+<p><code><em>&lt;field_name&gt;</em>:<em>&lt;new_field_name&gt;</em></code>.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -1184,12 +1194,11 @@ When the original message contains duplicate field names, you can identify the s
 </div>
 </div>
 <div class="paragraph">
-<p>The new name values that you specify are case-sensitive.<br>
-<br>
-When the SMT adds metadata fields to the header of the simplified message, it prefixes each metadata field name with a double underscore.
-For a struct specification, the SMT also inserts an underscore between the struct name and the field name.<br>
-<br>
-If you specify a field that is not in the change event original message, the SMT does not add the field to the header.</p>
+<p>When the SMT adds metadata fields to the header of the simplified message, it prefixes each metadata field name with a double underscore.
+For a struct specification, the SMT also inserts an underscore between the struct name and the field name.</p>
+</div>
+<div class="paragraph">
+<p>If you specify a field that is not present in the header of the original change event message, the SMT does not add the field to the header.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1211,13 +1220,14 @@ If you specify a field that is not in the change event original message, the SMT
 <p>No default</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Set this option to a comma-separated list, with no spaces, of metadata fields to add to the <code>value</code> element of the simplified Kafka message.
-When the original message contains duplicate field names, you can identify the specific field to modify by providing the name of the struct together with the name of the field, for example, <code>source.ts_ms</code>.
-<br>
-Optionally, you can override the original name of a field and assign it a new name by adding an entry in the following format to the list:<br></p>
+<p>Specifies a comma-separated list, with no spaces, of metadata fields that you want the SMT to add to the <code>value</code> element of the simplified Kafka message.
+If the original message contains duplicate field names, you can specify the field to modify by providing the name of the struct together with the name of the field, for example, <code>source.ts_ms</code>.</p>
 </div>
 <div class="paragraph">
-<p><code><em>&lt;field_name&gt;</em>:<em>&lt;new_field_name&gt;</em></code>.<br></p>
+<p>Optionally, you can override the original name of a field and assign it a case-sensitive new name by adding an entry in the following format to the list:</p>
+</div>
+<div class="paragraph">
+<p><code><em>&lt;field_name&gt;</em>:<em>&lt;new_field_name&gt;</em></code>.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -1228,13 +1238,39 @@ Optionally, you can override the original name of a field and assign it a new na
 </div>
 </div>
 <div class="paragraph">
-<p>The new name values that you specify are case-sensitive.<br></p>
+<p>When the SMT adds metadata fields to the <code>value</code> element of the simplified message, it prefixes each metadata field name with a double underscore.
+For a struct specification, the SMT also inserts an underscore between the struct name and the field name.</p>
 </div>
 <div class="paragraph">
-<p>When the SMT adds metadata fields to the <code>value</code> element of the simplified message, it prefixes each metadata field name with a double underscore.
-For a struct specification, the SMT also inserts an underscore between the struct name and the field name.<br>
-<br>
-If you specify a field that is not present in the original change event message, the SMT still adds the specified field to the <code>value</code> element of the modified message.</p>
+<p>If you specify a field that is not present in the original change event message, the SMT still adds the specified field to the <code>value</code> element of the modified message.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="mongodb-extract-new-record-state-field-name-adjustment-mode"></a><a href="#mongodb-extract-new-record-state-field-name-adjustment-mode"><code>field.name.adjustment.mode</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>none</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specifies how the SMT adjusts field and schema names for compatibility with different message converters.
+Set one of the following options:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>none</code> (default)</dt>
+<dd>
+<p>No adjustment is performed.</p>
+</dd>
+<dt class="hdlist1"><code>avro</code></dt>
+<dd>
+<p>The SMT replaces any character that is invalid for Avro field names with an underscore character (<code>_</code>). It also adjusts the dot-separated segments of the output schema name individually, replacing invalid initial characters with an underscore to prevent Avro <code>SchemaParseException</code> errors when collection names begin with a digit.</p>
+</dd>
+<dt class="hdlist1"><code>avro_unicode</code></dt>
+<dd>
+<p>Similar to <code>avro</code>, but replaces invalid characters with their Unicode equivalent (e.g., <code>_u0031</code> for a leading <code>1</code>).</p>
+</dd>
+</dl>
 </div></div></td>
 </tr>
 </tbody>
@@ -1244,6 +1280,9 @@ If you specify a field that is not present in the original change event message,
 <div class="sect1">
 <h2 id="debezium-event-flattening-smt-for-mongodb-known-limitations"><a class="anchor" href="#debezium-event-flattening-smt-for-mongodb-known-limitations"></a>Known limitations</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Because MongoDB is schemaless and sink connectors require specific message formats, the following constraints apply when you configure the MongoDB event flattening transformation.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1265,7 +1304,7 @@ If a sink connector requires a "flat" message structure, but it receives a messa
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

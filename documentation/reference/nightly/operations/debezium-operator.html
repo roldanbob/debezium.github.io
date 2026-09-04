@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Debezium Operator :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/operations/debezium-operator.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/operations/debezium-operator.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="../transformations/vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../transformations/swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,21 +411,16 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/operations/debezium-operator.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/operations/debezium-operator.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/operations/debezium-operator.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/operations/debezium-operator.html" data-hash="true">3.3</a>
+                        <a class="version is-current" href="/documentation/reference/operations/debezium-operator.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/operations/debezium-operator.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/operations/debezium-operator.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/operations/debezium-operator.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/operations/debezium-operator.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/operations/debezium-operator.html" data-hash="true">3.3</a>
                     <a class="version is-missing" href="#">3.2</a>
                     <a class="version is-missing" href="#">3.1</a>
                     <a class="version is-missing" href="#">3.0</a>
                     <a class="version is-missing" href="#">2.7</a>
-                    <a class="version is-missing" href="#">2.6</a>
-                    <a class="version is-missing" href="#">2.5</a>
-                    <a class="version is-missing" href="#">2.4</a>
-                    <a class="version is-missing" href="#">2.3</a>
-                    <a class="version is-missing" href="#">2.2</a>
-                    <a class="version is-missing" href="#">2.1</a>
-                    <a class="version is-missing" href="#">2.0</a>
                     <a class="version is-missing" href="#">1.9</a>
         </div>
         |
@@ -474,6 +484,8 @@
 <li><a href="#debezium-operator-schema-reference-templates">Templates schema reference</a></li>
 <li><a href="#debezium-operator-schema-reference-metrics">Metrics schema reference</a></li>
 <li><a href="#debezium-operator-schema-reference-jmxexporter">JmxExporter schema reference</a></li>
+<li><a href="#debezium-operator-schema-reference-opentelemetry">OpenTelemetry schema reference</a></li>
+<li><a href="#debezium-operator-schema-reference-otelcollector">OtelCollector schema reference</a></li>
 <li><a href="#debezium-operator-schema-reference-transformation">Transformation schema reference</a></li>
 <li><a href="#debezium-operator-schema-reference-predicate">Predicate schema reference</a></li>
 <li><a href="#debezium-operator-schema-reference-configmapoffsetstore">ConfigMapOffsetStore schema reference</a></li>
@@ -618,6 +630,15 @@ spec:
     jmx:
       enabled: boolean
       port: int  # defaults to 1099
+    metrics:
+      jmxExporter:
+        enabled: boolean
+      openTelemetry:
+        enabled: boolean
+        collector:
+          endpoint: String
+          jmxIntervalMs: int  # defaults to 10000
+          metricExportIntervalMs: int  # defaults to 60000
     templates:
       container:
         resources: ResourceRequirements
@@ -1719,6 +1740,18 @@ spec:
 <p>Prometheus JMX exporter configuration</p>
 </div></div></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="debezium-operator-schema-reference-metrics-opentelemetry"></a><a href="#debezium-operator-schema-reference-metrics-opentelemetry"><code>openTelemetry</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="#debezium-operator-schema-reference-opentelemetry"><code>OpenTelemetry</code></a></strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>No default value</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>OpenTelemetry configuration</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1772,12 +1805,160 @@ spec:
 </table>
 </div>
 <div class="sect2">
+<h3 id="debezium-operator-schema-reference-opentelemetry"><a class="anchor" href="#debezium-operator-schema-reference-opentelemetry"></a>OpenTelemetry schema reference</h3>
+<div class="paragraph">
+<p>Used in: <a href="#debezium-operator-schema-reference-metrics"><code>Metrics</code></a></p>
+</div>
+<div class="paragraph">
+<p>When OpenTelemetry is enabled, the operator automatically configures the Debezium Server container with the following environment variables:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OTEL_ENABLED</code>&#8201;&#8212;&#8201;Activates the OpenTelemetry Java Agent bundled with Debezium Server.</p>
+</li>
+<li>
+<p><code>OTEL_SDK_DISABLED</code>&#8201;&#8212;&#8201;Set to <code>false</code> to ensure the OpenTelemetry SDK is active.</p>
+</li>
+<li>
+<p><code>OTEL_EXPORTER_OTLP_ENDPOINT</code>&#8201;&#8212;&#8201;The OTLP collector endpoint (defaults to <code><a href="http://localhost:4318" class="bare">http://localhost:4318</a></code>).</p>
+</li>
+<li>
+<p><code>OTEL_METRICS_EXPORTER</code>&#8201;&#8212;&#8201;The metrics exporter type (defaults to <code>otlp</code>).</p>
+</li>
+<li>
+<p><code>OTEL_SERVICE_NAME</code>&#8201;&#8212;&#8201;Set to the name of the DebeziumServer resource.</p>
+</li>
+<li>
+<p><code>OTEL_RESOURCE_ATTRIBUTES</code>&#8201;&#8212;&#8201;Includes <code>service.name</code> and <code>debezium.connector.type</code> attributes.</p>
+</li>
+<li>
+<p><code>OTEL_JMX_CONFIG</code>&#8201;&#8212;&#8201;Points to the built-in JMX-to-OpenTelemetry metrics mapping configuration.</p>
+</li>
+<li>
+<p><code>OTEL_JMX_INTERVAL_MILLISECONDS</code>&#8201;&#8212;&#8201;JMX metrics scrape interval in milliseconds (defaults to <code>10000</code>).</p>
+</li>
+<li>
+<p><code>OTEL_METRIC_EXPORT_INTERVAL</code>&#8201;&#8212;&#8201;Metrics export interval in milliseconds (defaults to <code>60000</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can override any of these environment variables by specifying them in <code>spec.runtime.environment.vars</code>.
+User-provided environment variables take precedence over operator-managed defaults.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 19. OpenTelemetry properties</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 25%;">
+<col style="width: 15%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="debezium-operator-schema-reference-opentelemetry-enabled"></a><a href="#debezium-operator-schema-reference-opentelemetry-enabled"><code>enabled</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>boolean</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Enables OpenTelemetry</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="debezium-operator-schema-reference-opentelemetry-collector"></a><a href="#debezium-operator-schema-reference-opentelemetry-collector"><code>collector</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="#debezium-operator-schema-reference-otelcollector"><code>OtelCollector</code></a></strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>No default value</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>OpenTelemetry collector configuration</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="debezium-operator-schema-reference-otelcollector"><a class="anchor" href="#debezium-operator-schema-reference-otelcollector"></a>OtelCollector schema reference</h3>
+<div class="paragraph">
+<p>Used in: <a href="#debezium-operator-schema-reference-opentelemetry"><code>OpenTelemetry</code></a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 20. OpenTelemetry collector properties</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 25%;">
+<col style="width: 15%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="debezium-operator-schema-reference-otelcollector-endpoint"></a><a href="#debezium-operator-schema-reference-otelcollector-endpoint"><code>endpoint</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>String</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="http://localhost:4318" class="bare">http://localhost:4318</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>OTLP collector endpoint</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="debezium-operator-schema-reference-otelcollector-jmxintervalms"></a><a href="#debezium-operator-schema-reference-otelcollector-jmxintervalms"><code>jmxIntervalMs</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>int</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>10000</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>JMX metrics scrape interval in milliseconds</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="debezium-operator-schema-reference-otelcollector-metricexportintervalms"></a><a href="#debezium-operator-schema-reference-otelcollector-metricexportintervalms"><code>metricExportIntervalMs</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>int</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>60000</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Metrics export interval in milliseconds</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
 <h3 id="debezium-operator-schema-reference-transformation"><a class="anchor" href="#debezium-operator-schema-reference-transformation"></a>Transformation schema reference</h3>
 <div class="paragraph">
 <p>Used in: <a href="#debezium-operator-schema-reference-debeziumserverspec"><code>DebeziumServerSpec</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 19. Transformation properties</caption>
+<caption class="title">Table 21. Transformation properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -1850,7 +2031,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-debeziumserverspec"><code>DebeziumServerSpec</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 20. Predicate properties</caption>
+<caption class="title">Table 22. Predicate properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -1899,7 +2080,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-offset"><code>Offset</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 21. ConfigMapOffsetStore properties</caption>
+<caption class="title">Table 23. ConfigMapOffsetStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -1948,7 +2129,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-runtimeenvironment"><code>RuntimeEnvironment</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 22. ContainerEnvVar properties</caption>
+<caption class="title">Table 24. ContainerEnvVar properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -1997,7 +2178,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-templates"><code>Templates</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 23. ContainerTemplate properties</caption>
+<caption class="title">Table 25. ContainerTemplate properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2049,6 +2230,18 @@ spec:
 <p>Container probes configuration.</p>
 </div></div></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="debezium-operator-schema-reference-containertemplate-imagepullpolicy"></a><a href="#debezium-operator-schema-reference-containertemplate-imagepullpolicy"><code>imagePullPolicy</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Always,IfNotPresent,Never</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>No default value</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy">Image pull policy</a> for the container.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2058,7 +2251,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-offset"><code>Offset</code></a>, <a href="#debezium-operator-schema-reference-schemahistory"><code>SchemaHistory</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 24. CustomStore properties</caption>
+<caption class="title">Table 26. CustomStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2107,7 +2300,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-runtimestorage"><code>RuntimeStorage</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 25. DataStorage properties</caption>
+<caption class="title">Table 27. DataStorage properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2156,7 +2349,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-offset"><code>Offset</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 26. FileOffsetStore properties</caption>
+<caption class="title">Table 28. FileOffsetStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2205,7 +2398,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-schemahistory"><code>SchemaHistory</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 27. FileSchemaHistoryStore properties</caption>
+<caption class="title">Table 29. FileSchemaHistoryStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2254,7 +2447,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-offset"><code>Offset</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 28. InMemoryOffsetStore properties</caption>
+<caption class="title">Table 30. InMemoryOffsetStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2291,7 +2484,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-schemahistory"><code>SchemaHistory</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 29. InMemorySchemaHistoryStore properties</caption>
+<caption class="title">Table 31. InMemorySchemaHistoryStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2328,7 +2521,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-offset"><code>Offset</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 30. JdbcOffsetStore properties</caption>
+<caption class="title">Table 32. JdbcOffsetStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2437,7 +2630,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-jdbcoffsetstore"><code>JdbcOffsetStore</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 31. JdbcOffsetTableConfig properties</caption>
+<caption class="title">Table 33. JdbcOffsetTableConfig properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2522,7 +2715,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-schemahistory"><code>SchemaHistory</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 32. JdbcSchemaHistoryStore properties</caption>
+<caption class="title">Table 34. JdbcSchemaHistoryStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2631,7 +2824,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-jdbcschemahistorystore"><code>JdbcSchemaHistoryStore</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 33. JdbcSchemaHistoryTableConfig properties</caption>
+<caption class="title">Table 35. JdbcSchemaHistoryTableConfig properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2716,7 +2909,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-offset"><code>Offset</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 34. KafkaOffsetStore properties</caption>
+<caption class="title">Table 36. KafkaOffsetStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2813,7 +3006,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-schemahistory"><code>SchemaHistory</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 35. KafkaSchemaHistoryStore properties</caption>
+<caption class="title">Table 37. KafkaSchemaHistoryStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2898,7 +3091,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-podtemplate"><code>PodTemplate</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 36. MetadataTemplate properties</caption>
+<caption class="title">Table 38. MetadataTemplate properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -2947,7 +3140,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-source"><code>Source</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 37. Offset properties</caption>
+<caption class="title">Table 39. Offset properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -3068,7 +3261,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-templates"><code>Templates</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 38. PodTemplate properties</caption>
+<caption class="title">Table 40. PodTemplate properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -3141,7 +3334,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-probes"><code>Probes</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 39. Probe properties</caption>
+<caption class="title">Table 41. Probe properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -3214,7 +3407,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-containertemplate"><code>ContainerTemplate</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 40. Probes properties</caption>
+<caption class="title">Table 42. Probes properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -3263,7 +3456,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-offset"><code>Offset</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 41. RedisOffsetStore properties</caption>
+<caption class="title">Table 43. RedisOffsetStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -3372,7 +3565,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-schemahistory"><code>SchemaHistory</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 42. RedisSchemaHistoryStore properties</caption>
+<caption class="title">Table 44. RedisSchemaHistoryStore properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -3481,7 +3674,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-redisoffsetstore"><code>RedisOffsetStore</code></a>, <a href="#debezium-operator-schema-reference-redisschemahistorystore"><code>RedisSchemaHistoryStore</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 43. RedisStoreWaitConfig properties</caption>
+<caption class="title">Table 45. RedisStoreWaitConfig properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -3554,7 +3747,7 @@ spec:
 <p>Used in: <a href="#debezium-operator-schema-reference-source"><code>Source</code></a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 44. SchemaHistory properties</caption>
+<caption class="title">Table 46. SchemaHistory properties</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 25%;">
@@ -3718,6 +3911,12 @@ spec:
     metrics:
       jmxExporter:
         enabled: true
+      openTelemetry:
+        enabled: true
+        collector:
+          endpoint: http://otel-collector:4318
+          jmxIntervalMs: 5000
+          metricExportIntervalMs: 30000
   transforms:
     - type: io.debezium.transforms.UnwrapFromEnvelope
       config:
@@ -3747,7 +3946,7 @@ spec:
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

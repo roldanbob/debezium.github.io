@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Debezium connector for Db2 :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/connectors/db2.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/connectors/db2.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="../transformations/vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../transformations/swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,22 +411,17 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/connectors/db2.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/connectors/db2.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/connectors/db2.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/connectors/db2.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/connectors/db2.html" data-hash="true">3.2</a>
-                        <a class="version" href="/documentation//reference/3.1/connectors/db2.html" data-hash="true">3.1</a>
-                        <a class="version" href="/documentation//reference/3.0/connectors/db2.html" data-hash="true">3.0</a>
-                        <a class="version" href="/documentation//reference/2.7/connectors/db2.html" data-hash="true">2.7</a>
-                        <a class="version" href="/documentation//reference/2.6/connectors/db2.html" data-hash="true">2.6</a>
-                        <a class="version" href="/documentation//reference/2.5/connectors/db2.html" data-hash="true">2.5</a>
-                        <a class="version" href="/documentation//reference/2.4/connectors/db2.html" data-hash="true">2.4</a>
-                        <a class="version" href="/documentation//reference/2.3/connectors/db2.html" data-hash="true">2.3</a>
-                        <a class="version" href="/documentation//reference/2.2/connectors/db2.html" data-hash="true">2.2</a>
-                        <a class="version" href="/documentation//reference/2.1/connectors/db2.html" data-hash="true">2.1</a>
-                        <a class="version" href="/documentation//reference/2.0/connectors/db2.html" data-hash="true">2.0</a>
-                        <a class="version" href="/documentation//reference/1.9/connectors/db2.html" data-hash="true">1.9</a>
+                        <a class="version is-current" href="/documentation/reference/connectors/db2.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/connectors/db2.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/connectors/db2.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/connectors/db2.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/connectors/db2.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/connectors/db2.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/connectors/db2.html" data-hash="true">3.2</a>
+                        <a class="version" href="/documentation/reference/3.1/connectors/db2.html" data-hash="true">3.1</a>
+                        <a class="version" href="/documentation/reference/3.0/connectors/db2.html" data-hash="true">3.0</a>
+                        <a class="version" href="/documentation/reference/2.7/connectors/db2.html" data-hash="true">2.7</a>
+                        <a class="version" href="/documentation/reference/1.9/connectors/db2.html" data-hash="true">1.9</a>
         </div>
         |
     </div>
@@ -696,7 +706,7 @@ The level of the lock is determined by the <code>snapshot.isolation.mode</code> 
 <li>
 <p>Capture the schema of all tables or all tables that are designated for capture.
 The connector persists schema information in its internal database schema history topic.
-The schema history provides information about the structure that is in effect when a change event occurs.<br></p>
+The schema history provides information about the structure that is in effect when a change event occurs.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -969,7 +979,7 @@ This operation is potentially destructive, and should be performed only as a las
 <ol class="loweralpha" type="a">
 <li>
 <p>(Optional) Set the value of <a href="#db2-property-database-history-store-only-captured-tables-ddl"><code>schema.history.internal.captured.tables.ddl</code></a> to <code>false</code>.
-This setting causes the snapshot to capture the schema for all tables, and guarantees that, in the future, the connector can reconstruct the schema history for all tables.<br></p>
+This setting causes the snapshot to capture the schema for all tables, and guarantees that, in the future, the connector can reconstruct the schema history for all tables.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -994,7 +1004,7 @@ This setting causes the snapshot to capture the schema for all tables, and guara
 <dl>
 <dt class="hdlist1"><code>initial</code></dt>
 <dd>
-<p>When you restart the connector, it takes a full snapshot of the database that captures the table data and table structures.<br>
+<p>When you restart the connector, it takes a full snapshot of the database that captures the table data and table structures.
 If you select this option, consider setting the value of the <a href="#db2-property-database-history-store-only-captured-tables-ddl"><code>schema.history.internal.captured.tables.ddl</code></a> property to <code>false</code> to enable the connector to capture the schema of all tables.</p>
 </dd>
 <dt class="hdlist1"><code>no_data</code></dt>
@@ -1020,7 +1030,7 @@ Running an incremental snapshot captures the following data changes:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For tables that the connector previously captured, the incremental snapsot captures changes that occur while the connector was down, that is, in the interval between the time that the connector was stopped, and the current restart.</p>
+<p>For tables that the connector previously captured, the incremental snapshot captures changes that occur while the connector was down, that is, in the interval between the time that the connector was stopped, and the current restart.</p>
 </li>
 <li>
 <p>For newly added tables, the incremental snapshot captures all existing table rows.</p>
@@ -1262,7 +1272,7 @@ Set the type of the <code>execute-snapshot</code> signal to <code>incremental</c
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>type</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>incremental</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies the type of snapshot that you want to run.<br>
+<p>Specifies the type of snapshot that you want to run.
 Currently, you can request <code>incremental</code> or <code>blocking</code> snapshots.</p>
 </div></div></td>
 </tr>
@@ -1270,7 +1280,7 @@ Currently, you can request <code>incremental</code> or <code>blocking</code> sna
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data-collections</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>N/A</em></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>An array that contains regular expressions matching the fully-qualified names of the tables to include in the snapshot.<br>
+<p>An array that contains regular expressions matching the fully-qualified names of the tables to include in the snapshot.
 For the Db2 connector, use the following format to specify the fully qualified name of a table: <code>schema.table</code>.</p>
 </div></div></td>
 </tr>
@@ -1278,7 +1288,7 @@ For the Db2 connector, use the following format to specify the fully qualified n
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>additional-conditions</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>N/A</em></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>An optional array that specifies a set of additional conditions that the connector evaluates to determine the subset of records to include in a snapshot.<br>
+<p>An optional array that specifies a set of additional conditions that the connector evaluates to determine the subset of records to include in a snapshot.
 Each additional condition is an object that specifies the criteria for filtering the data that an ad hoc snapshot captures.
 You can set the following parameters for each additional condition:</p>
 </div>
@@ -1291,11 +1301,12 @@ You can apply different filters to each table.</p>
 </dd>
 <dt class="hdlist1"><code>filter</code></dt>
 <dd>
-<p>Specifies column values that must be present in a database record for the snapshot to include it, for example,  <code>"color='blue'"</code>.<br>
-<br>
-The values that you assign to the <code>filter</code> parameter are the same types of values that you might specify in the <code>WHERE</code> clause of <code>SELECT</code> statements when you set the <code>snapshot.select.statement.overrides</code> property for a blocking snapshot.</p>
+<p>Specifies column values that must be present in a database record for the snapshot to include it, for example,  <code>"color='blue'"</code>.</p>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p>The values that you assign to the <code>filter</code> parameter are the same types of values that you might specify in the <code>WHERE</code> clause of <code>SELECT</code> statements when you set the <code>snapshot.select.statement.overrides</code> property for a blocking snapshot.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1463,7 +1474,7 @@ You submit snapshot signals as SQL <code>INSERT</code> queries.</p>
 Debezium currently supports the <code>incremental</code> and <code>blocking</code> snapshot types.</p>
 </div>
 <div class="paragraph">
-<p>To specify the tables to include in the snapshot, provide a <code>data-collections</code> array that lists the tables, or an array of regular expressions used to match tables, for example,<br></p>
+<p>To specify the tables to include in the snapshot, provide a <code>data-collections</code> array that lists the tables, or an array of regular expressions used to match tables, for example,</p>
 </div>
 <div class="paragraph">
 <p><code>{"data-collections": ["public.MyFirstTable", "public.MySecondTable"]}</code></p>
@@ -1481,7 +1492,7 @@ If the <code>data-collections</code> array is empty, Debezium interprets the emp
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If the name of a table that you want to include in a snapshot contains a dot (<code>.</code>), a space, or some other non-alphanumeric character, you must escape the table name in double quotes.<br>
+<p>If the name of a table that you want to include in a snapshot contains a dot (<code>.</code>), a space, or some other non-alphanumeric character, you must escape the table name in double quotes.
 For example, to include a table that exists in the <code><strong>public</strong></code> schema and that has the name <code><strong>My.Table</strong></code>, use the following format: <code><strong>"public.\"My.Table\""</strong></code>.</p>
 </div>
 </td>
@@ -1796,7 +1807,7 @@ For snapshot events, the value of the <code>op</code> field value is <code>r</co
 <div class="sect3">
 <h4 id="db2-triggering-an-incremental-snapshot-kafka"><a class="anchor" href="#db2-triggering-an-incremental-snapshot-kafka"></a>Using the Kafka signaling channel to trigger an incremental snapshot</h4>
 <div class="paragraph">
-<p>You can send a message to the <a href="../configuration/signalling.html#debezium-signaling-enabling-kafka-signaling-channel" class="xref page">configured Kafka topic</a> to request the connector to run an ad hoc incremental snapshot.</p>
+<p>To trigger an ad hoc incremental snapshot using the Kafka signaling channel, send an <code>execute-snapshot</code> message to the configured Kafka signaling topic.</p>
 </div>
 <div class="paragraph">
 <p>The key of the Kafka message must match the value of the <code>topic.prefix</code> connector configuration option.</p>
@@ -1827,7 +1838,7 @@ For snapshot events, the value of the <code>op</code> field value is <code>r</co
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>incremental</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The type of the snapshot to be executed.
-Currently Debezium supports the <code>incremental</code> and <code>blocking</code> types.<br>
+Currently Debezium supports the <code>incremental</code> and <code>blocking</code> types.
 See the next section for more details.</p>
 </div></div></td>
 </tr>
@@ -1933,15 +1944,19 @@ You can stop a snapshot that is already running by sending a signal to the signa
 The stop-snapshot signal specifies the <code>type</code> of the snapshot operation as <code>incremental</code>, and optionally specifies the tables that you want to omit from the currently running snapshot.
 After Debezium detects the change in the signaling table, it reads the signal, and stops the incremental snapshot operation if it&#8217;s in progress.</p>
 </div>
-<div class="paragraph">
+<div class="ulist">
 <div class="title">Additional resources</div>
-<p>You can also stop an incremental snapshot by sending a JSON message to the <a href="#db2-stopping-an-incremental-snapshot-kafka">Kafka signaling topic</a>.</p>
+<ul>
+<li>
+<p><a href="#db2-stopping-an-incremental-snapshot-kafka">Stopping an incremental snapshot by sending a JSON message to the Kafka signaling topic</a></p>
+</li>
+</ul>
 </div>
 <div class="ulist">
 <div class="title">Prerequisites</div>
 <ul>
 <li>
-<p><a href="../configuration/signalling.html#debezium-signaling-enabling-source-signaling-channel" class="xref page">Signaling is enabled</a>.<br></p>
+<p><a href="../configuration/signalling.html#debezium-signaling-enabling-source-signaling-channel" class="xref page">Signaling is enabled</a>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1972,75 +1987,61 @@ After Debezium detects the change in the signaling table, it reads the signal, a
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">INSERT INTO myschema.debezium_signal (id, type, data) <i class="conum" data-value="1"></i><b>(1)</b>
-values ('ad-hoc-1',   <i class="conum" data-value="2"></i><b>(2)</b>
-    'stop-snapshot',  <i class="conum" data-value="3"></i><b>(3)</b>
-    '{"data-collections": ["schema1.table1", "schema1.table2"], <i class="conum" data-value="4"></i><b>(4)</b>
-    "type":"incremental"}'); <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">INSERT INTO myschema.debezium_signal (id, type, data)
+values ('ad-hoc-1',
+    'stop-snapshot',
+    '{"data-collections": ["schema1.table1", "schema1.table2"],
+    "type":"incremental"}');</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>The values of the <code>id</code>, <code>type</code>, and <code>data</code> parameters in the signal command correspond to the <a href="../configuration/signalling.html#debezium-signaling-description-of-required-structure-of-a-signaling-data-collection" class="xref page">fields of the signaling table</a>.
-The following table describes the parameters in the example:</p>
+<p>The values of the <code>id</code>, <code>type</code>, and <code>data</code> parameters in the signal command correspond to the <a href="../configuration/signalling.html#debezium-signaling-description-of-required-structure-of-a-signaling-data-collection" class="xref page">fields of the signaling table</a>.</p>
+</div>
+<div class="paragraph">
+<p>The following list describes the fields in the preceding signal example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>schema.debezium_signal</code></dt>
+<dd>
+<p>Specifies the fully-qualified name of the signaling table on the source database.</p>
+</dd>
+<dt class="hdlist1"><code>ad-hoc-1</code></dt>
+<dd>
+<p>The value of the signal&#8217;s <code>id</code> parameter.
+This arbitrary string provides a label that helps to distinguish signal requests from each other and to associate logging messages with entries in the signaling table.
+Debezium does not use this string.</p>
+</dd>
+<dt class="hdlist1"><code>stop-snapshot</code></dt>
+<dd>
+<p>The <code>type</code> parameter, which identifies the operation that the signal is intended to trigger.</p>
+</dd>
+<dt class="hdlist1"><code>data-collections</code></dt>
+<dd>
+<p>An optional component of the <code>data</code> field of a signal that specifies an array of table names or regular expressions to match table names to remove from the snapshot.
+The array lists regular expressions which match tables by their fully-qualified names in the format <code>schema.table</code></p>
+<div class="paragraph">
+<p>If you omit this component from the <code>data</code> field, the signal stops the entire incremental snapshot that is in progress.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>incremental</code></dt>
+<dd>
+<p>A required component of the <code>data</code> field of a signal that specifies the type of snapshot operation that is to be stopped.
+Currently, the only valid option is <code>incremental</code>.
+If you do not specify a <code>type</code> value, the signal fails to stop the incremental snapshot.</p>
+</dd>
+</dl>
 </div>
 </li>
 </ol>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Descriptions of fields in a SQL command for sending a stop incremental snapshot signal to the signaling table</caption>
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 22.2222%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Item</th>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>schema.debezium_signal</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the fully-qualified name of the signaling table on the source database.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ad-hoc-1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>id</code> parameter specifies an arbitrary string that is assigned as the <code>id</code> identifier for the signal request.<br>
-Use this string to identify logging messages to entries in the signaling table.
-Debezium does not use this string.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>stop-snapshot</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies <code>type</code> parameter specifies the operation that the signal is intended to trigger.<br></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data-collections</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An optional component of the <code>data</code> field of a signal that specifies an array of table names or regular expressions to match table names to remove from the snapshot.<br>
-The array lists regular expressions which match tables by their fully-qualified names in the format <code>schema.table</code></p>
-<p class="tableblock">If you omit this component from the <code>data</code> field, the signal stops the entire incremental snapshot that is in progress.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>incremental</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A required component of the <code>data</code> field of a signal that specifies the type of snapshot operation that is to be stopped.<br>
-Currently, the only valid option is <code>incremental</code>.<br>
-If you do not specify a <code>type</code> value, the signal fails to stop the incremental snapshot.</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect3">
 <h4 id="db2-stopping-an-incremental-snapshot-kafka"><a class="anchor" href="#db2-stopping-an-incremental-snapshot-kafka"></a>Using the Kafka signaling channel to stop an incremental snapshot</h4>
 <div class="paragraph">
-<p>You can send a signal message to the <a href="../configuration/signalling.html#debezium-signaling-enabling-kafka-signaling-channel" class="xref page">configured Kafka signaling topic</a> to stop an ad hoc incremental snapshot.</p>
+<p>To stop an in-progress incremental snapshot using the Kafka signaling channel, send a <code>stop-snapshot</code> message to the configured Kafka signaling topic.</p>
 </div>
 <div class="paragraph">
 <p>The key of the Kafka message must match the value of the <code>topic.prefix</code> connector configuration option.</p>
@@ -2052,7 +2053,7 @@ If you do not specify a <code>type</code> value, the signal fails to stop the in
 <p>The signal type is <code>stop-snapshot</code>, and the <code>data</code> field must have the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Execute snapshot data fields</caption>
+<caption class="title">Table 4. Execute snapshot data fields</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2070,14 +2071,16 @@ If you do not specify a <code>type</code> value, the signal fails to stop the in
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>type</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>incremental</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The type of the snapshot to be executed.
-Currently Debezium supports only the <code>incremental</code> type. <br>
+Currently Debezium supports only the <code>incremental</code> type.
 See the next section for more details.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data-collections</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>N/A</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An optional array of comma-separated regular expressions that match the fully-qualified names of the tables an array of table names or regular expressions to match table names to remove from the snapshot.<br>
-Specify table names by using the format <code>schema.table</code>.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>An optional array of comma-separated regular expressions that match the fully-qualified names of the tables an array of table names or regular expressions to match table names to remove from the snapshot.
+Specify table names by using the format <code>schema.table</code>.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -2096,7 +2099,8 @@ Value = `{"type":"stop-snapshot","data": {"data-collections": ["schema1.table1",
 <div class="sect2">
 <h3 id="connector-custom-snapshot"><a class="anchor" href="#connector-custom-snapshot"></a>Custom snapshotter SPI</h3>
 <div class="paragraph">
-<p>For more advanced uses, you can fine-tune control of the snapshot by implementing one of the following interfaces:</p>
+<p>To customize snapshot behavior beyond what is available in the standard snapshot modes, you can implement one or more of the Debezium snapshotter SPI interfaces.
+These interfaces can control whether a snapshot runs, how data is queried, and whether tables are locked.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -2261,7 +2265,7 @@ public interface SnapshotLock extends Configurable, Service {
 <div class="sect2">
 <h3 id="db2-blocking-snapshots"><a class="anchor" href="#db2-blocking-snapshots"></a>Blocking snapshots</h3>
 <div class="paragraph">
-<p>To provide more flexibility in managing snapshots, Debezium includes a supplementary ad hoc snapshot mechanism, known as a <em>blocking snapshot</em>.
+<p>A blocking snapshot lets you capture a complete, consistent snapshot of a table on demand while the connector is running, temporarily pausing streaming until the snapshot completes.
 Blocking snapshots rely on the Debezium mechanism for <a href="../configuration/signalling.html#sending-signals-to-a-debezium-connector" class="xref page">sending signals to a Debezium connector</a>.</p>
 </div>
 <div class="paragraph">
@@ -2295,12 +2299,12 @@ After the snapshot completes, the streaming is resumed.</p>
 <p>data-collections: to specify which tables must be snapshot.</p>
 </li>
 <li>
-<p>data-collections: Specifies the tables that you want the snapshot to include.<br>
+<p>data-collections: Specifies the tables that you want the snapshot to include.
 This property accepts a comma-separated list of regular expressions that match fully-qualified table names.
 The behavior of the property is similar to the behavior of the <code>table.include.list</code> property, which specifies the tables to capture in a blocking snapshot.</p>
 </li>
 <li>
-<p>additional-conditions: You can specify different filters for different table.<br></p>
+<p>additional-conditions: You can specify different filters for different table.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2615,7 +2619,7 @@ The message contains a logical representation of the table schema.</p>
   },
   "payload": {
     "source": {
-      "version": "3.5.0.Final",
+      "version": "3.7.0.Beta1",
       "connector": "db2",
       "name": "db2",
       "ts_ms": 0,
@@ -2627,20 +2631,20 @@ The message contains a logical representation of the table schema.</p>
       "commit_lsn": "00000025:00000d98:00a2",
       "event_serial_no": null
     },
-    "ts_ms": 1588252618953, <i class="conum" data-value="1"></i><b>(1)</b>
-    "databaseName": "TESTDB", <i class="conum" data-value="2"></i><b>(2)</b>
+    "ts_ms": 1588252618953,
+    "databaseName": "TESTDB",
     "schemaName": "DB2INST1",
-    "ddl": null, <i class="conum" data-value="3"></i><b>(3)</b>
-    "tableChanges": [ <i class="conum" data-value="4"></i><b>(4)</b>
+    "ddl": null,
+    "tableChanges": [
       {
-        "type": "CREATE", <i class="conum" data-value="5"></i><b>(5)</b>
-        "id": "\"DB2INST1\".\"CUSTOMERS\"", <i class="conum" data-value="6"></i><b>(6)</b>
-        "table": { <i class="conum" data-value="7"></i><b>(7)</b>
+        "type": "CREATE",
+        "id": "\"DB2INST1\".\"CUSTOMERS\"",
+        "table": {
           "defaultCharsetName": null,
-          "primaryKeyColumnNames": [ <i class="conum" data-value="8"></i><b>(8)</b>
+          "primaryKeyColumnNames": [
             "ID"
           ],
-          "columns": [ <i class="conum" data-value="9"></i><b>(9)</b>
+          "columns": [
             {
               "name": "ID",
               "jdbcType": 4,
@@ -2698,7 +2702,7 @@ The message contains a logical representation of the table schema.</p>
               "generated": false
             }
           ],
-          "attributes": [ <i class="conum" data-value="10"></i><b>(10)</b>
+          "attributes": [
             {
               "customAttribute": "attributeValue"
             }
@@ -2710,95 +2714,77 @@ The message contains a logical representation of the table schema.</p>
 }</code></pre>
 </div>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Descriptions of fields in messages emitted to the schema change topic</caption>
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 30%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Item</th>
-<th class="tableblock halign-left valign-top">Field name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ts_ms</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional field that displays the time at which the connector processed the event.
+<div class="paragraph">
+<p>The following list describes select fields in the preceding schema change topic message example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>ts_ms</code></dt>
+<dd>
+<p>Optional field that displays the time at which the connector processed the event.
 The time is based on the system clock in the JVM running the Kafka Connect task.</p>
-<p class="tableblock">In the source object, <code>ts_ms</code> indicates the time that the change was made in the database.
-By comparing the value for <code>payload.source.ts_ms</code> with the value for <code>payload.ts_ms</code>, you can determine the lag between the source database update and Debezium.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>databaseName</code><br>
-<code>schemaName</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the database and the schema that contain the change.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ddl</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Always <code>null</code> for the Db2 connector.
+<div class="paragraph">
+<p>In the source object, <code>ts_ms</code> indicates the time that the change was made in the database.
+By comparing the value for <code>payload.source.ts_ms</code> with the value for <code>payload.ts_ms</code>, you can determine the lag between the source database update and Debezium.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>databaseName</code>, <code>schemaName</code></dt>
+<dd>
+<p>These fields identify the database and the schema that contain the change.</p>
+</dd>
+<dt class="hdlist1"><code>ddl</code></dt>
+<dd>
+<p>Always <code>null</code> for the Db2 connector.
 For other connectors, this field contains the DDL responsible for the schema change.
-This DDL is not available to Db2 connectors.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tableChanges</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An array of one or more items that contain the schema changes generated by a DDL command.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+This DDL is not available to Db2 connectors.</p>
+</dd>
+<dt class="hdlist1"><code>tableChanges</code></dt>
+<dd>
+<p>An array of one or more items that contain the schema changes generated by a DDL command.</p>
+</dd>
+<dt class="hdlist1"><code>type</code></dt>
+<dd>
 <p>Describes the kind of change.
 The value is one of the following:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>CREATE</code></dt>
+<dd>
+<p>table created</p>
+</dd>
+<dt class="hdlist1"><code>ALTER</code></dt>
+<dd>
+<p>table modified</p>
+</dd>
+<dt class="hdlist1"><code>DROP</code></dt>
+<dd>
+<p>table deleted</p>
+</dd>
+</dl>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>CREATE</code> - table created</p>
-</li>
-<li>
-<p><code>ALTER</code> - table modified</p>
-</li>
-<li>
-<p><code>DROP</code> - table deleted</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Full identifier of the table that was created, altered, or dropped.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>table</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Represents table metadata after the applied change.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>primaryKeyColumnNames</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of columns that compose the table&#8217;s primary key.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>columns</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Metadata for each column in the changed table.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>attributes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Custom attribute metadata for each table change.</p></td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="hdlist1"><code>id</code></dt>
+<dd>
+<p>Full identifier of the table that was created, altered, or dropped.</p>
+</dd>
+<dt class="hdlist1"><code>table</code></dt>
+<dd>
+<p>Represents table metadata after the applied change.</p>
+</dd>
+<dt class="hdlist1"><code>primaryKeyColumnNames</code></dt>
+<dd>
+<p>List of columns that compose the table&#8217;s primary key.</p>
+</dd>
+<dt class="hdlist1"><code>columns</code></dt>
+<dd>
+<p>Metadata for each column in the changed table.</p>
+</dd>
+<dt class="hdlist1"><code>attributes</code></dt>
+<dd>
+<p>Custom attribute metadata for each table change.</p>
+</dd>
+</dl>
+</div>
 <div class="paragraph">
 <p>In messages that the connector sends to the schema change topic, the message key is the name of the database that contains the schema change.
 In the following example, the <code>payload</code> field contains the key:</p>
@@ -2982,67 +2968,54 @@ If you use the JSON converter and you configure it to produce all four basic cha
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
- "schema": { <i class="conum" data-value="1"></i><b>(1)</b>
+ "schema": {
    ...
   },
- "payload": { <i class="conum" data-value="2"></i><b>(2)</b>
+ "payload": {
    ...
  },
- "schema": { <i class="conum" data-value="3"></i><b>(3)</b>
+ "schema": {
    ...
  },
- "payload": { <i class="conum" data-value="4"></i><b>(4)</b>
+ "payload": {
    ...
  },
 }</code></pre>
 </div>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Overview of change event basic content</caption>
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 70%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Item</th>
-<th class="tableblock halign-left valign-top">Field name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>schema</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The first <code>schema</code> field is part of the event key.
+<div class="paragraph">
+<p>The following list describes the fields in the preceding change event example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>schema</code> (first)</dt>
+<dd>
+<p>The first <code>schema</code> field is part of the event key.
 It specifies a Kafka Connect schema that describes what is in the event key&#8217;s <code>payload</code> portion.
-In other words, the first <code>schema</code> field describes the structure of the primary key, or the unique key if the table does not have a primary key, for the table that was changed.<br>
-<br>
-It is possible to override the table&#8217;s primary key by setting the <a href="#db2-property-message-key-columns"><code>message.key.columns</code> connector configuration property</a>. In this case, the first schema field describes the structure of the key identified by that property.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>payload</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The first <code>payload</code> field is part of the event key.
-It has the structure described by the previous <code>schema</code> field and it contains the key for the row that was changed.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>schema</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The second <code>schema</code> field is part of the event value.
+In other words, the first <code>schema</code> field describes the structure of the primary key, or the unique key if the table does not have a primary key, for the table that was changed.</p>
+<div class="paragraph">
+<p>It is possible to override the table&#8217;s primary key by setting the <a href="#db2-property-message-key-columns"><code>message.key.columns</code> connector configuration property</a>. In this case, the first schema field describes the structure of the key identified by that property.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>payload</code> (first)</dt>
+<dd>
+<p>The first <code>payload</code> field is part of the event key.
+It has the structure described by the previous <code>schema</code> field and it contains the key for the row that was changed.</p>
+</dd>
+<dt class="hdlist1"><code>schema</code> (second)</dt>
+<dd>
+<p>The second <code>schema</code> field is part of the event value.
 It specifies the Kafka Connect schema that describes what is in the event value&#8217;s <code>payload</code> portion.
 In other words, the second <code>schema</code> describes the structure of the row that was changed.
-Typically, this schema contains nested schemas.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>payload</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The second <code>payload</code> field is part of the event value.
-It has the structure described by the previous <code>schema</code> field and it contains the actual data for the row that was changed.</p></td>
-</tr>
-</tbody>
-</table>
+Typically, this schema contains nested schemas.</p>
+</dd>
+<dt class="hdlist1"><code>payload</code> (second)</dt>
+<dd>
+<p>The second <code>payload</code> field is part of the event value.
+It has the structure described by the previous <code>schema</code> field and it contains the actual data for the row that was changed.</p>
+</dd>
+</dl>
+</div>
 <div class="paragraph">
 <p>By default, the connector streams change event records to topics with names that are the same as the event&#8217;s originating table.
 For more information, see <a href="#db2-topic-names">topic names</a>.</p>
@@ -3097,89 +3070,80 @@ In JSON, it looks like this:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-    "schema": {  <i class="conum" data-value="1"></i><b>(1)</b>
+    "schema": {
         "type": "struct",
-        "fields": [  <i class="conum" data-value="2"></i><b>(2)</b>
+        "fields": [
             {
                 "type": "int32",
                 "optional": false,
                 "field": "ID"
             }
         ],
-        "optional": false,  <i class="conum" data-value="3"></i><b>(3)</b>
-        "name": "mydatabase.MYSCHEMA.CUSTOMERS.Key"  <i class="conum" data-value="4"></i><b>(4)</b>
+        "optional": false,
+        "name": "mydatabase.MYSCHEMA.CUSTOMERS.Key"
     },
-    "payload": {  <i class="conum" data-value="5"></i><b>(5)</b>
+    "payload": {
         "ID": 1004
     }
 }</code></pre>
 </div>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Description of change event key</caption>
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 70%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Item</th>
-<th class="tableblock halign-left valign-top">Field name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>schema</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The schema portion of the key specifies a Kafka Connect schema that describes what is in the key&#8217;s <code>payload</code> portion.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fields</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies each field that is expected in the <code>payload</code>, including each field&#8217;s name, type, and whether it is required.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>optional</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether the event key must contain a value in its <code>payload</code> field.
+<div class="paragraph">
+<p>The following list describes the fields in the preceding change event key example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>schema</code></dt>
+<dd>
+<p>The schema portion of the key specifies a Kafka Connect schema that describes what is in the key&#8217;s <code>payload</code> portion.</p>
+</dd>
+<dt class="hdlist1"><code>fields</code></dt>
+<dd>
+<p>Specifies each field that is expected in the <code>payload</code>, including each field&#8217;s name, type, and whether it is required.</p>
+</dd>
+<dt class="hdlist1"><code>optional</code></dt>
+<dd>
+<p>Indicates whether the event key must contain a value in its <code>payload</code> field.
 In this example, a value in the key&#8217;s payload is required.
-A value in the key&#8217;s payload field is optional when a table does not have a primary key.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mydatabase.MYSCHEMA.CUSTOMERS.Key</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+A value in the key&#8217;s payload field is optional when a table does not have a primary key.</p>
+</dd>
+<dt class="hdlist1"><code>mydatabase.MYSCHEMA.CUSTOMERS.Key</code></dt>
+<dd>
 <p>Name of the schema that defines the structure of the key&#8217;s payload.
 This schema describes the structure of the primary key for the table that was changed.
-Key schema names have the format <em>connector-name</em>.<em>database-name</em>.<em>table-name</em>.<code>Key</code>. In this example:<br></p>
+Key schema names have the format <em>connector-name</em>.<em>database-name</em>.<em>table-name</em>.<code>Key</code>.
+In this example the name is comprised of the following components:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>mydatabase</code></dt>
+<dd>
+<p>The name of the connector that generated this event.</p>
+</dd>
+<dt class="hdlist1"><code>MYSCHEMA</code></dt>
+<dd>
+<p>The name of the database schema that contains the table that was changed.</p>
+</dd>
+</dl>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>mydatabase</code> is the name of the connector that generated this event.<br></p>
-</li>
-<li>
-<p><code>MYSCHEMA</code> is the database schema that contains the table that was changed.<br></p>
-</li>
-<li>
-<p><code>CUSTOMERS</code> is the table that was updated.</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>payload</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the key for the row for which this change event was generated.
-In this example, the key, contains a single <code>ID</code> field whose value is <code>1004</code>.</p></td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="hdlist1"><code>CUSTOMERS</code></dt>
+<dd>
+<p>The name of the table that was updated.</p>
+</dd>
+<dt class="hdlist1"><code>payload</code></dt>
+<dd>
+<p>Contains the key for the row for which this change event was generated.
+In this example, the key, contains a single <code>ID</code> field whose value is <code>1004</code>.</p>
+</dd>
+</dl>
+</div>
 </div>
 <div class="sect2">
 <h3 id="db2-change-event-values"><a class="anchor" href="#db2-change-event-values"></a>Change event values</h3>
+<div class="paragraph">
+<p>Every Debezium Db2 change event value contains a schema section and a payload section.
+The payload uses an envelope structure that captures the state of a row before and after each <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code> operation.</p>
+</div>
 <div class="paragraph">
 <p>The value in a change event is a bit more complicated than the key.
 Like the key, the value has a <code>schema</code> section and a <code>payload</code> section.
@@ -3187,7 +3151,8 @@ The <code>schema</code> section contains the schema that describes the <code>Env
 Change events for operations that create, update or delete data all have a value payload with an envelope structure.</p>
 </div>
 <div class="paragraph">
-<p>Consider the same sample table that was used to show an example of a change event key:</p>
+<p>The <a href="#db2-change-event-keys">Change event keys</a> section introduces the following table.
+This section uses the same table to describe the structure of change event values.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example table</div>
@@ -3202,7 +3167,8 @@ Change events for operations that create, update or delete data all have a value
 </div>
 <div class="paragraph">
 <p>The event value portion of every change event for the <code>customers</code> table specifies the same schema.
-The event value&#8217;s payload varies according to the event type:</p>
+The payload of the event value varies according to the event type.
+The following sections describe the structure of event payloads for different event types:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3221,12 +3187,16 @@ The event value&#8217;s payload varies according to the event type:</p>
 <div class="sect2">
 <h3 id="db2-create-events"><a class="anchor" href="#db2-create-events"></a><em>create</em> events</h3>
 <div class="paragraph">
+<p>The connector emits a <em>create</em> event whenever a row is inserted into a captured table.
+The event payload contains the full state of the new row in the <code>after</code> field, and the <code>before</code> field is null.</p>
+</div>
+<div class="paragraph">
 <p>The following example shows the value portion of a change event that the connector generates for an operation that creates data in the <code>customers</code> table:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "schema": {  <i class="conum" data-value="1"></i><b>(1)</b>
+  "schema": {
     "type": "struct",
     "fields": [
       {
@@ -3254,7 +3224,7 @@ The event value&#8217;s payload varies according to the event type:</p>
           }
         ],
         "optional": true,
-        "name": "mydatabase.MYSCHEMA.CUSTOMERS.Value",  <i class="conum" data-value="2"></i><b>(2)</b>
+        "name": "mydatabase.MYSCHEMA.CUSTOMERS.Value",
         "field": "before"
       },
       {
@@ -3351,7 +3321,7 @@ The event value&#8217;s payload varies according to the event type:</p>
           },
         ],
         "optional": false,
-        "name": "io.debezium.connector.db2.Source",  <i class="conum" data-value="3"></i><b>(3)</b>
+        "name": "io.debezium.connector.db2.Source",
         "field": "source"
       },
       {
@@ -3376,18 +3346,18 @@ The event value&#8217;s payload varies according to the event type:</p>
       }
     ],
     "optional": false,
-    "name": "mydatabase.MYSCHEMA.CUSTOMERS.Envelope"  <i class="conum" data-value="4"></i><b>(4)</b>
+    "name": "mydatabase.MYSCHEMA.CUSTOMERS.Envelope"
   },
-  "payload": {  <i class="conum" data-value="5"></i><b>(5)</b>
-    "before": null,  <i class="conum" data-value="6"></i><b>(6)</b>
-    "after": {  <i class="conum" data-value="7"></i><b>(7)</b>
+  "payload": {
+    "before": null,
+    "after": {
       "ID": 1005,
       "FIRST_NAME": "john",
       "LAST_NAME": "doe",
       "EMAIL": "john.doe@example.org"
     },
-    "source": {  <i class="conum" data-value="8"></i><b>(8)</b>
-      "version": "3.5.0.Final",
+    "source": {
+      "version": "3.7.0.Beta1",
       "connector": "db2",
       "name": "myconnector",
       "ts_ms": 1559729468470,
@@ -3400,97 +3370,74 @@ The event value&#8217;s payload varies according to the event type:</p>
       "change_lsn": "00000027:00000758:0003",
       "commit_lsn": "00000027:00000758:0005",
     },
-    "op": "c",  <i class="conum" data-value="9"></i><b>(9)</b>
-    "ts_ms": 1559729471739,  <i class="conum" data-value="10"></i><b>(10)</b>
-    "ts_us": 1559729471739762,  <i class="conum" data-value="10"></i><b>(10)</b>
-    "ts_ns": 1559729471739762314  <i class="conum" data-value="10"></i><b>(10)</b>
+    "op": "c",
+    "ts_ms": 1559729471739,
+    "ts_us": 1559729471739762,
+    "ts_ns": 1559729471739762314
   }
 }</code></pre>
 </div>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Descriptions of <em>create</em> event value fields</caption>
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 70%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Item</th>
-<th class="tableblock halign-left valign-top">Field name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>schema</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The value&#8217;s schema, which describes the structure of the value&#8217;s payload.
-A change event&#8217;s value schema is the same in every change event that the connector generates for a particular table.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>In the <code>schema</code> section, each <code>name</code> field specifies the schema for a field in the value&#8217;s payload.<br>
-<br>
-<code>mydatabase.MYSCHEMA.CUSTOMERS.Value</code> is the schema for the payload&#8217;s <code>before</code> and <code>after</code> fields.
+<div class="paragraph">
+<p>The following list describes select fields in the preceding <em>create</em> event value example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>schema</code></dt>
+<dd>
+<p>The value&#8217;s schema, which describes the structure of the value&#8217;s payload.
+A change event&#8217;s value schema is the same in every change event that the connector generates for a particular table.</p>
+</dd>
+<dt class="hdlist1"><code>name</code> (<code>mydatabase.MYSCHEMA.CUSTOMERS.Value</code>)</dt>
+<dd>
+<p>In the <code>schema</code> section, each <code>name</code> field specifies the schema for a field in the value&#8217;s payload.</p>
+<div class="paragraph">
+<p><code>mydatabase.MYSCHEMA.CUSTOMERS.Value</code> is the schema for the payload&#8217;s <code>before</code> and <code>after</code> fields.
 This schema is specific to the <code>customers</code> table.
-The connector uses this schema for all rows in the <code>MYSCHEMA.CUSTOMERS</code> table.<br>
-<br>
-Names of schemas for <code>before</code> and <code>after</code> fields are of the form <code><em>logicalName</em>.<em>schemaName</em>.<em>tableName</em>.Value</code>, which ensures that the schema name is unique in the database.
+The connector uses this schema for all rows in the <code>MYSCHEMA.CUSTOMERS</code> table.</p>
+</div>
+<div class="paragraph">
+<p>Names of schemas for <code>before</code> and <code>after</code> fields are of the form <code><em>logicalName</em>.<em>schemaName</em>.<em>tableName</em>.Value</code>, which ensures that the schema name is unique in the database.
 This means that when using the <a href="../configuration/avro.html#avro-serialization" class="xref page">Avro converter</a>, the resulting Avro schema for each table in each logical source has its own evolution and history.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+</div>
+</dd>
+<dt class="hdlist1"><code>name</code> (<code>io.debezium.connector.db2.Source</code>)</dt>
+<dd>
 <p><code>io.debezium.connector.db2.Source</code> is the schema for the payload&#8217;s <code>source</code> field.
 This schema is specific to the Db2 connector.
 The connector uses it for all events that it generates.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+</dd>
+<dt class="hdlist1"><code>name</code> (<code>mydatabase.MYSCHEMA.CUSTOMERS.Envelope</code>)</dt>
+<dd>
 <p><code>mydatabase.MYSCHEMA.CUSTOMERS.Envelope</code> is the schema for the overall structure of the payload, where <code>mydatabase</code> is the database, <code>MYSCHEMA</code> is the schema, and <code>CUSTOMERS</code> is the table.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>payload</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The value&#8217;s actual data.
-This information shows how the operation changes data in the record.<br>
-<br>
-The size of the JSON representation of an event might be larger than you would expect for the source row.
+</dd>
+<dt class="hdlist1"><code>payload</code></dt>
+<dd>
+<p>The value&#8217;s actual data.
+This information shows how the operation changes data in the record.</p>
+<div class="paragraph">
+<p>The size of the JSON representation of an event might be larger than you would expect for the source row.
 The increased size results because JSON representations of events include both the schema and payload portions of messages.
 You can decrease the size of the messages that the connector streams to Kafka topics by converting the messages to Avro format.
-For information about using the Avro converter, see <a href="../configuration/avro.html#avro-serialization" class="xref page">Avro serialization</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>before</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An optional field that specifies the state of the row before the event occurred.
-When the <code>op</code> field is <code>c</code> for create, as it is in this example, the <code>before</code> field is <code>null</code> since this change event is for new content.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>after</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An optional field that specifies the state of the row after the event occurred.
-In this example, the <code>after</code> field contains the values of the new row&#8217;s <code>ID</code>, <code>FIRST_NAME</code>, <code>LAST_NAME</code>, and <code>EMAIL</code> columns.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>source</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+For information about using the Avro converter, see <a href="../configuration/avro.html#avro-serialization" class="xref page">Avro serialization</a>.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>before</code></dt>
+<dd>
+<p>An optional field that specifies the state of the row before the event occurred.
+When the <code>op</code> field is <code>c</code> for create, as it is in this example, the <code>before</code> field is <code>null</code> since this change event is for new content.</p>
+</dd>
+<dt class="hdlist1"><code>after</code></dt>
+<dd>
+<p>An optional field that specifies the state of the row after the event occurred.
+In this example, the <code>after</code> field contains the values of the new row&#8217;s <code>ID</code>, <code>FIRST_NAME</code>, <code>LAST_NAME</code>, and <code>EMAIL</code> columns.</p>
+</dd>
+<dt class="hdlist1"><code>source</code></dt>
+<dd>
 <p>Mandatory field that describes the source metadata for the event.
 The <code>source</code> structure shows Db2 information about this change, which provides traceability.
 It also has information you can use to compare to other events in the same topic or in other topics to know whether this event occurred before, after, or as part of the same commit as other events.
 The source metadata includes:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -3515,16 +3462,13 @@ The source metadata includes:</p>
 <p>Commit LSN (omitted if this event is part of a snapshot)</p>
 </li>
 </ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>op</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+</div>
+</dd>
+<dt class="hdlist1"><code>op</code></dt>
+<dd>
 <p>Mandatory string that describes the type of operation that caused the connector to generate the event.
 In this example, <code>c</code> indicates that the operation created a row.
 Valid values are:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -3540,24 +3484,25 @@ Valid values are:</p>
 <p><code>r</code> = read (applies to only snapshots)</p>
 </li>
 </ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ts_ms</code>, <code>ts_us</code>, <code>ts_ns</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional field that displays the time at which the connector processed the event.
-The time is based on the system clock in the JVM running the Kafka Connect task.<br>
-<br>
-In the <code>source</code> object, <code>ts_ms</code> indicates the time that the change was made in the database.
+</div>
+</dd>
+<dt class="hdlist1"><code>ts_ms</code>, <code>ts_us</code>, <code>ts_ns</code></dt>
+<dd>
+<p>Optional fields that display the time at which the connector processed the event in millisecond, microsecond, and nanosecond formats.
+The time is based on the system clock in the JVM running the Kafka Connect task.</p>
+<div class="paragraph">
+<p>In the <code>source</code> object, <code>ts_ms</code> indicates the time that the change was made in the database.
 By comparing the value for <code>payload.source.ts_ms</code> with the value for <code>payload.ts_ms</code>, you can determine the lag between the source database update and Debezium.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
+</div>
+</dd>
+</dl>
+</div>
 </div>
 <div class="sect2">
 <h3 id="db2-update-events"><a class="anchor" href="#db2-update-events"></a><em>update</em> events</h3>
+<div class="paragraph">
+<p>The connector emits an <em>update</em> event whenever data in a row of a captured table changes.</p>
+</div>
 <div class="paragraph">
 <p>The value of a change event for an update in the sample <code>customers</code> table has the same schema as a <em>create</em> event for that table.
 Likewise, the <em>update</em> event value&#8217;s payload has the same structure.
@@ -3569,20 +3514,20 @@ Here is an example of a change event value in an event that the connector genera
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "schema": { ... },
   "payload": {
-    "before": {  <i class="conum" data-value="1"></i><b>(1)</b>
+    "before": {
       "ID": 1005,
       "FIRST_NAME": "john",
       "LAST_NAME": "doe",
       "EMAIL": "john.doe@example.org"
     },
-    "after": {  <i class="conum" data-value="2"></i><b>(2)</b>
+    "after": {
       "ID": 1005,
       "FIRST_NAME": "john",
       "LAST_NAME": "doe",
       "EMAIL": "noreply@example.org"
     },
-    "source": {  <i class="conum" data-value="3"></i><b>(3)</b>
-      "version": "3.5.0.Final",
+    "source": {
+      "version": "3.7.0.Beta1",
       "connector": "db2",
       "name": "myconnector",
       "ts_ms": 1559729995937,
@@ -3595,52 +3540,37 @@ Here is an example of a change event value in an event that the connector genera
       "change_lsn": "00000027:00000ac0:0002",
       "commit_lsn": "00000027:00000ac0:0007",
     },
-    "op": "u",  <i class="conum" data-value="4"></i><b>(4)</b>
-    "ts_ms": 1559729998706,  <i class="conum" data-value="5"></i><b>(5)</b>
-    "ts_us": 1559729998706647,  <i class="conum" data-value="5"></i><b>(5)</b>
-    "ts_ns": 1559729998706647825  <i class="conum" data-value="5"></i><b>(5)</b>
+    "op": "u",
+    "ts_ms": 1559729998706,
+    "ts_us": 1559729998706647,
+    "ts_ns": 1559729998706647825
   }
 }</code></pre>
 </div>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Descriptions of <em>update</em> event value fields</caption>
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 70%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Item</th>
-<th class="tableblock halign-left valign-top">Field name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>before</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An optional field that specifies the state of the row before the event occurred.
+<div class="paragraph">
+<p>The following list describes select fields in the preceding <em>update</em> event value example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>before</code></dt>
+<dd>
+<p>An optional field that specifies the state of the row before the event occurred.
 In an <em>update</em> event value, the <code>before</code> field contains a field for each table column and the value that was in that column before the database commit.
-In this example, note that the <code>EMAIL</code> value is <code>john.doe@example.com</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>after</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An optional field that specifies the state of the row after the event occurred.
+In this example, note that the <code>EMAIL</code> value is <code>john.doe@example.com</code>.</p>
+</dd>
+<dt class="hdlist1"><code>after</code></dt>
+<dd>
+<p>An optional field that specifies the state of the row after the event occurred.
 You can compare the <code>before</code> and <code>after</code> structures to determine what the update to this row was.
-In the example, the <code>EMAIL</code> value is now <code>noreply@example.com</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>source</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+In the example, the <code>EMAIL</code> value is now <code>noreply@example.com</code>.</p>
+</dd>
+<dt class="hdlist1"><code>source</code></dt>
+<dd>
 <p>Mandatory field that describes the source metadata for the event.
 The <code>source</code> field structure contains the same fields as in a <em>create</em> event, but some values are different, for example, the sample <em>update</em> event has different LSNs.
 You can use this information to compare this event to other events to know whether this event occurred before, after, or as part of the same commit as other events.
 The source metadata includes:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -3665,29 +3595,24 @@ The source metadata includes:</p>
 <p>Commit LSN (omitted if this event is part of a snapshot)</p>
 </li>
 </ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>op</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+</div>
+</dd>
+<dt class="hdlist1"><code>op</code></dt>
+<dd>
 <p>Mandatory string that describes the type of operation.
 In an <em>update</em> event value, the <code>op</code> field value is <code>u</code>, signifying that this row changed because of an update.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ts_ms</code>, <code>ts_us</code>, <code>ts_ns</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional field that displays the time at which the connector processed the event.
-The time is based on the system clock in the JVM running the Kafka Connect task.<br>
-<br>
-In the <code>source</code> object, <code>ts_ms</code> indicates the time that the change was made in the database.
+</dd>
+<dt class="hdlist1"><code>ts_ms</code>, <code>ts_us</code>, <code>ts_ns</code></dt>
+<dd>
+<p>Optional fields that display the time at which the connector processed the event in millisecond, microsecond, and nanosecond formats.
+The time is based on the system clock in the JVM running the Kafka Connect task.</p>
+<div class="paragraph">
+<p>In the <code>source</code> object, <code>ts_ms</code> indicates the time that the change was made in the database.
 By comparing the value for <code>payload.source.ts_ms</code> with the value for <code>payload.ts_ms</code>, you can determine the lag between the source database update and Debezium.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
+</div>
+</dd>
+</dl>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -3707,6 +3632,9 @@ When a key changes, Debezium outputs <em>three</em> events: a <code>DELETE</code
 <div class="sect2">
 <h3 id="db2-delete-events"><a class="anchor" href="#db2-delete-events"></a><em>delete</em> events</h3>
 <div class="paragraph">
+<p>The connector emits a <em>delete</em> event when it detects the deletion of a row in a captured table.</p>
+</div>
+<div class="paragraph">
 <p>The value in a <em>delete</em> change event has the same <code>schema</code> portion as <em>create</em> and <em>update</em> events for the same table.
 The event value <code>payload</code> in a <em>delete</em> event for the sample <code>customers</code> table looks like this:</p>
 </div>
@@ -3716,15 +3644,15 @@ The event value <code>payload</code> in a <em>delete</em> event for the sample <
   "schema": { ... },
   },
   "payload": {
-    "before": {  <i class="conum" data-value="1"></i><b>(1)</b>
+    "before": {
       "ID": 1005,
       "FIRST_NAME": "john",
       "LAST_NAME": "doe",
       "EMAIL": "noreply@example.org"
     },
-    "after": null,  <i class="conum" data-value="2"></i><b>(2)</b>
-    "source": {  <i class="conum" data-value="3"></i><b>(3)</b>
-      "version": "3.5.0.Final",
+    "after": null,
+    "source": {
+      "version": "3.7.0.Beta1",
       "connector": "db2",
       "name": "myconnector",
       "ts_ms": 1559730445243,
@@ -3737,51 +3665,36 @@ The event value <code>payload</code> in a <em>delete</em> event for the sample <
       "change_lsn": "00000027:00000db0:0005",
       "commit_lsn": "00000027:00000db0:0007"
     },
-    "op": "d",  <i class="conum" data-value="4"></i><b>(4)</b>
-    "ts_ms": 1559730450205,  <i class="conum" data-value="5"></i><b>(5)</b>
-    "ts_us": 1559730450205521,  <i class="conum" data-value="5"></i><b>(5)</b>
-    "ts_ns": 1559730450205521475  <i class="conum" data-value="5"></i><b>(5)</b>
+    "op": "d",
+    "ts_ms": 1559730450205,
+    "ts_us": 1559730450205521,
+    "ts_ns": 1559730450205521475
   }
 }</code></pre>
 </div>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Descriptions of <em>delete</em> event value fields</caption>
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 70%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Item</th>
-<th class="tableblock halign-left valign-top">Field name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>before</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional field that specifies the state of the row before the event occurred.
-In a <em>delete</em> event value, the <code>before</code> field contains the values that were in the row before it was deleted with the database commit.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>after</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional field that specifies the state of the row after the event occurred.
-In a <em>delete</em> event value, the <code>after</code> field is <code>null</code>, signifying that the row no longer exists.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>source</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<div class="paragraph">
+<p>The following list describes select fields in the preceding <em>delete</em> event value example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>before</code></dt>
+<dd>
+<p>Optional field that specifies the state of the row before the event occurred.
+In a <em>delete</em> event value, the <code>before</code> field contains the values that were in the row before it was deleted with the database commit.</p>
+</dd>
+<dt class="hdlist1"><code>after</code></dt>
+<dd>
+<p>Optional field that specifies the state of the row after the event occurred.
+In a <em>delete</em> event value, the <code>after</code> field is <code>null</code>, signifying that the row no longer exists.</p>
+</dd>
+<dt class="hdlist1"><code>source</code></dt>
+<dd>
 <p>Mandatory field that describes the source metadata for the event.
 In a <em>delete</em> event value, the <code>source</code> field structure is the same as for <em>create</em> and <em>update</em> events for the same table.
 Many <code>source</code> field values are also the same.
 In a <em>delete</em> event value, the <code>ts_ms</code> and LSN field values, as well as other values, might have changed.
 But the <code>source</code> field in a <em>delete</em> event value provides the same metadata:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -3806,29 +3719,24 @@ But the <code>source</code> field in a <em>delete</em> event value provides the 
 <p>Commit LSN (omitted if this event is part of a snapshot)</p>
 </li>
 </ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>op</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+</div>
+</dd>
+<dt class="hdlist1"><code>op</code></dt>
+<dd>
 <p>Mandatory string that describes the type of operation.
 The <code>op</code> field value is <code>d</code>, signifying that this row was deleted.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ts_ms</code>, <code>ts_us</code>, <code>ts_ns</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional field that displays the time at which the connector processed the event.
-The time is based on the system clock in the JVM running the Kafka Connect task.<br>
-<br>
-In the <code>source</code> object, <code>ts_ms</code> indicates the time that the change was made in the database.
+</dd>
+<dt class="hdlist1"><code>ts_ms</code>, <code>ts_us</code>, <code>ts_ns</code></dt>
+<dd>
+<p>Optional fields that display the time at which the connector processed the event in millisecond, microsecond, and nanosecond formats.
+The time is based on the system clock in the JVM running the Kafka Connect task.</p>
+<div class="paragraph">
+<p>In the <code>source</code> object, <code>ts_ms</code> indicates the time that the change was made in the database.
 By comparing the value for <code>payload.source.ts_ms</code> with the value for <code>payload.ts_ms</code>, you can determine the lag between the source database update and Debezium.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
+</div>
+</dd>
+</dl>
+</div>
 <div class="paragraph">
 <p>A <em>delete</em> change event record provides a consumer with the information it needs to process the removal of this row.
 The old values are included because some consumers might require them in order to properly handle the removal.</p>
@@ -3873,7 +3781,7 @@ If the default data type conversions do not meet your needs, you can <a href="..
 </ul>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Mappings for Db2 basic data types</caption>
+<caption class="title">Table 5. Mappings for Db2 basic data types</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 20%;">
@@ -3963,9 +3871,10 @@ Consider using a different type.</p>
 <p><code>INT32</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.time.Date</code><br>
-<br>
-String representation of a timestamp without timezone information</p>
+<p><code>io.debezium.time.Date</code></p>
+</div>
+<div class="paragraph">
+<p>String representation of a timestamp without timezone information</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4053,9 +3962,10 @@ String representation of a timestamp without timezone information</p>
 <p><code>INT32</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.time.Time</code><br>
-<br>
-String representation of a time without timezone information</p>
+<p><code>io.debezium.time.Time</code></p>
+</div>
+<div class="paragraph">
+<p>String representation of a time without timezone information</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4066,9 +3976,10 @@ String representation of a time without timezone information</p>
 <p><code>INT64</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.time.MicroTimestamp</code><br>
-<br>
-String representation of a timestamp without timezone information</p>
+<p><code>io.debezium.time.MicroTimestamp</code></p>
+</div>
+<div class="paragraph">
+<p>String representation of a timestamp without timezone information</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4112,9 +4023,10 @@ String representation of a timestamp without timezone information</p>
 <p><code>STRING</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.data.Xml</code><br>
-<br>
-String representation of an XML document</p>
+<p><code>io.debezium.data.Xml</code></p>
+</div>
+<div class="paragraph">
+<p>String representation of an XML document</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4129,7 +4041,7 @@ Passing the default value helps satisfy compatibility rules when <a href="../con
 <div class="sect2">
 <h3 id="db2-temporal-types"><a class="anchor" href="#db2-temporal-types"></a>Temporal types</h3>
 <div class="paragraph">
-<p>Except for the <code>DATETIMEOFFSET</code> data type, which contains time zone information, Db2 maps temporal types based on the value of the <code>time.precision.mode</code> connector configuration property.
+<p>Except for the <code>TIMESTAMP WITH TIME ZONE</code> data type, which contains time zone information, Db2 maps temporal types based on the value of the <code>time.precision.mode</code> connector configuration property.
 The following sections describe these mappings:</p>
 </div>
 <div class="ulist">
@@ -4140,6 +4052,18 @@ The following sections describe these mappings:</p>
 <li>
 <p><a href="#db2-time-precision-mode-connect"><code>time.precision.mode=connect</code></a></p>
 </li>
+<li>
+<p><a href="#db2-time-precision-mode-isostring"><code>time.precision.mode=isostring</code></a></p>
+</li>
+<li>
+<p><a href="#db2-time-precision-mode-microseconds"><code>time.precision.mode=microseconds</code></a></p>
+</li>
+<li>
+<p><a href="#db2-time-precision-mode-nanoseconds"><code>time.precision.mode=nanoseconds</code></a></p>
+</li>
+<li>
+<p><a href="#db2-time-precision-mode-structured"><code>time.precision.mode=structured</code></a></p>
+</li>
 </ul>
 </div>
 <div id="db2-time-precision-mode-adaptive" class="paragraph">
@@ -4148,7 +4072,7 @@ The following sections describe these mappings:</p>
 This ensures that events <em>exactly</em> represent the values in the database.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Mappings when <code>time.precision.mode</code> is <code>adaptive</code></caption>
+<caption class="title">Table 6. Mappings when <code>time.precision.mode</code> is <code>adaptive</code></caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 20%;">
@@ -4170,9 +4094,10 @@ This ensures that events <em>exactly</em> represent the values in the database.<
 <p><code>INT32</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.time.Date</code><br>
-<br>
-Represents the number of days since the epoch.</p>
+<p><code>io.debezium.time.Date</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of days since the epoch.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4183,9 +4108,10 @@ Represents the number of days since the epoch.</p>
 <p><code>INT32</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.time.Time</code><br>
-<br>
-Represents the number of milliseconds past midnight, and does not include timezone information.</p>
+<p><code>io.debezium.time.Time</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of milliseconds past midnight, and does not include timezone information.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4196,9 +4122,10 @@ Represents the number of milliseconds past midnight, and does not include timezo
 <p><code>INT64</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.time.MicroTime</code><br>
-<br>
-Represents the number of microseconds past midnight, and does not include timezone information.</p>
+<p><code>io.debezium.time.MicroTime</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of microseconds past midnight, and does not include timezone information.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4209,22 +4136,24 @@ Represents the number of microseconds past midnight, and does not include timezo
 <p><code>INT64</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.time.NanoTime</code><br>
-<br>
-Represents the number of nanoseconds past midnight, and does not include timezone information.</p>
+<p><code>io.debezium.time.NanoTime</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of nanoseconds past midnight, and does not include timezone information.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>DATETIME</code></p>
+<p><code>TIMESTAMP</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>INT64</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>io.debezium.time.Timestamp</code><br>
-<br>
-Represents the number of milliseconds since the epoch, and does not include timezone information.</p>
+<p><code>io.debezium.time.Timestamp</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of milliseconds since the epoch, and does not include timezone information.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4236,7 +4165,7 @@ This may be useful when consumers can handle only the built-in Kafka Connect log
 However, since Db2 supports tenth of a microsecond precision, the events generated by a connector with the <code>connect</code> time precision <strong>results in a loss of precision</strong> when the database column has a <em>fractional second precision</em> value that is greater than 3.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Mappings when <code>time.precision.mode</code> is <code>connect</code></caption>
+<caption class="title">Table 7. Mappings when <code>time.precision.mode</code> is <code>connect</code></caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 20%;">
@@ -4258,9 +4187,10 @@ However, since Db2 supports tenth of a microsecond precision, the events generat
 <p><code>INT32</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>org.apache.kafka.connect.data.Date</code><br>
-<br>
-Represents the number of days since the epoch.</p>
+<p><code>org.apache.kafka.connect.data.Date</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of days since the epoch.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4271,23 +4201,325 @@ Represents the number of days since the epoch.</p>
 <p><code>INT64</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>org.apache.kafka.connect.data.Time</code><br>
-<br>
-Represents the number of milliseconds since midnight, and does not include timezone information.
+<p><code>org.apache.kafka.connect.data.Time</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of milliseconds since midnight, and does not include timezone information.
 Db2 allows <code>P</code> to be in the range 0-7 to store up to tenth of a microsecond precision, though this mode results in a loss of precision when <code>P</code> is greater than 3.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>DATETIME</code></p>
+<p><code>TIMESTAMP</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>INT64</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>org.apache.kafka.connect.data.Timestamp</code><br>
+<p><code>org.apache.kafka.connect.data.Timestamp</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of milliseconds since the epoch, and does not include timezone information.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="db2-time-precision-mode-isostring" class="paragraph">
+<div class="title"><code>time.precision.mode=isostring</code></div>
+<p>Set the <code>time.precision.mode</code> property to <code>isostring</code> to configure the connector to map temporal values as ISO-8601 formatted strings at the UTC time zone.
+When you apply this setting, the connector uses the semantic types <code>io.debezium.time.IsoDate</code>, <code>io.debezium.time.IsoTime</code>, and <code>io.debezium.time.IsoTimestamp</code> to map date, time, and timestamp values.
+Because the values are represented as strings, this mode avoids the loss of precision that can occur in <code>connect</code> mode when the fractional second precision is greater than 3.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Mappings when <code>time.precision.mode</code> is <code>isostring</code></caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 55%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Db2 data type</th>
+<th class="tableblock halign-left valign-top">Literal type (schema type)</th>
+<th class="tableblock halign-left valign-top">Semantic type (schema name) and Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>DATE</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>STRING</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.IsoDate</code></p>
+</div>
+<div class="paragraph">
+<p>Represents date values in UTC format, according to the ISO 8601 standard, for example, <code>2017-09-15Z</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIME([P])</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>STRING</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.IsoTime</code></p>
+</div>
+<div class="paragraph">
+<p>Represents time values in UTC format, according to the ISO 8601 standard, for example, <code>04:05:11.789Z</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIMESTAMP</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>STRING</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.IsoTimestamp</code></p>
+</div>
+<div class="paragraph">
+<p>Represents timestamp values in UTC format, according to the ISO 8601 standard, for example, <code>2019-07-09T02:28:57.123456Z</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="db2-time-precision-mode-microseconds" class="paragraph">
+<div class="title"><code>time.precision.mode=microseconds</code></div>
+<p>Set the <code>time.precision.mode</code> property to <code>microseconds</code> to configure the connector to map all temporal values to microsecond-precision integers.
+All <code>DATE</code> values are represented as the number of days since the epoch, and all <code>TIME</code> and <code>TIMESTAMP</code> values are represented as the number of microseconds since the epoch or since midnight.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Mappings when <code>time.precision.mode</code> is <code>microseconds</code></caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 55%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Db2 data type</th>
+<th class="tableblock halign-left valign-top">Literal type (schema type)</th>
+<th class="tableblock halign-left valign-top">Semantic type (schema name) and Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>DATE</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>INT32</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.Date</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of days since the epoch.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIME([P])</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>INT64</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.MicroTime</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of microseconds past midnight, and does not include timezone information.
+Db2 allows <code>P</code> to be in the range 0-7.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIMESTAMP</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>INT64</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.MicroTimestamp</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of microseconds since the epoch, and does not include timezone information.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="db2-time-precision-mode-nanoseconds" class="paragraph">
+<div class="title"><code>time.precision.mode=nanoseconds</code></div>
+<p>Set the <code>time.precision.mode</code> property to <code>nanoseconds</code> to configure the connector to map all temporal values to nanosecond-precision integers.
+All <code>DATE</code> values are represented as the number of days since the epoch, and all <code>TIME</code> and <code>TIMESTAMP</code> values are represented as the number of nanoseconds since the epoch or since midnight.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Db2 <code>TIMESTAMP</code> supports up to 12 fractional digits (<code>TIMESTAMP(0-12)</code>), so <code>nanoseconds</code> mode provides additional precision over <code>microseconds</code> for <code>TIMESTAMP(7)</code> and above. Sub-nanosecond digits beyond position 9 are truncated.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Nanoseconds since the Unix epoch are stored in a signed <code>INT64</code>, restricting the representable range to approximately <strong><code>1677-09-21T00:12:43Z</code> to <code>2262-04-11T23:47:16Z</code></strong>.
+Values outside this range cannot be represented and cause the connector to throw an <code>IllegalArgumentException</code> from the value converter.
+The exception is handled according to the <code>event.converting.failure.handling.mode</code> configuration: with <code>warn</code> (the default) or <code>skip</code>, the affected column value is emitted as <code>null</code> and the failure is logged; with <code>fail</code>, the connector stops.
+Use <code>time.precision.mode=microseconds</code> (or <code>isostring</code>) to avoid the limitation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Mappings when <code>time.precision.mode</code> is <code>nanoseconds</code></caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 55%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Db2 data type</th>
+<th class="tableblock halign-left valign-top">Literal type (schema type)</th>
+<th class="tableblock halign-left valign-top">Semantic type (schema name) and Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>DATE</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>INT32</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.Date</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of days since the epoch.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIME([P])</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>INT64</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.NanoTime</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of nanoseconds past midnight, and does not include timezone information.
+Db2 allows <code>P</code> to be in the range 0-7.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIMESTAMP</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>INT64</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.NanoTimestamp</code></p>
+</div>
+<div class="paragraph">
+<p>Represents the number of nanoseconds since the epoch, and does not include timezone information.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="db2-time-precision-mode-structured" class="paragraph">
+<div class="title"><code>time.precision.mode=structured</code></div>
+<p>Set the <code>time.precision.mode</code> property to <code>structured</code> to configure the connector to represent temporal values as Kafka Connect structs with separate calendar and clock components.
+This mode avoids flattening high-precision temporal values into a single epoch-based integer.
+Structured temporal values that have fractional seconds include an optional <code>precision</code> field that records the source column&#8217;s fractional second precision.
+The Debezium JDBC sink connector can consume these structured temporal schemas directly and maps them according to the target database dialect.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. Mappings when <code>time.precision.mode</code> is <code>structured</code></caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 55%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Db2 data type</th>
+<th class="tableblock halign-left valign-top">Literal type (schema type)</th>
+<th class="tableblock halign-left valign-top">Semantic type (schema name) and Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>DATE</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>STRUCT</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.StructuredDate</code><br>
 <br>
-Represents the number of milliseconds since the epoch, and does not include timezone information.</p>
+Contains <code>year</code>, <code>month</code>, and <code>day</code> fields.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIME([P])</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>STRUCT</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.StructuredTime</code><br>
+<br>
+Contains <code>hour</code>, <code>minute</code>, <code>second</code>, <code>nanos</code>, and optional <code>precision</code> fields.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIMESTAMP</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>STRUCT</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.StructuredTimestamp</code><br>
+<br>
+Contains <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, <code>second</code>, <code>nanos</code>, and optional <code>precision</code> fields.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>TIMESTAMP WITH TIME ZONE</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>STRUCT</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>io.debezium.time.StructuredZonedTimestamp</code><br>
+<br>
+Contains calendar and clock component fields, <code>offsetSeconds</code>, optional <code>zoneId</code>, and optional <code>precision</code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4296,9 +4528,9 @@ Represents the number of milliseconds since the epoch, and does not include time
 <div class="sect2">
 <h3 id="db2-timestamp-types"><a class="anchor" href="#db2-timestamp-types"></a>Timestamp types</h3>
 <div class="paragraph">
-<p>The <code>DATETIME</code> type represents a timestamp without time zone information.
+<p>The <code>TIMESTAMP</code> type represents a timestamp without time zone information.
 Such columns are converted into an equivalent Kafka Connect value based on UTC.
-For example, the <code>DATETIME</code> value "2018-06-20 15:13:16.945104" is represented by an <code>io.debezium.time.Timestamp</code> with the value "1529507596000".</p>
+For example, the <code>TIMESTAMP</code> value "2018-06-20 15:13:16.945104" is represented by an <code>io.debezium.time.Timestamp</code> with the value "1529507596000".</p>
 </div>
 <div class="paragraph">
 <p>The timezone of the JVM running Kafka Connect and Debezium does not affect this conversion.</p>
@@ -4306,6 +4538,9 @@ For example, the <code>DATETIME</code> value "2018-06-20 15:13:16.945104" is rep
 </div>
 <div class="sect2">
 <h3 id="db2-decimal-types"><a class="anchor" href="#db2-decimal-types"></a>Decimal types</h3>
+<div class="paragraph">
+<p>The following table describes how the connector maps Db2 decimal data types to literal and semantic types in change event fields.</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 27%;">
@@ -4328,9 +4563,10 @@ For example, the <code>DATETIME</code> value "2018-06-20 15:13:16.945104" is rep
 <p><code>BYTES</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>org.apache.kafka.connect.data.Decimal</code><br>
-<br>
-The <code>scale</code> schema parameter contains an integer that represents how many digits the decimal point is shifted.
+<p><code>org.apache.kafka.connect.data.Decimal</code></p>
+</div>
+<div class="paragraph">
+<p>The <code>scale</code> schema parameter contains an integer that represents how many digits the decimal point is shifted.
 The <code>connect.decimal.precision</code> schema parameter contains an integer that represents the precision of the given decimal value.</p>
 </div></div></td>
 </tr>
@@ -4342,9 +4578,10 @@ The <code>connect.decimal.precision</code> schema parameter contains an integer 
 <p><code>BYTES</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>org.apache.kafka.connect.data.Decimal</code><br>
-<br>
-The <code>scale</code> schema parameter contains an integer that represents how many digits the decimal point is shifted.
+<p><code>org.apache.kafka.connect.data.Decimal</code></p>
+</div>
+<div class="paragraph">
+<p>The <code>scale</code> schema parameter contains an integer that represents how many digits the decimal point is shifted.
 The <code>connect.decimal.precision</code> schema parameter contains an integer that  represents the precision of the given decimal value.</p>
 </div></div></td>
 </tr>
@@ -4677,13 +4914,13 @@ You can adjust the values for these parameters to balance the configuration of t
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Download the <a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/3.5.0.Final/debezium-connector-db2-3.5.0.Final-plugin.tar.gz">Debezium Db2 connector plug-in archive</a> from Maven Central.</p>
+<p>Download the <a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/3.7.0.Beta1/debezium-connector-db2-3.7.0.Beta1-plugin.tar.gz">Debezium Db2 connector plug-in archive</a> from Maven Central.</p>
 </li>
 <li>
 <p>Extract the JAR files into your Kafka Connect environment.</p>
 </li>
 <li>
-<p>Download the <a href="https://repo1.maven.org/maven2/com/ibm/db2/jcc/11.5.0.0/jcc-11.5.0.0.jar">JDBC driver for Db2</a> from Maven Central, and extract the downloaded driver file to the directory that contains the Debezium Db2 connector JAR file (that is, <code>debezium-connector-db2-3.5.0.Final.jar</code>).</p>
+<p>Download the <a href="https://repo1.maven.org/maven2/com/ibm/db2/jcc/11.5.0.0/jcc-11.5.0.0.jar">JDBC driver for Db2</a> from Maven Central, and extract the downloaded driver file to the directory that contains the Debezium Db2 connector JAR file (that is, <code>debezium-connector-db2-3.7.0.Beta1.jar</code>).</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -4751,70 +4988,73 @@ Optionally, you can ignore, mask, or truncate columns that contain sensitive dat
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "name": "db2-connector",  <i class="conum" data-value="1"></i><b>(1)</b>
+  "name": "db2-connector",
   "config": {
-    "connector.class": "io.debezium.connector.db2.Db2Connector", <i class="conum" data-value="2"></i><b>(2)</b>
-    "database.hostname": "192.168.99.100", <i class="conum" data-value="3"></i><b>(3)</b>
-    "database.port": "50000", <i class="conum" data-value="4"></i><b>(4)</b>
-    "database.user": "db2inst1", <i class="conum" data-value="5"></i><b>(5)</b>
-    "database.password": "Password!", <i class="conum" data-value="6"></i><b>(6)</b>
-    "database.dbname": "mydatabase", <i class="conum" data-value="7"></i><b>(7)</b>
-    "topic.prefix": "fullfillment", <i class="conum" data-value="8"></i><b>(8)</b>
-    "table.include.list": "MYSCHEMA.CUSTOMERS", <i class="conum" data-value="9"></i><b>(9)</b>
-    "schema.history.internal.kafka.bootstrap.servers": "kafka:9092", <i class="conum" data-value="10"></i><b>(10)</b>
-    "schema.history.internal.kafka.topic": "schemahistory.fullfillment" <i class="conum" data-value="11"></i><b>(11)</b>
+    "connector.class": "io.debezium.connector.db2.Db2Connector",
+    "database.hostname": "192.168.99.100",
+    "database.port": "50000",
+    "database.user": "db2inst1",
+    "database.password": "Password!",
+    "database.dbname": "mydatabase",
+    "topic.prefix": "fullfillment",
+    "table.include.list": "MYSCHEMA.CUSTOMERS",
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:9092",
+    "schema.history.internal.kafka.topic": "schemahistory.fullfillment"
   }
 }</code></pre>
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The name of the connector when registered with a Kafka Connect service.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The name of this Db2 connector class.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The address of the Db2 instance.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>The port number of the Db2 instance.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>The name of the Db2 user.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>The password for the Db2 user.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>The name of the database to capture changes from.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>The logical name of the Db2 instance/cluster, which forms a namespace and is used in all the names of the Kafka topics to which the connector writes, the Kafka Connect schema names, and the namespaces of the corresponding Avro schema when the <a href="../configuration/avro.html" class="xref page">Avro Connector</a> is used.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
-<td>A list of all tables whose changes Debezium should capture.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="10"></i><b>10</b></td>
-<td>The list of Kafka brokers that this connector uses to write and recover DDL statements to the database schema history topic.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="11"></i><b>11</b></td>
-<td>The name of the database schema history topic where the connector writes and recovers DDL statements.
-This topic is for internal use only and should not be used by consumers.</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>The following list describes select fields in the preceding connector configuration example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<p>The name of the connector when registered with a Kafka Connect service.</p>
+</dd>
+<dt class="hdlist1"><code>connector.class</code></dt>
+<dd>
+<p>The name of this Db2 connector class.</p>
+</dd>
+<dt class="hdlist1"><code>database.hostname</code></dt>
+<dd>
+<p>The address of the Db2 instance.</p>
+</dd>
+<dt class="hdlist1"><code>database.port</code></dt>
+<dd>
+<p>The port number of the Db2 instance.</p>
+</dd>
+<dt class="hdlist1"><code>database.user</code></dt>
+<dd>
+<p>The name of the Db2 user.</p>
+</dd>
+<dt class="hdlist1"><code>database.password</code></dt>
+<dd>
+<p>The password for the Db2 user.</p>
+</dd>
+<dt class="hdlist1"><code>database.dbname</code></dt>
+<dd>
+<p>The name of the database to capture changes from.</p>
+</dd>
+<dt class="hdlist1"><code>topic.prefix</code></dt>
+<dd>
+<p>The logical name of the Db2 instance/cluster, which forms a namespace and is used in all the names of the Kafka topics to which the connector writes, the Kafka Connect schema names, and the namespaces of the corresponding Avro schema when the <a href="../configuration/avro.html" class="xref page">Avro Connector</a> is used.</p>
+</dd>
+<dt class="hdlist1"><code>table.include.list</code></dt>
+<dd>
+<p>A list of all tables whose changes Debezium should capture.</p>
+</dd>
+<dt class="hdlist1"><code>schema.history.internal.kafka.bootstrap.servers</code></dt>
+<dd>
+<p>The list of Kafka brokers that this connector uses to write and recover DDL statements to the database schema history topic.</p>
+</dd>
+<dt class="hdlist1"><code>schema.history.internal.kafka.topic</code></dt>
+<dd>
+<p>The name of the database schema history topic where the connector writes and recovers DDL statements.
+This topic is for internal use only and should not be used by consumers.</p>
+</dd>
+</dl>
 </div>
 <div class="paragraph">
 <p>For the complete list of the configuration properties that you can set for the Debezium Db2 connector, see <a href="#db2-connector-properties">Db2 connector properties</a>.</p>
@@ -5080,8 +5320,7 @@ Support for using Debezium with z/OS is incubating.</p>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Topic prefix which provides a namespace for the particular Db2 database server that hosts the database for which Debezium is capturing changes.
 Only alphanumeric characters, hyphens, dots and underscores must be used in the topic prefix name.
-The topic prefix should be unique across all other connectors, since this topic prefix is used for all Kafka topics that receive records from this connector.<br>
-<br></p>
+The topic prefix should be unique across all other connectors, since this topic prefix is used for all Kafka topics that receive records from this connector.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -5110,11 +5349,11 @@ The connector is also unable to recover its database schema history topic.</p>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>An optional, comma-separated list of regular expressions that match fully-qualified table identifiers for tables whose changes you want the connector to capture.
 When this property is set, the connector captures changes only from the specified tables.
-Each identifier is of the form <em>schemaName</em>.<em>tableName</em>. By default, the connector captures changes in every non-system table.<br></p>
+Each identifier is of the form <em>schemaName</em>.<em>tableName</em>. By default, the connector captures changes in every non-system table.</p>
 </div>
 <div class="paragraph">
 <p>To match the name of a table, Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
-That is, the specified expression is matched against the entire name string of the table it does not match substrings that might be present in a table name.<br>
+That is, the specified expression is matched against the entire name string of the table it does not match substrings that might be present in a table name.
 If you include this property in the configuration, do not also set the <code>table.exclude.list</code> property.</p>
 </div></div></td>
 </tr>
@@ -5128,11 +5367,11 @@ If you include this property in the configuration, do not also set the <code>tab
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>An optional, comma-separated list of regular expressions that match fully-qualified table identifiers for tables whose changes you do not want the connector to capture.
 The connector captures changes in each non-system table that is not included in the exclude list.
-Each identifier is of the form <em>schemaName</em>.<em>tableName</em>.<br></p>
+Each identifier is of the form <em>schemaName</em>.<em>tableName</em>.</p>
 </div>
 <div class="paragraph">
 <p>To match the name of a table, Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
-That is, the specified expression is matched against the entire name string of the table it does not match substrings that might be present in a table name.<br>
+That is, the specified expression is matched against the entire name string of the table it does not match substrings that might be present in a table name.
 If you include this property in the configuration, do not also set the <code>table.include.list</code> property.</p>
 </div></div></td>
 </tr>
@@ -5145,7 +5384,7 @@ If you include this property in the configuration, do not also set the <code>tab
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>An optional, comma-separated list of regular expressions that match the fully-qualified names of columns to include in change event record values.
-Fully-qualified names for columns are of the form <em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.<br></p>
+Fully-qualified names for columns are of the form <em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.</p>
 </div>
 <div class="paragraph">
 <p>To match the name of a column, Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
@@ -5162,13 +5401,26 @@ If you include this property in the configuration, do not also set the <code>col
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>An optional, comma-separated list of regular expressions that match the fully-qualified names of columns to exclude from change event values.
-Fully-qualified names for columns are of the form <em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.<br></p>
+Fully-qualified names for columns are of the form <em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.</p>
 </div>
 <div class="paragraph">
 <p>To match the name of a column, Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
 That is, the specified expression is matched against the entire name string of the column; it does not match substrings that might be present in a column name.
 Primary key columns are always included in the event&#8217;s key, even if they are excluded from the value.
 If you include this property in the configuration, do not set the <code>column.include.list</code> property.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="db2-property-skip-messages-without-change"></a><a href="#db2-property-skip-messages-without-change"><code>skip.messages.without.change</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>false</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specifies whether the connector emits messages for records when it does not detect a change in the included columns.
+Columns are considered to be included if they are listed in the <code>column.include.list</code>, or are not listed in the <code>column.exclude.list</code>.
+Set the value to <code>true</code> to prevent the connector from capturing records when no changes are present in the included columns.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5180,7 +5432,7 @@ If you include this property in the configuration, do not set the <code>column.i
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>An optional, comma-separated list of regular expressions that match the fully-qualified names of character-based columns.
-Fully-qualified names for columns are of the form <em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.<br>
+Fully-qualified names for columns are of the form <em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.
 To match the name of a column Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
 That is, the specified expression is matched against the entire name string of the column; the expression does not match substrings that might be present in a column name.
 In the resulting change event record, the values for the specified columns are replaced with pseudonyms.</p>
@@ -5188,9 +5440,10 @@ In the resulting change event record, the values for the specified columns are r
 <div class="paragraph">
 <p>A pseudonym consists of the hashed value that results from applying the specified <em>hashAlgorithm</em> and <em>salt</em>.
 Based on the hash function that is used, referential integrity is maintained, while column values are replaced with pseudonyms.
-Supported hash functions are described in the <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest">MessageDigest section</a> of the Java Cryptography Architecture Standard Algorithm Name Documentation.<br>
-<br>
-In the following example, <code>CzQMA0cB5K</code> is a randomly selected salt.<br></p>
+Supported hash functions are described in the <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest">MessageDigest section</a> of the Java Cryptography Architecture Standard Algorithm Name Documentation.</p>
+</div>
+<div class="paragraph">
+<p>In the following example, <code>CzQMA0cB5K</code> is a randomly selected salt.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5199,9 +5452,10 @@ In the following example, <code>CzQMA0cB5K</code> is a randomly selected salt.<b
 </div>
 <div class="paragraph">
 <p>If necessary, the pseudonym is automatically shortened to the length of the column.
-The connector configuration can include multiple properties that specify different hash algorithms and salts.<br>
-<br>
-Depending on the <em>hashAlgorithm</em> used, the <em>salt</em> selected, and the actual data set, the resulting data set might not be completely masked.</p>
+The connector configuration can include multiple properties that specify different hash algorithms and salts.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the <em>hashAlgorithm</em> used, the <em>salt</em> selected, and the actual data set, the resulting data set might not be completely masked.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5212,11 +5466,19 @@ Depending on the <em>hashAlgorithm</em> used, the <em>salt</em> selected, and th
 <p><code>adaptive</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Time, date, and timestamps can be represented with different kinds of precision:<br>
-<br>
-<code>adaptive</code> captures the time and timestamp values exactly as in the database using either millisecond, microsecond, or nanosecond precision values based on the database column&#8217;s type.<br>
-<br>
-<code>connect</code> always represents time and timestamp values by using Kafka Connect&#8217;s built-in representations for <code>Time</code>, <code>Date</code>, and <code>Timestamp</code>, which uses millisecond precision regardless of the database columns' precision.
+<p>Time, date, and timestamps can be represented with different kinds of precision:</p>
+</div>
+<div class="paragraph">
+<p><code>adaptive</code> captures the time and timestamp values exactly as in the database using either millisecond, microsecond, or nanosecond precision values based on the database column&#8217;s type.</p>
+</div>
+<div class="paragraph">
+<p><code>connect</code> always represents time and timestamp values by using Kafka Connect&#8217;s built-in representations for <code>Time</code>, <code>Date</code>, and <code>Timestamp</code>, which uses millisecond precision regardless of the database columns' precision.</p>
+</div>
+<div class="paragraph">
+<p><code>isostring</code> represents temporal values as ISO-8601 formatted strings at the UTC time zone.</p>
+</div>
+<div class="paragraph">
+<p><code>structured</code> represents temporal values as Kafka Connect structs with separate calendar and clock components.
 For more information, see <a href="#db2-temporal-types">temporal types</a>.</p>
 </div></div></td>
 </tr>
@@ -5295,7 +5557,7 @@ Set <code><em>length</em></code> to a positive integer to replace data in the sp
 Set <em>length</em> to <code>0</code> (zero) to replace data in the specified columns with an empty string.</p>
 </div>
 <div class="paragraph">
-<p>The fully-qualified name of a column observes the following format: <em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.<br>
+<p>The fully-qualified name of a column observes the following format: <em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.
 To match the name of a column, Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
 That is, the specified expression is matched against the entire name string of the column; the expression does not match substrings that might be present in a column name.</p>
 </div>
@@ -5317,22 +5579,22 @@ When this property is set, the connector adds the following fields to the schema
 <div class="ulist">
 <ul>
 <li>
-<p><code>__debezium.source.column.type</code><br></p>
+<p><code>__debezium.source.column.type</code></p>
 </li>
 <li>
-<p><code>__debezium.source.column.length</code><br></p>
+<p><code>__debezium.source.column.length</code></p>
 </li>
 <li>
-<p><code>__debezium.source.column.scale</code><br></p>
+<p><code>__debezium.source.column.scale</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These parameters propagate a column&#8217;s original type name and length (for variable-width types), respectively.<br>
+<p>These parameters propagate a column&#8217;s original type name and length (for variable-width types), respectively.
 Enabling the connector to emit this extra data can assist in properly sizing specific numeric or character-based columns in sink databases.</p>
 </div>
 <div class="paragraph">
-<p>The fully-qualified name of a column observes one of the following formats: <em>databaseName</em>.<em>tableName</em>.<em>columnName</em>, or <em>databaseName</em>.<em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.<br>
+<p>The fully-qualified name of a column observes one of the following formats: <em>databaseName</em>.<em>tableName</em>.<em>columnName</em>, or <em>databaseName</em>.<em>schemaName</em>.<em>tableName</em>.<em>columnName</em>.
 To match the name of a column, Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
 That is, the specified expression is matched against the entire name string of the column; the expression does not match substrings that might be present in a column name.</p>
 </div></div></td>
@@ -5351,22 +5613,22 @@ When this property is set, for columns with matching data types, the connector e
 <div class="ulist">
 <ul>
 <li>
-<p><code>__debezium.source.column.type</code><br></p>
+<p><code>__debezium.source.column.type</code></p>
 </li>
 <li>
-<p><code>__debezium.source.column.length</code><br></p>
+<p><code>__debezium.source.column.length</code></p>
 </li>
 <li>
-<p><code>__debezium.source.column.scale</code><br></p>
+<p><code>__debezium.source.column.scale</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These parameters propagate a column&#8217;s original type name and length (for variable-width types), respectively.<br>
+<p>These parameters propagate a column&#8217;s original type name and length (for variable-width types), respectively.
 Enabling the connector to emit this extra data can assist in properly sizing specific numeric or character-based columns in sink databases.</p>
 </div>
 <div class="paragraph">
-<p>The fully-qualified name of a column observes one of the following formats: <em>databaseName</em>.<em>tableName</em>.<em>typeName</em>, or <em>databaseName</em>.<em>schemaName</em>.<em>tableName</em>.<em>typeName</em>.<br>
+<p>The fully-qualified name of a column observes one of the following formats: <em>databaseName</em>.<em>tableName</em>.<em>typeName</em>, or <em>databaseName</em>.<em>schemaName</em>.<em>tableName</em>.<em>typeName</em>.
 To match the name of a data type, Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
 That is, the specified expression is matched against the entire name string of the data type; the expression does not match substrings that might be present in a type name.</p>
 </div>
@@ -5386,28 +5648,34 @@ That is, the specified expression is matched against the entire name string of t
 </div>
 <div class="paragraph">
 <p>By default, Debezium uses the primary key column of a table as the message key for records that it emits.
-In place of the default, or to specify a key for tables that lack a primary key, you can configure custom message keys based on one or more columns.<br>
-<br>
-To establish a custom message key for a table, list the table, followed by the columns to use as the message key.
-Each list entry takes the following format:<br>
-<br>
-<code><em>&lt;fully-qualified_tableName&gt;</em>:<em>&lt;keyColumn&gt;</em>,<em>&lt;keyColumn&gt;</em></code><br>
-<br>
-To base a table key on multiple column names, insert commas between the column names.<br>
-Each fully-qualified table name is a regular expression in the following format:<br></p>
+In place of the default, or to specify a key for tables that lack a primary key, you can configure custom message keys based on one or more columns.</p>
 </div>
 <div class="paragraph">
-<p><code><em>&lt;schemaName&gt;</em>.<em>&lt;tableName&gt;</em></code><br></p>
+<p>To establish a custom message key for a table, list the table, followed by the columns to use as the message key.
+Each list entry takes the following format:</p>
+</div>
+<div class="paragraph">
+<p><code><em>&lt;fully-qualified_tableName&gt;</em>:<em>&lt;keyColumn&gt;</em>,<em>&lt;keyColumn&gt;</em></code></p>
+</div>
+<div class="paragraph">
+<p>To base a table key on multiple column names, insert commas between the column names.
+Each fully-qualified table name is a regular expression in the following format:</p>
+</div>
+<div class="paragraph">
+<p><code><em>&lt;schemaName&gt;</em>.<em>&lt;tableName&gt;</em></code></p>
 </div>
 <div class="paragraph">
 <p>The property can list entries for multiple tables.
-Use a semicolon to separate entries for different tables in the list.<br>
-<br>
-The following example sets the message key for the tables <code>inventory.customers</code> and <code>purchaseorders</code>:<br>
-<br>
-<code>inventory.customers:pk1,pk2;(.*).purchaseorders:pk3,pk4</code><br>
-<br>
-In the preceding example, the columns <code>pk1</code> and <code>pk2</code> are specified as the message key for the table <code>inventory.customer</code>.
+Use a semicolon to separate entries for different tables in the list.</p>
+</div>
+<div class="paragraph">
+<p>The following example sets the message key for the tables <code>inventory.customers</code> and <code>purchaseorders</code>:</p>
+</div>
+<div class="paragraph">
+<p><code>inventory.customers:pk1,pk2;(.*).purchaseorders:pk3,pk4</code></p>
+</div>
+<div class="paragraph">
+<p>In the preceding example, the columns <code>pk1</code> and <code>pk2</code> are specified as the message key for the table <code>inventory.customer</code>.
 For <code>purchaseorders</code> tables in any schema, the columns <code>pk3</code> and <code>pk4</code> serve as the message key.</p>
 </div></div></td>
 </tr>
@@ -5425,14 +5693,14 @@ Possible settings:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>none</code> does not apply any adjustment.<br></p>
+<p><code>none</code> does not apply any adjustment.</p>
 </li>
 <li>
-<p><code>avro</code> replaces the characters that cannot be used in the Avro type name with underscore.<br></p>
+<p><code>avro</code> replaces the characters that cannot be used in the Avro type name with underscore.</p>
 </li>
 <li>
 <p><code>avro_unicode</code> replaces the underscore or characters that cannot be used in the Avro type name with corresponding unicode like _uxxxx.
-Note: _ is an escape sequence like backslash in Java<br></p>
+Note: _ is an escape sequence like backslash in Java</p>
 </li>
 </ul>
 </div></div></td>
@@ -5451,14 +5719,14 @@ Possible settings:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>none</code> does not apply any adjustment.<br></p>
+<p><code>none</code> does not apply any adjustment.</p>
 </li>
 <li>
-<p><code>avro</code> replaces the characters that cannot be used in the Avro type name with underscore.<br></p>
+<p><code>avro</code> replaces the characters that cannot be used in the Avro type name with underscore.</p>
 </li>
 <li>
 <p><code>avro_unicode</code> replaces the underscore or characters that cannot be used in the Avro type name with corresponding unicode like _uxxxx.
-Note: _ is an escape sequence like backslash in Java<br></p>
+Note: _ is an escape sequence like backslash in Java</p>
 </li>
 </ul>
 </div>
@@ -5497,7 +5765,7 @@ Note: _ is an escape sequence like backslash in Java<br></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Enumerates a comma-separated list of the symbolic names of the <a href="../development/converters.html#custom-converters" class="xref page">custom converter</a> instances that the connector can use.
-For example,<br></p>
+For example,</p>
 </div>
 <div class="paragraph">
 <p><code>isbn</code></p>
@@ -5507,13 +5775,13 @@ For example,<br></p>
 </div>
 <div class="paragraph">
 <p>For each converter that you configure for a connector, you must also add a <code>.type</code> property, which specifies the fully-qualified name of the class that implements the converter interface.
-The <code>.type</code> property uses the following format:<br></p>
+The <code>.type</code> property uses the following format:</p>
 </div>
 <div class="paragraph">
-<p><code><em>&lt;converterSymbolicName&gt;</em>.type</code><br></p>
+<p><code><em>&lt;converterSymbolicName&gt;</em>.type</code></p>
 </div>
 <div class="paragraph">
-<p>For example,<br></p>
+<p>For example,</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -5522,8 +5790,8 @@ The <code>.type</code> property uses the following format:<br></p>
 </div>
 <div class="paragraph">
 <p>If you want to further control the behavior of a configured converter, you can add one or more configuration parameters to pass values to the converter.
-To associate any additional configuration parameter with a converter, prefix the parameter names with the symbolic name of the converter.<br>
-For example,<br></p>
+To associate any additional configuration parameter with a converter, prefix the parameter names with the symbolic name of the converter.
+For example,</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -5539,7 +5807,7 @@ For example,<br></p>
 <p><em>initial</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies the criteria for performing a snapshot when the connector starts:<br></p>
+<p>Specifies the criteria for performing a snapshot when the connector starts:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -5573,7 +5841,7 @@ It does not transition to streaming event records for subsequent database change
 <dd>
 <p>Set this option to restore a database schema history topic that is lost or corrupted.
 After a restart, the connector runs a snapshot that rebuilds the topic from the source tables.
-You can also set the property to periodically prune a database schema history topic that experiences unexpected growth.<br></p>
+You can also set the property to periodically prune a database schema history topic that experiences unexpected growth.</p>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -5668,7 +5936,7 @@ Set the <code>snapshot.mode.custom.name</code> configuration property to the nam
 <p>false</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>If the <code>snapshot.mode</code> is set to <code>configuration_based</code>, this property specifies whether the connector attempts to snapshot table data if it does not find the last committed offset in the transaction log.<br>
+<p>If the <code>snapshot.mode</code> is set to <code>configuration_based</code>, this property specifies whether the connector attempts to snapshot table data if it does not find the last committed offset in the transaction log.
 Set the value to <code>true</code> to instruct the connector to perform a new snapshot.</p>
 </div></div></td>
 </tr>
@@ -5701,7 +5969,7 @@ You can set the following values:</p>
 <dl>
 <dt class="hdlist1"><code>exclusive</code></dt>
 <dd>
-<p>Controls how the connector holds locks on tables while performing the schema snapshot when <code>snapshot.isolation.mode</code> is <code>REPEATABLE_READ</code> or <code>EXCLUSIVE</code>.<br>
+<p>Controls how the connector holds locks on tables while performing the schema snapshot when <code>snapshot.isolation.mode</code> is <code>REPEATABLE_READ</code> or <code>EXCLUSIVE</code>.
 The connector holds a table lock that ensures exclusive table access during only the initial phase of the snapshot in which the connector reads the database schema and other metadata.
 In subsequent phases of the snapshot, the connector uses a flashback query, which requires no locks, to select all rows from each table.
 If you prefer snapshots to run without setting any locks, set the following option, <code>none</code>.</p>
@@ -5738,7 +6006,7 @@ For more information, see <a href="#connector-custom-snapshot">custom snapshotte
 <p><code>select_all</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies how the connector queries data while performing a snapshot.<br>
+<p>Specifies how the connector queries data while performing a snapshot.
 Set one of the following options:</p>
 </div>
 <div class="dlist">
@@ -5749,7 +6017,7 @@ Set one of the following options:</p>
 </dd>
 <dt class="hdlist1"><code>custom</code></dt>
 <dd>
-<p>The connector performs a snapshot query according to the implementation specified by the <a href="#db2-property-snapshot-snapshot-query-mode-custom-name"><code>snapshot.query.mode.custom.name</code></a> property, which defines a custom implementation of the <code>io.debezium.spi.snapshot.SnapshotQuery</code> interface.<br></p>
+<p>The connector performs a snapshot query according to the implementation specified by the <a href="#db2-property-snapshot-snapshot-query-mode-custom-name"><code>snapshot.query.mode.custom.name</code></a> property, which defines a custom implementation of the <code>io.debezium.spi.snapshot.SnapshotQuery</code> interface.</p>
 </dd>
 </dl>
 </div>
@@ -5778,20 +6046,24 @@ For more information, see <a href="#connector-custom-snapshot">custom snapshotte
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>During a snapshot, controls the transaction isolation level and how long the connector locks the tables that are in capture mode.
-The possible values are:<br>
-<br>
-<code>read_uncommitted</code> - Does not prevent other transactions from updating table rows during an initial snapshot.
-This mode has no data consistency guarantees; some data might be lost or corrupted.<br>
-<br>
-<code>read_committed</code> - Does not prevent other transactions from updating table rows during an initial snapshot.
+The possible values are:</p>
+</div>
+<div class="paragraph">
+<p><code>read_uncommitted</code> - Does not prevent other transactions from updating table rows during an initial snapshot.
+This mode has no data consistency guarantees; some data might be lost or corrupted.</p>
+</div>
+<div class="paragraph">
+<p><code>read_committed</code> - Does not prevent other transactions from updating table rows during an initial snapshot.
 It is possible for a new record to appear twice: once in the initial snapshot and once in the streaming phase.
-However, this consistency level is appropriate for data mirroring.<br>
-<br>
-<code>repeatable_read</code> - Prevents other transactions from updating table rows during an initial snapshot.
+However, this consistency level is appropriate for data mirroring.</p>
+</div>
+<div class="paragraph">
+<p><code>repeatable_read</code> - Prevents other transactions from updating table rows during an initial snapshot.
 It is possible for a new record to appear twice: once in the initial snapshot and once in the streaming phase.
-However, this consistency level is appropriate for data mirroring.<br>
-<br>
-<code>exclusive</code> - Uses repeatable read isolation level but takes an  exclusive lock for all tables to be read.
+However, this consistency level is appropriate for data mirroring.</p>
+</div>
+<div class="paragraph">
+<p><code>exclusive</code> - Uses repeatable read isolation level but takes an  exclusive lock for all tables to be read.
 This mode prevents other transactions from updating table rows during an initial snapshot.
 Only <code>exclusive</code> mode guarantees full consistency; the initial snapshot and streaming logs constitute a linear history.</p>
 </div></div></td>
@@ -5805,13 +6077,16 @@ Only <code>exclusive</code> mode guarantees full consistency; the initial snapsh
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies how the connector handles exceptions during processing of events.
-The possible values are:<br>
-<br>
-<code>fail</code> - The connector logs the offset of the problematic event and stops processing.<br>
-<br>
-<code>warn</code> - The connector logs the offset of the problematic event and continues processing with the next event.<br>
-<br>
-<code>skip</code> - The connector skips the problematic event and continues processing with the next event.</p>
+The possible values are:</p>
+</div>
+<div class="paragraph">
+<p><code>fail</code> - The connector logs the offset of the problematic event and stops processing.</p>
+</div>
+<div class="paragraph">
+<p><code>warn</code> - The connector logs the offset of the problematic event and continues processing with the next event.</p>
+</div>
+<div class="paragraph">
+<p><code>skip</code> - The connector skips the problematic event and continues processing with the next event.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5822,13 +6097,26 @@ The possible values are:<br>
 <p><code>500</code> (0.5 seconds)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Positive integer value that specifies the number of milliseconds that the connector waits before it checks the database for new change events.<br>
-<br>
-The value that you specify influences the behavior of <a href="#db2-property-heartbeat-interval-ms"><code>heartbeat.interval.ms</code></a>.
-The connector can emit heartbeat messages only during the specified polling cycle.<br></p>
+<p>Positive integer value that specifies the number of milliseconds that the connector waits before it checks the database for new change events.</p>
 </div>
 <div class="paragraph">
-<p>To prevent this setting from delaying heartbeat emissions, set it to a value that is less than or equal to the value of <code>heartbeat.interval.ms</code>.</p>
+<p>The value that you specify influences the behavior of <a href="#db2-property-heartbeat-interval-ms"><code>heartbeat.interval.ms</code></a>.
+The connector can emit heartbeat messages only during the specified polling cycle.</p>
+</div>
+<div class="paragraph">
+<p>To prevent this setting from delaying heartbeat emissions, set it to a value that is less than or equal to the value of <code>heartbeat.interval.ms</code>.
+If a value greater than 5000 milliseconds (5 seconds) is provided, the effective wait time will be capped at 5000 milliseconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="db2-property-poll-dispatch-interval-ms"></a><a href="#db2-property-poll-dispatch-interval-ms"><code>poll.dispatch.interval.ms</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>0</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>An integer value that specifies the number of milliseconds the connector should accumulate events in the queue before each queue consumption.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5868,7 +6156,7 @@ Always set the value of <code>max.queue.size</code> to be larger than the value 
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A long integer value that specifies the maximum volume of the blocking queue in bytes.
 By default, volume limits are not specified for the blocking queue.
-To specify the number of bytes that the queue can consume, set this property to a positive long value.<br>
+To specify the number of bytes that the queue can consume, set this property to a positive long value.
 If <a href="#db2-property-max-queue-size"><code>max.queue.size</code></a> is also set, writing to the queue is blocked when the size of the queue reaches the limit specified by either property.
 For example, if you set <code>max.queue.size=1000</code>, and <code>max.queue.size.in.bytes=5000</code>, writing to the queue is blocked after the queue contains 1000 records, or after the volume of the records in the queue reaches 5000 bytes.</p>
 </div></div></td>
@@ -5881,15 +6169,17 @@ For example, if you set <code>max.queue.size=1000</code>, and <code>max.queue.si
 <p><code>0</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies an interval in milliseconds that determines how frequently the connector sends messages to a Kafka heartbeat topic, regardless of whether changes occur in the database.<br>
-By default, the connector does not send heartbeat messages.<br>
-<br>
-Setting this property can help to confirm whether the connector is still receiving change events from the database.
+<p>Specifies an interval in milliseconds that determines how frequently the connector sends messages to a Kafka heartbeat topic, regardless of whether changes occur in the database.
+By default, the connector does not send heartbeat messages.</p>
+</div>
+<div class="paragraph">
+<p>Setting this property can help to confirm whether the connector is still receiving change events from the database.
 This can be especially important in databases where captured tables remain unchanged for long periods.
 When a database experiences frequent long intervals during which changes no changes occur in captured tables, although the connector continues to read the transaction log as usual, it only rarely commits offset values to Kafka.
-As a result, after a connector restart, because the offset value is stale, the connector must send a high number of change events.<br>
-<br>
-By contrast, when you configure the connector to send regular heartbeat messages, it can update the offset in Kafka more frequently.
+As a result, after a connector restart, because the offset value is stale, the connector must send a high number of change events.</p>
+</div>
+<div class="paragraph">
+<p>By contrast, when you configure the connector to send regular heartbeat messages, it can update the offset in Kafka more frequently.
 Because the offset values in Kafka remain current, fewer change events must be re-sent after a connector restarts.</p>
 </div>
 <div class="admonitionblock note">
@@ -5925,6 +6215,59 @@ If you are starting multiple connectors in a cluster, this property is useful fo
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="db2-property-statistics-metrics-enabled"></a><a href="#db2-property-statistics-metrics-enabled"><code>statistics.metrics.enabled</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>true</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specifies whether the connector collects advanced statistical metrics for streaming metrics, such as quantiles.
+When set to <code>true</code>, the connector collects the following statistics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Minimum value</p>
+</li>
+<li>
+<p>Maximum value</p>
+</li>
+<li>
+<p>Average value</p>
+</li>
+<li>
+<p>P50 (median) percentile</p>
+</li>
+<li>
+<p>P95 percentile</p>
+</li>
+<li>
+<p>P99 percentile</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently only <code>MilliSecondsBehindSource</code> metric supports collecting quantiles.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The statistics are computed using a probabilistic data structure (DDSketch) that provides approximate quantile values with 1% relative accuracy.
+When set to <code>false</code>, the connector does not collect quantiles, and the quantile JMX metrics return <code>null</code> values.
+The connector continues to collect minimum, maximum, and average values.
+Disabling quantile collection reduces memory overhead slightly.
+For more information, see <a href="#db2-streaming-metrics">Streaming metrics</a>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="db2-property-streaming-delay-ms"></a><a href="#db2-property-streaming-delay-ms"><code>streaming.delay.ms</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5946,8 +6289,8 @@ Set a delay value that is higher than the value of the <a href="https://kafka.ap
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>An optional, comma-separated list of regular expressions that match the fully-qualified names (<code><em>&lt;schemaName&gt;.&lt;tableName&gt;</em></code>) of the tables to include in a snapshot.
 The specified items must be named in the connector&#8217;s <a href="#db2-property-table-include-list"><code>table.include.list</code></a> property.
-This property takes effect only if the connector&#8217;s <a href="#db2-property-snapshot-mode"><code>snapshot.mode</code></a> property is set to a value other than <code>never</code>.<br>
-This property does not affect the behavior of incremental snapshots.<br></p>
+This property takes effect only if the connector&#8217;s <a href="#db2-property-snapshot-mode"><code>snapshot.mode</code></a> property is set to a value other than <code>no_data</code>.
+This property does not affect the behavior of incremental snapshots.</p>
 </div>
 <div class="paragraph">
 <p>To match the name of a table, Debezium applies the regular expression that you specify as an <em>anchored</em> regular expression.
@@ -5977,11 +6320,13 @@ This property specifies the maximum number of rows in a batch.</p>
 <p>Positive integer value that specifies the maximum amount of time (in milliseconds) to wait to obtain table locks when performing a snapshot.
 If the connector cannot acquire table locks in this interval, the snapshot fails.
 <a href="#db2-snapshots">How the connector performs snapshots</a> provides details.
-Other possible settings are:<br>
-<br>
-<code>0</code> -  The connector immediately fails when it cannot obtain a lock.<br>
-<br>
-<code>-1</code> - The connector waits infinitely.</p>
+Other possible settings are:</p>
+</div>
+<div class="paragraph">
+<p><code>0</code> -  The connector immediately fails when it cannot obtain a lock.</p>
+</div>
+<div class="paragraph">
+<p><code>-1</code> - The connector waits infinitely.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6210,7 +6555,7 @@ Adjust the chunk size to a value that provides the best performance in your envi
 <p><code>insert_insert</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies the watermarking mechanism that the connector uses during an incremental snapshot to deduplicate events that might be captured by an incremental snapshot and then recaptured after streaming resumes.<br>
+<p>Specifies the watermarking mechanism that the connector uses during an incremental snapshot to deduplicate events that might be captured by an incremental snapshot and then recaptured after streaming resumes.
 You can specify one of the following options:</p>
 </div>
 <div class="dlist">
@@ -6273,13 +6618,16 @@ This cache will help to determine the topic name corresponding to a given data c
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Controls the name of the topic to which the connector sends heartbeat messages.
-The topic name has this pattern:<br>
-<br>
-<em>topic.heartbeat.prefix</em>.<em>topic.prefix</em><br>
-<br>
-For example, if the topic prefix is <code>fulfillment</code>, the default topic name is <code>__debezium-heartbeat.fulfillment</code>.<br>
-<br>
-This property is ignored if <code>topic.heartbeat.name</code> is set.</p>
+The topic name has this pattern:</p>
+</div>
+<div class="paragraph">
+<p><em>topic.heartbeat.prefix</em>.<em>topic.prefix</em></p>
+</div>
+<div class="paragraph">
+<p>For example, if the topic prefix is <code>fulfillment</code>, the default topic name is <code>__debezium-heartbeat.fulfillment</code>.</p>
+</div>
+<div class="paragraph">
+<p>This property is ignored if <code>topic.heartbeat.name</code> is set.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6290,13 +6638,16 @@ This property is ignored if <code>topic.heartbeat.name</code> is set.</p>
 <p><em>empty</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies an explicit, full name for the topic to which the connector sends heartbeat messages, overriding the prefix-based naming derived from <code>topic.heartbeat.prefix</code> and <code>topic.prefix</code>.<br>
-<br>
-When set, all heartbeat messages are routed to this exact topic name, regardless of the connector&#8217;s <code>topic.prefix</code>. This is useful when running multiple connectors and you want to consolidate heartbeat events into a single shared topic, avoiding the creation of a large number of single-partition heartbeat topics.<br>
-<br>
-For example, setting this to <code>debezium-heartbeat</code> routes all heartbeat messages to a topic named <code>debezium-heartbeat</code>.<br>
-<br>
-If this property is empty or unset, the connector falls back to the default behavior: <em>topic.heartbeat.prefix</em>.<em>topic.prefix</em>.</p>
+<p>Specifies an explicit, full name for the topic to which the connector sends heartbeat messages, overriding the prefix-based naming derived from <code>topic.heartbeat.prefix</code> and <code>topic.prefix</code>.</p>
+</div>
+<div class="paragraph">
+<p>When set, all heartbeat messages are routed to this exact topic name, regardless of the connector&#8217;s <code>topic.prefix</code>. This is useful when running multiple connectors and you want to consolidate heartbeat events into a single shared topic, avoiding the creation of a large number of single-partition heartbeat topics.</p>
+</div>
+<div class="paragraph">
+<p>For example, setting this to <code>debezium-heartbeat</code> routes all heartbeat messages to a topic named <code>debezium-heartbeat</code>.</p>
+</div>
+<div class="paragraph">
+<p>If this property is empty or unset, the connector falls back to the default behavior: <em>topic.heartbeat.prefix</em>.<em>topic.prefix</em>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6308,11 +6659,13 @@ If this property is empty or unset, the connector falls back to the default beha
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Controls the name of the topic to which the connector sends transaction metadata messages.
-The topic name has this pattern:<br>
-<br>
-<em>topic.prefix</em>.<em>topic.transaction</em><br>
-<br>
-For example, if the topic prefix is <code>fulfillment</code>, the default topic name is <code>fulfillment.transaction</code>.</p>
+The topic name has this pattern:</p>
+</div>
+<div class="paragraph">
+<p><em>topic.prefix</em>.<em>topic.transaction</em></p>
+</div>
+<div class="paragraph">
+<p>For example, if the topic prefix is <code>fulfillment</code>, the default topic name is <code>fulfillment.transaction</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6325,8 +6678,7 @@ For example, if the topic prefix is <code>fulfillment</code>, the default topic 
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies the number of threads that the connector uses when performing an initial snapshot.
 To enable parallel initial snapshots, set the property to a value greater than 1.
-In a parallel initial snapshot, the connector processes multiple tables concurrently.
-<br></p>
+In a parallel initial snapshot, the connector processes multiple tables concurrently.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6339,13 +6691,27 @@ In a parallel initial snapshot, the connector processes multiple tables concurre
 <p>When you enable parallel initial snapshots, the threads that perform each table snapshot can require varying times to complete their work.
 If a snapshot for one table requires significantly more time to complete than the snapshots for other tables, threads that have completed their work sit idle.
 In some environments, a network device such as a load balancer or firewall, terminates connections that remain idle for an extended interval.
-After the snapshot completes, the connector is unable to close the connection, resulting in an exception, and an incomplete snapshot, even in cases where the connector successfully transmitted all snapshot data.<br>
-<br>
-If you experience this problem, revert the value of <code>snapshot.max.threads</code> to <code>1</code>, and retry the snapshot.</p>
+After the snapshot completes, the connector is unable to close the connection, resulting in an exception, and an incomplete snapshot, even in cases where the connector successfully transmitted all snapshot data.</p>
+</div>
+<div class="paragraph">
+<p>If you experience this problem, revert the value of <code>snapshot.max.threads</code> to <code>1</code>, and retry the snapshot.</p>
 </div>
 </td>
 </tr>
 </table>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="db2-property-legacy-snapshot-max-threads"></a><a href="#db2-property-legacy-snapshot-max-threads"><code>legacy.snapshot.max.threads</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>false</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specifies whether the parallel initial snapshot uses the legacy table-per-thread algorithm.
+When set to <code>false</code> (the default), the connector will chunk the contents of the source table across all parallel initial snapshot threads for maximum performance.
+When set to <code>true</code>, the connector will process each table per thread.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6419,7 +6785,7 @@ A string of asterisks replaces the original values, for example,  <code>********
 <p><code>-1</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies how the connector responds after an operation that results in a retriable error, such as a connection error.<br>
+<p>Specifies how the connector responds after an operation that results in a retriable error, such as a connection error.
 Set one of the following options:</p>
 </div>
 <div class="dlist">
@@ -6541,7 +6907,7 @@ One second is not allowed as this can result in an infinite loop.  Recommended n
 <p>The following table describes the <code>schema.history.internal</code> properties for configuring the Debezium connector.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Connector database schema history configuration properties</caption>
+<caption class="title">Table 12. Connector database schema history configuration properties</caption>
 <colgroup>
 <col style="width: 33%;">
 <col style="width: 17%;">
@@ -6642,7 +7008,7 @@ Skipping should be used only with care as it can lead to data loss or mangling w
 <p><code>false</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>A Boolean value that specifies whether the connector records schema structures from all tables in a schema or database, or only from tables that are designated for capture.<br>
+<p>A Boolean value that specifies whether the connector records schema structures from all tables in a schema or database, or only from tables that are designated for capture.
 Specify one of the following values:</p>
 </div>
 <div class="dlist">
@@ -6657,7 +7023,7 @@ Debezium requires the schema history of a table so that it can identify the stru
 <dt class="hdlist1"><code>true</code></dt>
 <dd>
 <p>During a database snapshot, the connector records the table schemas only for the tables from which Debezium captures change events.
-If you change the default value, and you later configure the connector to capture data from other tables in the database, the connector lacks the schema information that it requires to capture change events from the tables.<br></p>
+If you change the default value, and you later configure the connector to capture data from other tables in the database, the connector lacks the schema information that it requires to capture change events from the tables.</p>
 </dd>
 </dl>
 </div></div></td>
@@ -6670,7 +7036,7 @@ If you change the default value, and you later configure the connector to captur
 <p><code>false</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>A Boolean value that specifies whether the connector records schema structures from all logical databases in the database instance.<br>
+<p>A Boolean value that specifies whether the connector records schema structures from all logical databases in the database instance.
 Specify one of the following values:</p>
 </div>
 <div class="dlist">
@@ -6682,6 +7048,34 @@ Specify one of the following values:</p>
 <dt class="hdlist1"><code>false</code></dt>
 <dd>
 <p>The connector records schema structures for all logical databases.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="db2-property-database-history-memory-optimization"></a><a href="#db2-property-database-history-memory-optimization"><code>schema.history.internal.memory.optimization</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>off</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Controls how Debezium deduplicates identical schema objects (tables, columns, attributes) in memory using an interner.
+Specify one of the following values:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>off</code></dt>
+<dd>
+<p>No deduplication is performed (the default).</p>
+</dd>
+<dt class="hdlist1"><code>on</code></dt>
+<dd>
+<p>Each connector uses its own isolated intern pool. Reduces heap usage within a single connector without interfering with other connectors.</p>
+</dd>
+<dt class="hdlist1"><code>shared</code></dt>
+<dd>
+<p>All connectors configured with <code>shared</code> share a single global intern pool. Maximises deduplication when many connectors track tables with similar structures.</p>
 </dd>
 </dl>
 </div></div></td>
@@ -6736,7 +7130,7 @@ schema.history.internal.consumer.ssl.key.password=test1234</code></pre>
 <p>The following table describes the Kafka <code>signal</code> properties.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. Kafka signals configuration properties</caption>
+<caption class="title">Table 13. Kafka signals configuration properties</caption>
 <colgroup>
 <col style="width: 33%;">
 <col style="width: 17%;">
@@ -6831,7 +7225,7 @@ For example, the connector passes properties such as <code>signal.consumer.secur
 <p>The following table describes properties that you can use to configure the Debezium sink <code>notification</code> channel.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 17. Sink notification configuration properties</caption>
+<caption class="title">Table 14. Sink notification configuration properties</caption>
 <colgroup>
 <col style="width: 33%;">
 <col style="width: 17%;">
@@ -6915,6 +7309,9 @@ In this scenario, you must reconfigure the observability stack to use the new MB
 You configure custom metrics by adding the <code>custom.metric.tags</code> property to the connector configuration.
 The property accepts key-value pairs in which each key represents a tag for the MBean object name, and the corresponding value represents the value of that tag.
 For example: <code>k1=v1,k2=v2</code>.
+Tag keys must be valid JMX <code>ObjectName</code> property keys.
+The comma separates entries, and the equals sign separates each key from its value; therefore, neither can occur in a key.
+Keys also cannot contain JMX-reserved characters such as <code>:</code>, <code>*</code>, or <code>?</code>.
 Debezium appends the specified tags to the MBean name of the connector.</p>
 </div>
 <div class="paragraph">
@@ -6935,8 +7332,7 @@ If you specify multiple key-value pairs, all of the specified pairs are appended
 <div class="title">Example 3. How custom tags modify the connector MBean name</div>
 <div class="content">
 <div class="paragraph">
-<p>By default, the Db2 connector uses the following MBean name for streaming metrics:
-<br></p>
+<p>By default, the Db2 connector uses the following MBean name for streaming metrics:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6960,10 +7356,8 @@ If you specify multiple key-value pairs, all of the specified pairs are appended
 <p>The <strong>MBean</strong> is <code>debezium.db2:type=connector-metrics,context=snapshot,server=<em>&lt;topic.prefix&gt;</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>Snapshot metrics are not exposed unless a snapshot operation is active, or if a snapshot has occurred since the last connector start.</p>
-</div>
-<div class="paragraph">
-<p>The following table lists the snapshot metrics that are available.</p>
+<p>The following table lists the JMX metrics that are available for monitoring Debezium snapshot operations, including row counts, table progress, duration, and queue capacity.
+Snapshot metrics are not exposed unless a snapshot operation is active, or a snapshot has occurred since the last connector start.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -7025,6 +7419,17 @@ If the snapshot is interrupted, and the connector task restarts, the metric coun
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The total number of events that this connector has seen since last started or reset.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-snaps-metric-totalnumberofreadeventsseen_db2"></a><a href="#connectors-snaps-metric-totalnumberofreadeventsseen_db2"><code>TotalNumberOfReadEventsSeen</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>long</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The total number of read events that this connector has seen since last started or reset.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -7230,7 +7635,7 @@ Updates every 10,000 rows scanned and upon completing a table.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The connector also provides the following additional snapshot metrics when an incremental snapshot is executed:</p>
+<p>The following table lists the additional JMX metrics that are available when a connector runs an incremental snapshot, including chunk and table boundary identifiers that you can use to track snapshot progress.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -7310,7 +7715,7 @@ Updates every 10,000 rows scanned and upon completing a table.</p>
 <p>The <strong>MBean</strong> is <code>debezium.db2:type=connector-metrics,context=streaming,server=<em>&lt;topic.prefix&gt;</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>The following table lists the streaming metrics that are available.</p>
+<p>The following table lists the JMX metrics that are available for monitoring Debezium streaming operations, including event counts by type, lag behind the source, queue capacity, and connection status.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -7421,6 +7826,18 @@ Represents the data change workload for Debezium to process.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-strm-metric-numberofunchangedeventsskipped_db2"></a><a href="#connectors-strm-metric-numberofunchangedeventsskipped_db2"><code>NumberOfUnchangedEventsSkipped</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>long</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Number of update events skipped since the last connector start or metrics reset because no monitored columns changed.
+Defaults to <code>-1</code> if <a href="#db2-property-skip-messages-without-change"><code>skip.messages.without.change</code></a> is <code>false</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="connectors-strm-metric-capturedtables_db2"></a><a href="#connectors-strm-metric-capturedtables_db2"><code>CapturedTables</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -7473,6 +7890,78 @@ Represents the data change workload for Debezium to process.</p>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The number of milliseconds between the last change event&#8217;s timestamp and the connector processing it.
 The values will incorporate any differences between the clocks on the machines where the database server and the connector are running.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-strm-metric-millisecondsbehindsourceminvalue_db2"></a><a href="#connectors-strm-metric-millisecondsbehindsourceminvalue_db2"><code>MilliSecondsBehindSourceMinValue</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>long</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The minimum lag in milliseconds behind the source that is observed during the connector&#8217;s runtime.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-strm-metric-millisecondsbehindsourcemaxvalue_db2"></a><a href="#connectors-strm-metric-millisecondsbehindsourcemaxvalue_db2"><code>MilliSecondsBehindSourceMaxValue</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>long</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The maximum lag in milliseconds behind the source that is observed during the connector&#8217;s runtime.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-strm-metric-millisecondsbehindsourceaveragevalue_db2"></a><a href="#connectors-strm-metric-millisecondsbehindsourceaveragevalue_db2"><code>MilliSecondsBehindSourceAverageValue</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>double</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The average lag in milliseconds behind the source calculated across all observations during the connector&#8217;s runtime.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-strm-metric-millisecondsbehindsourcep50_db2"></a><a href="#connectors-strm-metric-millisecondsbehindsourcep50_db2"><code>MilliSecondsBehindSourceP50</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>double</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The 50th percentile (median) of the lag in milliseconds behind the source.
+This metric provides a more robust measure of typical lag than the average, as it is less affected by outlier values.
+Available when <a href="#db2-property-statistics-metrics-enabled"><code>statistics.metrics.enabled</code></a> is set to <code>true</code> (default).</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-strm-metric-millisecondsbehindsourcep95_db2"></a><a href="#connectors-strm-metric-millisecondsbehindsourcep95_db2"><code>MilliSecondsBehindSourceP95</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>double</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The 95th percentile of the lag in milliseconds behind the source.
+This metric indicates that 95% of lag measurements are below this value, useful for identifying tail latencies and setting SLA thresholds.
+Available when <a href="#db2-property-statistics-metrics-enabled"><code>statistics.metrics.enabled</code></a> is set to <code>true</code> (default).</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-strm-metric-millisecondsbehindsourcep99_db2"></a><a href="#connectors-strm-metric-millisecondsbehindsourcep99_db2"><code>MilliSecondsBehindSourceP99</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>double</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The 99th percentile of the lag in milliseconds behind the source.
+This metric indicates that 99% of lag measurements are below this value, useful for understanding worst-case performance scenarios.
+Available when <a href="#db2-property-statistics-metrics-enabled"><code>statistics.metrics.enabled</code></a> is set to <code>true</code> (default).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -7539,7 +8028,7 @@ The values will incorporate any differences between the clocks on the machines w
 <p>The <strong>MBean</strong> is <code>debezium.db2:type=connector-metrics,context=schema-history,server=<em>&lt;topic.prefix&gt;</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>The following table lists the schema history metrics that are available.</p>
+<p>The following table lists the JMX metrics that are available for monitoring the connector&#8217;s schema history process, including recovery status, the number of schema changes applied, and timestamps for the most recent changes.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -7645,6 +8134,76 @@ The values will incorporate any differences between the clocks on the machines w
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="_interner_metrics"><a class="anchor" href="#_interner_metrics"></a>Interner metrics</h4>
+<div class="paragraph">
+<p>The connector interns schema objects (columns, table identifiers, type names) to reduce heap usage.
+The <strong>MBean</strong> is <code>debezium.db2:type=connector-metrics,context=interner,server=<em>&lt;topic.prefix&gt;</em></code>.</p>
+</div>
+<div class="paragraph">
+<p>The following table lists the interner metrics that are available.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 45%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attributes</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-interner-metric-hitcount_db2"></a><a href="#connectors-interner-metric-hitcount_db2"><code>HitCount</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>long</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Number of times <code>intern()</code> returned an already-cached canonical instance.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-interner-metric-misscount_db2"></a><a href="#connectors-interner-metric-misscount_db2"><code>MissCount</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>long</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Number of times <code>intern()</code> stored a new instance in the pool.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-interner-metric-poolsize_db2"></a><a href="#connectors-interner-metric-poolsize_db2"><code>PoolSize</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>int</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Current number of entries held in the pool. Includes entries whose referents may have been garbage-collected but not yet expunged.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="connectors-interner-metric-hitratiopercent_db2"></a><a href="#connectors-interner-metric-hitratiopercent_db2"><code>HitRatioPercent</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>double</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Hit ratio as a percentage (<code>hitCount / (hitCount + missCount) * 100</code>), or <code>0.0</code> if no calls have been recorded yet.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -7657,7 +8216,7 @@ Some of the UDFs expect a return value in which case you use the  SQL <code>VALU
 For other UDFs, use the SQL <code>CALL</code> statement.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 18. Descriptions of Debezium management UDFs</caption>
+<caption class="title">Table 15. Descriptions of Debezium management UDFs</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7683,10 +8242,13 @@ For other UDFs, use the SQL <code>CALL</code> statement.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="debezium-db2-put-capture-mode"></a><a href="#debezium-db2-put-capture-mode">Put a table into capture mode</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CALL ASNCDC.ADDTABLE('MYSCHEMA', 'MYTABLE');</code><br>
-<br>
-Replace <code>MYSCHEMA</code>  with the name of the schema that contains the table you want to put into capture mode.
-Likewise, replace <code>MYTABLE</code> with the name of the table to put into capture mode.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>CALL ASNCDC.ADDTABLE('MYSCHEMA', 'MYTABLE');</code></p>
+</div>
+<div class="paragraph">
+<p>Replace <code>MYSCHEMA</code>  with the name of the schema that contains the table you want to put into capture mode.
+Likewise, replace <code>MYTABLE</code> with the name of the table to put into capture mode.</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="debezium-db2-remove-capture-mode"></a><a href="#debezium-db2-remove-capture-mode">Remove a table from capture mode</a></p></td>
@@ -7694,9 +8256,12 @@ Likewise, replace <code>MYTABLE</code> with the name of the table to put into ca
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="debezium-db2-reinitialize-asn-service"></a><a href="#debezium-db2-reinitialize-asn-service">Reinitialize the ASN service</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VALUES ASNCDC.ASNCDCSERVICES('reinit','asncdc');</code><br>
-<br>
-Do this after you put a table into capture mode or after you remove a table from capture mode.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>VALUES ASNCDC.ASNCDCSERVICES('reinit','asncdc');</code></p>
+</div>
+<div class="paragraph">
+<p>Do this after you put a table into capture mode or after you remove a table from capture mode.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -7919,7 +8484,7 @@ Restart the connector to see updated column names in change events.</p>
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Topic Routing :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/transformations/topic-routing.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/transformations/topic-routing.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,22 +411,17 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/transformations/topic-routing.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/transformations/topic-routing.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/transformations/topic-routing.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/transformations/topic-routing.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/transformations/topic-routing.html" data-hash="true">3.2</a>
-                        <a class="version" href="/documentation//reference/3.1/transformations/topic-routing.html" data-hash="true">3.1</a>
-                        <a class="version" href="/documentation//reference/3.0/transformations/topic-routing.html" data-hash="true">3.0</a>
-                        <a class="version" href="/documentation//reference/2.7/transformations/topic-routing.html" data-hash="true">2.7</a>
-                        <a class="version" href="/documentation//reference/2.6/transformations/topic-routing.html" data-hash="true">2.6</a>
-                        <a class="version" href="/documentation//reference/2.5/transformations/topic-routing.html" data-hash="true">2.5</a>
-                        <a class="version" href="/documentation//reference/2.4/transformations/topic-routing.html" data-hash="true">2.4</a>
-                        <a class="version" href="/documentation//reference/2.3/transformations/topic-routing.html" data-hash="true">2.3</a>
-                        <a class="version" href="/documentation//reference/2.2/transformations/topic-routing.html" data-hash="true">2.2</a>
-                        <a class="version" href="/documentation//reference/2.1/transformations/topic-routing.html" data-hash="true">2.1</a>
-                        <a class="version" href="/documentation//reference/2.0/transformations/topic-routing.html" data-hash="true">2.0</a>
-                        <a class="version" href="/documentation//reference/1.9/transformations/topic-routing.html" data-hash="true">1.9</a>
+                        <a class="version is-current" href="/documentation/reference/transformations/topic-routing.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/transformations/topic-routing.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/transformations/topic-routing.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/transformations/topic-routing.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/transformations/topic-routing.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/transformations/topic-routing.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/transformations/topic-routing.html" data-hash="true">3.2</a>
+                        <a class="version" href="/documentation/reference/3.1/transformations/topic-routing.html" data-hash="true">3.1</a>
+                        <a class="version" href="/documentation/reference/3.0/transformations/topic-routing.html" data-hash="true">3.0</a>
+                        <a class="version" href="/documentation/reference/2.7/transformations/topic-routing.html" data-hash="true">2.7</a>
+                        <a class="version" href="/documentation/reference/1.9/transformations/topic-routing.html" data-hash="true">1.9</a>
         </div>
         |
     </div>
@@ -522,7 +532,7 @@ You can re-route change event records for tables in any of the shards to the sam
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">transforms=Reroute
-transforms.Reroute.type=io.debezium.transforms.ByLogicalTableRouter
+transforms.Reroute.type=io.debezium.transforms.ToLogicalTopicRouter
 transforms.Reroute.topic.regex=(.*)customers_shard(.*)
 transforms.Reroute.topic.replacement=$1customers_all_shards</code></pre>
 </div>
@@ -535,10 +545,18 @@ transforms.Reroute.topic.replacement=$1customers_all_shards</code></pre>
 <div class="paragraph">
 <p>In the example, the regular expression, <code>(.*)customers_shard(.*)</code> matches records for changes to tables whose names include the <code>customers_shard</code> string. This would re-route records for tables with the following names:</p>
 </div>
-<div class="paragraph">
-<p><code>myserver.mydb.customers_shard1</code><br>
-<code>myserver.mydb.customers_shard2</code><br>
-<code>myserver.mydb.customers_shard3</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>myserver.mydb.customers_shard1</code></p>
+</li>
+<li>
+<p><code>myserver.mydb.customers_shard2</code></p>
+</li>
+<li>
+<p><code>myserver.mydb.customers_shard3</code></p>
+</li>
+</ul>
 </div>
 </dd>
 <dt class="hdlist1"><code>topic.replacement</code></dt>
@@ -565,7 +583,7 @@ A predicate might be useful if you configure the SMT to route tables that match 
 <p>A Debezium change event key uses the table columns that make up the table&#8217;s primary key. To route records for multiple physical tables to one topic, the event key must be unique across all of those tables. However, it is possible for each physical table to have a primary key that is unique within only that table. For example, a row in the <code>myserver.mydb.customers_shard1</code> table might have the same key value as a row in the <code>myserver.mydb.customers_shard2</code> table.</p>
 </div>
 <div class="paragraph">
-<p>To ensure that each event key is unique across the tables whose change event records go to the same topic, the topic routing transformation inserts a field into change event keys. By default, the name of the inserted field is <code>__dbz__physicalTableIdentifier</code>. The value of the inserted field is the default destination topic name.</p>
+<p>To ensure that each event key is unique across the tables whose change event records go to the same topic, the topic routing transformation inserts a field into change event keys. By default, the name of the inserted field is <code>__dbz__sourceIdentifier</code>. The value of the inserted field is the default destination topic name.</p>
 </div>
 <div class="paragraph">
 <p>If you want to, you can configure the topic routing transformation to insert a different field into the key. To do this, specify the <code>key.field.name</code> option and set it to a field name that does not clash with existing primary key field names. For example:</p>
@@ -573,7 +591,7 @@ A predicate might be useful if you configure the SMT to route tables that match 
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">transforms=Reroute
-transforms.Reroute.type=io.debezium.transforms.ByLogicalTableRouter
+transforms.Reroute.type=io.debezium.transforms.ToLogicalTopicRouter
 transforms.Reroute.topic.regex=(.*)customers_shard(.*)
 transforms.Reroute.topic.replacement=$1customers_all_shards
 transforms.Reroute.key.field.name=shard_id</code></pre>
@@ -607,12 +625,20 @@ transforms.Reroute.key.field.replacement=$2</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this configuration, suppose that the default destination topic names are:</p>
+<p>With this configuration, suppose that the following default destination topic names are in effect:</p>
 </div>
-<div class="paragraph">
-<p><code>myserver.mydb.customers_shard1</code><br>
-<code>myserver.mydb.customers_shard2</code><br>
-<code>myserver.mydb.customers_shard3</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>myserver.mydb.customers_shard1</code></p>
+</li>
+<li>
+<p><code>myserver.mydb.customers_shard2</code></p>
+</li>
+<li>
+<p><code>myserver.mydb.customers_shard3</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The transformation uses the values in the second captured group, the shard numbers, as the value of the key&#8217;s new field. In this example, the inserted key field&#8217;s values would be <code>1</code>, <code>2</code>, or <code>3</code>.</p>
@@ -676,7 +702,9 @@ Because the structure of these other messages differs from the structure of the 
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="by-logical-table-router-topic-regex"></a><a href="#by-logical-table-router-topic-regex"><code>topic.regex</code></a></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>No default value.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies a regular expression that the transformation applies to each change event record to determine if it should be routed to a particular topic.</p>
 </div></div></td>
@@ -685,7 +713,9 @@ Because the structure of these other messages differs from the structure of the 
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="by-logical-table-router-topic-replacement"></a><a href="#by-logical-table-router-topic-replacement"><code>topic.replacement</code></a></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>No default value.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies a regular expression that represents the destination topic name. The transformation routes each matching record to the topic identified by this expression. This expression can refer to groups captured by the regular expression that you specify for <code>topic.regex</code>. To refer to a group, specify <code>$1</code>, <code>$2</code>, and so on.</p>
 </div></div></td>
@@ -698,9 +728,13 @@ Because the structure of these other messages differs from the structure of the 
 <p><code>true</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Indicates whether to add a field to the record&#8217;s change event key. Adding a key field ensures that each event key is unique across the tables whose change event records go to the same topic. This helps to prevent collisions of change events for records that have the same key but that originate from different source tables.<br>
-<br>
-Specify <code>false</code> if you do not want the transformation to add a key field.  For example, if you are routing records from a partitioned PostgreSQL table to one topic, you can configure <code>key.enforce.uniqueness=false</code> because unique keys are guaranteed in partitioned PostgreSQL tables.</p>
+<p>Indicates whether to add a field to the record&#8217;s change event key.
+Adding a key field ensures that each event key is unique across the tables whose change event records go to the same topic.
+This helps to prevent collisions of change events for records that have the same key but that originate from different source tables.</p>
+</div>
+<div class="paragraph">
+<p>Specify <code>false</code> if you do not want the transformation to add a key field.
+For example, if you are routing records from a partitioned PostgreSQL table to one topic, you can configure <code>key.enforce.uniqueness=false</code> because unique keys are guaranteed in partitioned PostgreSQL tables.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -708,17 +742,19 @@ Specify <code>false</code> if you do not want the transformation to add a key fi
 <p><a id="by-logical-table-router-key-field-name"></a><a href="#by-logical-table-router-key-field-name"><code>key.field.name</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>__dbz__physicalTableIdentifier</code></p>
+<p><code>__dbz__sourceIdentifier</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of a field to be added to the change event key. The value of this field identifies the original table name. For the SMT to add this field, <code>key.enforce.uniqueness</code> must be <code>true</code>, which is the default.</p>
+<p>Name of a field to be added to the change event key. The value of this field identifies the source from which the record originated. For the SMT to add this field, <code>key.enforce.uniqueness</code> must be <code>true</code>, which is the default.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="by-logical-table-router-key-field-regex"></a><a href="#by-logical-table-router-key-field-regex"><code>key.field.regex</code></a></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>No default value.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies a regular expression that the transformation applies to the default destination topic name to capture one or more groups of characters. For the SMT to apply this expression, <code>key.enforce.uniqueness</code> must be <code>true</code>, which is the default.</p>
 </div></div></td>
@@ -727,7 +763,9 @@ Specify <code>false</code> if you do not want the transformation to add a key fi
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="by-logical-table-router-key-field-replacement"></a><a href="#by-logical-table-router-key-field-replacement"><code>key.field&#8203;.replacement</code></a></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>No default value.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies a regular expression for determining the value of the inserted key field in terms of the groups captured by the expression specified for <code>key.field.regex</code>. For the SMT to apply this expression, <code>key.enforce.uniqueness</code> must be <code>true</code>, which is the default.</p>
 </div></div></td>
@@ -737,7 +775,7 @@ Specify <code>false</code> if you do not want the transformation to add a key fi
 <p><a id="by-logical-table-router-schema-name-adjustment-mode"></a><a href="#by-logical-table-router-schema-name-adjustment-mode"><code>schema.name.adjustment.mode</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>none</p>
+<p><code>none</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specify how the message key schema names derived from the resulting topic name should be adjusted for compatibility with the message converter used by the connector, including: <code>none</code> does not apply any adjustment (default), <code>avro</code> replaces the characters that cannot be used in the Avro type name with underscore.</p>
@@ -745,13 +783,13 @@ Specify <code>false</code> if you do not want the transformation to add a key fi
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a id="by-logical-table-router-logical-table-cache-size"></a><a href="#by-logical-table-router-logical-table-cache-size"><code>logical.table.cache.size</code></a></p>
+<p><a id="by-logical-table-router-logical-destination-cache-size"></a><a href="#by-logical-table-router-logical-destination-cache-size"><code>logical.destination.cache.size</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>16</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The size used for holding the max entries in LRUCache. The cache will keep the old/new schema for logical table key and value, also cache the derived key and topic regex result for improving the source record transformation.</p>
+<p>The size used for holding the max entries in LRUCache. The cache will keep the old/new schema for logical destination key and value, also cache the derived key and topic regex result for improving the source record transformation.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -766,7 +804,7 @@ Specify <code>false</code> if you do not want the transformation to add a key fi
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

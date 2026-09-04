@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>OpenLineage Integration :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/integrations/openlineage.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/integrations/openlineage.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="../transformations/vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../transformations/swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,21 +411,16 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/integrations/openlineage.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/integrations/openlineage.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/integrations/openlineage.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/integrations/openlineage.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/integrations/openlineage.html" data-hash="true">3.2</a>
+                        <a class="version is-current" href="/documentation/reference/integrations/openlineage.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/integrations/openlineage.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/integrations/openlineage.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/integrations/openlineage.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/integrations/openlineage.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/integrations/openlineage.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/integrations/openlineage.html" data-hash="true">3.2</a>
                     <a class="version is-missing" href="#">3.1</a>
                     <a class="version is-missing" href="#">3.0</a>
                     <a class="version is-missing" href="#">2.7</a>
-                    <a class="version is-missing" href="#">2.6</a>
-                    <a class="version is-missing" href="#">2.5</a>
-                    <a class="version is-missing" href="#">2.4</a>
-                    <a class="version is-missing" href="#">2.3</a>
-                    <a class="version is-missing" href="#">2.2</a>
-                    <a class="version is-missing" href="#">2.1</a>
-                    <a class="version is-missing" href="#">2.0</a>
                     <a class="version is-missing" href="#">1.9</a>
         </div>
         |
@@ -517,9 +527,11 @@ The OpenLineage integration provides you with comprehensive visibility into the 
 <h2 id="debezium-openlineage-about-data-lineage-and-openlineage"><a class="anchor" href="#debezium-openlineage-about-data-lineage-and-openlineage"></a>About Data Lineage and OpenLineage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Data lineage tracks the flow of data through various systems, transformations, and processes.
-This information provides you with visibility into where data originates, how it moves, and what dependencies exist in the data pipeline.
-Insights into data lineage is crucial for the following activities:</p>
+<p>Data lineage tracks where data originates, how it moves between systems, and what transformations it undergoes.
+OpenLineage is the open standard that Debezium uses to emit and share that lineage metadata across your data pipeline.</p>
+</div>
+<div class="paragraph">
+<p>Insights into data lineage is crucial for the following activities:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -607,10 +619,14 @@ But different processes are needed to configure the integration and to install d
 <h2 id="debezium-openlineage-how-debezium-integrates-with-openlineage"><a class="anchor" href="#debezium-openlineage-how-debezium-integrates-with-openlineage"></a>How Debezium integrates with OpenLineage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To integrate with OpenLineage, Debezium maps events in its lifecycle to artifacts in the OpenLineage data model.</p>
+<p>Debezium maps its internal objects and events to the OpenLineage data model, representing connectors as Jobs and database tables or Kafka topics as Datasets.
+The following sections describe how those mappings work for source connectors, sink connectors, and the connector lifecycle.</p>
 </div>
 <div class="sect2">
 <h3 id="debezium-openlineage-job-mapping"><a class="anchor" href="#debezium-openlineage-job-mapping"></a>OpenLineage job mapping</h3>
+<div class="paragraph">
+<p>Each Debezium connector instance is represented as an OpenLineage Job, which captures the connector&#8217;s identity, version, and full configuration to support lineage tracing and pipeline debugging.</p>
+</div>
 <div class="paragraph">
 <p>The Debezium connector is mapped to an OpenLineage <strong>Job</strong>, which includes the following elements:</p>
 </div>
@@ -641,6 +657,9 @@ But different processes are needed to configure the integration and to install d
 </div>
 <div class="sect2">
 <h3 id="debezium-openlineage-dataset-mapping-for-source-connectors"><a class="anchor" href="#debezium-openlineage-dataset-mapping-for-source-connectors"></a>Dataset mapping for source connectors</h3>
+<div class="paragraph">
+<p>For source connectors, Debezium maps the database tables it monitors to OpenLineage input datasets and the Kafka topics it produces to output datasets, capturing schema information for both.</p>
+</div>
 <div class="paragraph">
 <p>The following dataset mappings are possible:</p>
 </div>
@@ -771,6 +790,9 @@ Path: integrations/openlineage.adoc</p>
 <div class="sect1">
 <h2 id="debezium-openlineage-preparing-to-deploy-the-integration"><a class="anchor" href="#debezium-openlineage-preparing-to-deploy-the-integration"></a>Preparing to deploy the Debezium OpenLineage integration</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Before you can use the Debezium OpenLineage integration, install the required dependencies for your deployment type — either Kafka Connect or Debezium Server.</p>
+</div>
 <div class="sect2">
 <h3 id="debezium-openlineage-required-dependencies"><a class="anchor" href="#debezium-openlineage-required-dependencies"></a>Required Dependencies</h3>
 <div class="paragraph">
@@ -786,7 +808,7 @@ Path: integrations/openlineage.adoc</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Download the <a href="https://repo1.maven.org/maven2/io/debezium/debezium-openlineage-core/3.5.0.Final/debezium-openlineage-core-3.5.0.Final-libs.tar.gz">OpenLineage core archive</a>.</p>
+<p>Download the <a href="https://repo1.maven.org/maven2/io/debezium/debezium-openlineage-core/3.7.0.Beta1/debezium-openlineage-core-3.7.0.Beta1-libs.tar.gz">OpenLineage core archive</a>.</p>
 </li>
 <li>
 <p>Extract the contents of the archive into the Debezium plug-in directories in your Kafka Connect environment.</p>
@@ -803,7 +825,7 @@ Path: integrations/openlineage.adoc</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Download the <a href="https://repo1.maven.org/maven2/io/debezium/debezium-openlineage-core/3.5.0.Final/debezium-openlineage-core-3.5.0.Final-libs.tar.gz">OpenLineage core archive</a>.</p>
+<p>Download the <a href="https://repo1.maven.org/maven2/io/debezium/debezium-openlineage-core/3.7.0.Beta1/debezium-openlineage-core-3.7.0.Beta1-libs.tar.gz">OpenLineage core archive</a>.</p>
 </li>
 <li>
 <p>Extract the contents of the archive.</p>
@@ -1372,6 +1394,9 @@ The following examples show how Debezium sink connectors format output dataset n
 <div class="sect1">
 <h2 id="debezium-openlineage-monitoring-and-troubleshooting"><a class="anchor" href="#debezium-openlineage-monitoring-and-troubleshooting"></a>Monitoring and Troubleshooting</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>You can verify that the Debezium OpenLineage integration is working correctly and diagnose problems by inspecting connector logs, reviewing OpenLineage events, and resolving common configuration issues.</p>
+</div>
 <div class="sect2">
 <h3 id="debezium-openlineage-verifying-the-integration"><a class="anchor" href="#debezium-openlineage-verifying-the-integration"></a>Verifying the integration</h3>
 <div class="paragraph">
@@ -1400,6 +1425,9 @@ The following examples show how Debezium sink connectors format output dataset n
 </div>
 <div class="sect2">
 <h3 id="debezium-openlineage-common-issues"><a class="anchor" href="#debezium-openlineage-common-issues"></a>Common issues</h3>
+<div class="paragraph">
+<p>The following reference describes common problems that can prevent the OpenLineage integration from working correctly, along with steps to resolve them.</p>
+</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Integration not working</dt>
@@ -1508,7 +1536,7 @@ The following examples show how Debezium sink connectors format output dataset n
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

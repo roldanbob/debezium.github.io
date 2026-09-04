@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Debezium Connector for Cassandra :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/connectors/cassandra.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/connectors/cassandra.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="../transformations/vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../transformations/swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,22 +411,17 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/connectors/cassandra.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/connectors/cassandra.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/connectors/cassandra.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/connectors/cassandra.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/connectors/cassandra.html" data-hash="true">3.2</a>
-                        <a class="version" href="/documentation//reference/3.1/connectors/cassandra.html" data-hash="true">3.1</a>
-                        <a class="version" href="/documentation//reference/3.0/connectors/cassandra.html" data-hash="true">3.0</a>
-                        <a class="version" href="/documentation//reference/2.7/connectors/cassandra.html" data-hash="true">2.7</a>
-                        <a class="version" href="/documentation//reference/2.6/connectors/cassandra.html" data-hash="true">2.6</a>
-                        <a class="version" href="/documentation//reference/2.5/connectors/cassandra.html" data-hash="true">2.5</a>
-                        <a class="version" href="/documentation//reference/2.4/connectors/cassandra.html" data-hash="true">2.4</a>
-                        <a class="version" href="/documentation//reference/2.3/connectors/cassandra.html" data-hash="true">2.3</a>
-                        <a class="version" href="/documentation//reference/2.2/connectors/cassandra.html" data-hash="true">2.2</a>
-                        <a class="version" href="/documentation//reference/2.1/connectors/cassandra.html" data-hash="true">2.1</a>
-                        <a class="version" href="/documentation//reference/2.0/connectors/cassandra.html" data-hash="true">2.0</a>
-                        <a class="version" href="/documentation//reference/1.9/connectors/cassandra.html" data-hash="true">1.9</a>
+                        <a class="version is-current" href="/documentation/reference/connectors/cassandra.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/connectors/cassandra.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/connectors/cassandra.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/connectors/cassandra.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/connectors/cassandra.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/connectors/cassandra.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/connectors/cassandra.html" data-hash="true">3.2</a>
+                        <a class="version" href="/documentation/reference/3.1/connectors/cassandra.html" data-hash="true">3.1</a>
+                        <a class="version" href="/documentation/reference/3.0/connectors/cassandra.html" data-hash="true">3.0</a>
+                        <a class="version" href="/documentation/reference/2.7/connectors/cassandra.html" data-hash="true">2.7</a>
+                        <a class="version" href="/documentation/reference/1.9/connectors/cassandra.html" data-hash="true">1.9</a>
         </div>
         |
     </div>
@@ -477,6 +487,7 @@
 <li><a href="#cassandra-example-configuration">Example configuration</a></li>
 <li><a href="#cassandra-connection-configuration">Connection Configuration</a></li>
 <li><a href="#cassandra-monitoring">Monitoring</a></li>
+<li><a href="#cassandra-tracing">Tracing</a></li>
 <li><a href="#cassandra-connector-properties">Connector properties</a></li>
 </ul>
 </li>
@@ -1191,7 +1202,7 @@ VALUES (
   }
   },
   "source": {
-    "version": "3.5.0.Final",
+    "version": "3.7.0.Beta1",
     "connector": "cassandra",
     "cluster": "cassandra-cluster-1",
     "snapshot": false,
@@ -1246,7 +1257,7 @@ WHERE id = 1001 AND registration_date = 1562202942545</code></pre>
   }
   },
   "source": {
-    "version": "3.5.0.Final",
+    "version": "3.7.0.Beta1",
     "connector": "cassandra",
     "cluster": "cassandra-cluster-1",
     "snapshot": false,
@@ -1317,7 +1328,7 @@ WHERE id = 1001 AND registration_date = 1562202942545;</code></pre>
   "email": null
   },
   "source": {
-    "version": "3.5.0.Final",
+    "version": "3.7.0.Beta1",
     "connector": "cassandra",
     "cluster": "cassandra-cluster-1",
     "snapshot": false,
@@ -2244,6 +2255,50 @@ The connector has two types of metrics.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="cassandra-tracing"><a class="anchor" href="#cassandra-tracing"></a>Tracing</h3>
+<div class="paragraph">
+<p>The Cassandra connector supports distributed tracing through the <a href="https://opentelemetry.io/docs/specs/otel/">OpenTelemetry</a> API.
+When tracing is enabled, the connector creates the following nested spans for each change event that it emits:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>db-log-write</code></dt>
+<dd>
+<p>Backdated to the Cassandra mutation timestamp, with source attributes including keyspace, table, cluster, commit log file and position, snapshot flag, and connector version.</p>
+</dd>
+<dt class="hdlist1"><code>debezium-read</code></dt>
+<dd>
+<p>A child span timestamped at Debezium processing time, with the operation type and processing timestamp.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The connector injects the trace context into Kafka <code>ProducerRecord</code> headers (<code>traceparent</code>) so that downstream consumers can continue the distributed trace.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Unlike other Debezium connectors, the Cassandra connector does not use the Kafka Connect framework, so the <code>ActivateTracingSpan</code> SMT is not supported.
+Tracing is implemented natively at the Kafka emitter level.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To enable tracing, set <code>tracing.enabled=true</code> in the connector configuration and ensure that the OpenTelemetry API JAR is available on the connector classpath.
+If tracing is enabled but the OpenTelemetry API is not present on the classpath, the connector starts normally without tracing.</p>
+</div>
+<div class="paragraph">
+<p>For information about how to install and configure the OpenTelemetry API, see the <a href="../integrations/tracing.html" class="xref page">Debezium distributed tracing documentation</a>.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="cassandra-connector-properties"><a class="anchor" href="#cassandra-connector-properties"></a>Connector properties</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2538,7 +2593,19 @@ For example, if you set <code>max.queue.size=1000</code>, and <code>max.queue.si
 <p><code>1000</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Positive integer value that specifies the number of milliseconds the commit log processor should wait during each iteration for new change events to appear in the queue. Defaults to 1000 milliseconds, or 1 second.</p>
+<p>Positive integer value that specifies the number of milliseconds the commit log processor should wait during each iteration for new change events to appear in the queue. Defaults to 1000 milliseconds, or 1 second.
+If a value greater than 5000 milliseconds (5 seconds) is provided, the effective wait time will be capped at 5000 milliseconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="cassandra-property-poll-dispatch-interval-ms"></a><a href="#cassandra-property-poll-dispatch-interval-ms"><code>poll.dispatch.interval.ms</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>0</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>An integer value that specifies the number of milliseconds the connector should accumulate events in the queue before each queue consumption.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2921,6 +2988,19 @@ These headers are required by the OpenLineage integration and provide metadata t
 </dl>
 </div></div></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="cassandra-property-tracing-enabled"></a><a href="#cassandra-property-tracing-enabled"><code>tracing.enabled</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>false</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specifies whether to enable OpenTelemetry tracing for change events emitted by the connector.
+To enable tracing, the OpenTelemetry API JAR must be available on the classpath.
+For more information, see <a href="#cassandra-tracing">Tracing</a>.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -3004,7 +3084,7 @@ com.blueapron.connect.protobuf.ProtobufConverter</code></pre>
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Decode Logical Decoding Message Content :: Debezium Documentation</title>
-    <link rel="canonical" href="https://debezium.io/documentation/reference/3.4/transformations/decode-logical-decoding-message-content.html">
+    <link rel="canonical" href="https://debezium.io/documentation/reference/stable/transformations/decode-logical-decoding-message-content.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../debezium-antora/css/site.css">
 <link rel="stylesheet" href="../../debezium-antora/css/debezium-antora.css">
@@ -52,7 +52,13 @@
     <span class="nav-text">Getting Started</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tutorial.html">Tutorial</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../kc-tutorial.html">Kafka Connect</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -135,6 +141,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../connectors/informix.html">Informix</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/cockroachdb.html">CockroachDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/yashandb.html">YashanDB</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/ingres.html">Ingres</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connectors/milvus.html">Milvus</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -211,6 +229,12 @@
     <a class="nav-link" href="vector-to-json.html">Vector Data Types to JSON Types</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="neo4j-cud-converter.html">Neo4j CUD Converter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="enforce-record-size.html">Enforce Record Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="swap-geometry-coordinates.html">Swap Geometry Coordinates</a>
   </li>
 </ul>
@@ -224,6 +248,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../post-processors/reselect-columns.html">Reselect Columns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../post-processors/s3-large-message.html">S3 Large Message</a>
   </li>
 </ul>
   </li>
@@ -276,6 +303,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/docling.html">Docling Transformation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -325,11 +355,17 @@
     <li class="component is-current">
       <span class="title">Debezium Documentation</span>
       <ul class="versions">
-        <li class="version">
-          <a href="/documentation/reference/3.5/index.html">3.5</a>
-        </li>
         <li class="version is-current">
           <a href="/documentation/reference/nightly/index.html">nightly</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="/documentation/reference/3.5/index.html">3.5</a>
         </li>
         <li class="version">
           <a href="/documentation/reference/3.4/index.html">3.4</a>
@@ -350,27 +386,6 @@
           <a href="/documentation/reference/2.7/index.html">2.7</a>
         </li>
         <li class="version">
-          <a href="/documentation/reference/2.6/index.html">2.6</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.5/index.html">2.5</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.4/index.html">2.4</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.3/index.html">2.3</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.2/index.html">2.2</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.1/index.html">2.1</a>
-        </li>
-        <li class="version">
-          <a href="/documentation/reference/2.0/index.html">2.0</a>
-        </li>
-        <li class="version">
           <a href="/documentation/reference/1.9/index.html">1.9</a>
         </li>
       </ul>
@@ -383,7 +398,7 @@
 <main role="main" class="main">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../3.4/index.html" class="home-link"></a>
+  <a href="../stable/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Debezium Documentation</a></li>
@@ -396,21 +411,16 @@
     <div class="page-versions">
         <button class="version-menu-toggle versions-menu-current" title="Show other versions of page">nightly</button>
         <div class="version-menu">
-                        <a class="version" href="/documentation//reference/stable/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.5</a>
-                        <a class="version is-current" href="/reference/transformations/decode-logical-decoding-message-content.html" data-hash="true">nightly</a>
-                        <a class="version" href="/documentation//reference/3.4/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.4</a>
-                        <a class="version" href="/documentation//reference/3.3/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.3</a>
-                        <a class="version" href="/documentation//reference/3.2/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.2</a>
-                        <a class="version" href="/documentation//reference/3.1/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.1</a>
-                        <a class="version" href="/documentation//reference/3.0/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.0</a>
+                        <a class="version is-current" href="/documentation/reference/transformations/decode-logical-decoding-message-content.html" data-hash="true">nightly</a>
+                        <a class="version" href="/documentation/reference/stable/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.6</a>
+                        <a class="version" href="/documentation/reference/3.7/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.7</a>
+                        <a class="version" href="/documentation/reference/3.5/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.5</a>
+                        <a class="version" href="/documentation/reference/3.4/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.4</a>
+                        <a class="version" href="/documentation/reference/3.3/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.3</a>
+                        <a class="version" href="/documentation/reference/3.2/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.2</a>
+                        <a class="version" href="/documentation/reference/3.1/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.1</a>
+                        <a class="version" href="/documentation/reference/3.0/transformations/decode-logical-decoding-message-content.html" data-hash="true">3.0</a>
                     <a class="version is-missing" href="#">2.7</a>
-                    <a class="version is-missing" href="#">2.6</a>
-                    <a class="version is-missing" href="#">2.5</a>
-                    <a class="version is-missing" href="#">2.4</a>
-                    <a class="version is-missing" href="#">2.3</a>
-                    <a class="version is-missing" href="#">2.2</a>
-                    <a class="version is-missing" href="#">2.1</a>
-                    <a class="version is-missing" href="#">2.0</a>
                     <a class="version is-missing" href="#">1.9</a>
         </div>
         |
@@ -500,7 +510,7 @@ To facilitate processing of PostgreSQL event messages by other Kafka consumers, 
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-	"prefix": "test-prefix"   <i class="conum" data-value="1"></i><b>(1)</b>
+	"prefix": "test-prefix"
 }</code></pre>
 </div>
 </div>
@@ -510,7 +520,7 @@ To facilitate processing of PostgreSQL event messages by other Kafka consumers, 
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-	"op": "m",  <i class="conum" data-value="2"></i><b>(2)</b>
+	"op": "m",
 	"ts_ms": 1723115240065,
 	"source": {
 		"version": "3.0.0-SNAPSHOT",
@@ -528,7 +538,7 @@ To facilitate processing of PostgreSQL event messages by other Kafka consumers, 
 		"lsn": 26997904,
 		"xmin": null
 	},
-	"message": {     <i class="conum" data-value="3"></i><b>(3)</b>
+	"message": {
 		"prefix": "test-prefix",
 		"content": "eyJpZCI6IDEsICJpdGVtIjogIkRlYmV6aXVtIGluIEFjdGlvbiIsICJzdGF0dXMiOiAiRU5URVJFRCIsICJxdWFudGl0eSI6IDIsICJ0b3RhbFByaWNlIjogMzkuOTh9"
 	}
@@ -546,7 +556,7 @@ To facilitate processing of PostgreSQL event messages by other Kafka consumers, 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">null  <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">null</code></pre>
 </div>
 </div>
 <div class="dlist">
@@ -556,7 +566,7 @@ To facilitate processing of PostgreSQL event messages by other Kafka consumers, 
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-	"op": "c",   <i class="conum" data-value="2"></i><b>(2)</b>
+	"op": "c",
 	"ts_ms": 1723115415729,
 	"source": {
 		"version": "3.0.0-SNAPSHOT",
@@ -574,7 +584,7 @@ To facilitate processing of PostgreSQL event messages by other Kafka consumers, 
 		"lsn": 26717576,
 		"xmin": null
 	},
-	"after": {     <i class="conum" data-value="3"></i><b>(3)</b>
+	"after": {
 		"id": 1,
 		"item": "Debezium in Action",
 		"status": "ENTERED",
@@ -590,18 +600,18 @@ To facilitate processing of PostgreSQL event messages by other Kafka consumers, 
 <div class="paragraph">
 <p>In the preceding example, the SMT applies the following changes to the original event record:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p>Removes the key that contained the <code>prefix</code> field in the original logical decoding message (<code>"prefix": "test-prefix"</code>).</p>
 </li>
 <li>
-<p>Converts the value of the <code>op</code> field from an <code>m</code> (message) to a <code>c</code> (create), effectively changing the event type from <code>message</code> to <code>INSERT</code>.</p>
+<p>Converts the value of the <code>op</code> field from <code>m</code> (message) to <code>c</code> (create), effectively changing the event type from <code>message</code> to <code>INSERT</code>.</p>
 </li>
 <li>
 <p>Replaces the <code>message</code> field with an <code>after</code> field that contains the decoded content of a logical decoding message.</p>
 </li>
-</ol>
+</ul>
 </div>
 <div class="paragraph">
 <p>After the SMT applies these changes, the record can be more easily processed by downstream consumers or by other SMTs, such as the Debezium Outbox Event Router.</p>
@@ -666,7 +676,7 @@ By default, the transformation removes fields that have <code>null</code> values
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/a36ef24999e780fbb9ff7b10f29b6b163227dfb5">a36ef249</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
             
         </div>
     </footer>
