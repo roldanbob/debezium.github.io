@@ -301,6 +301,9 @@
     <span class="nav-text">Debezium AI</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/debezium-ai-python.html">PyDebeziumAI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -525,21 +528,6 @@
 <div class="paragraph">
 <p>CockroachDB <a href="https://www.cockroachlabs.com/docs/stable/change-data-capture-overview">changefeeds</a> detects data changes in the database&#8201;&#8212;&#8201;inserts, updates, and deletes&#8201;&#8212;&#8201;in near-real-time.
 The connector creates a <a href="https://www.cockroachlabs.com/docs/stable/create-changefeed">changefeed</a> that publishes events to an intermediate Kafka cluster, then consumes those events, transforms them into the standard Debezium envelope format, and produces them to the output Kafka topics that downstream consumers subscribe to.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The CockroachDB connector is an incubating connector.
-An incubating connector is one that has been released for preview purposes and is subject to changes that may not always be backward compatible.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -1231,7 +1219,7 @@ The following JSON represents this key structure:</p>
             "created_at": "2026-01-15T10:30:00"
         },
         "source": { <i class="conum" data-value="3"></i><b>(3)</b>
-            "version": "3.7.0.Beta1",
+            "version": "3.7.0.CR1",
             "connector": "cockroachdb",
             "name": "cockroachdb_connector",
             "ts_ms": 1705312200000,
@@ -1395,7 +1383,7 @@ The following example shows the JSON for the value portion of a change event tha
             "created_at": "2026-01-15T10:30:00"
         },
         "source": { <i class="conum" data-value="3"></i><b>(3)</b>
-            "version": "3.7.0.Beta1",
+            "version": "3.7.0.CR1",
             "connector": "cockroachdb",
             "name": "cockroachdb_connector",
             "ts_ms": 1705312500000,
@@ -1506,7 +1494,7 @@ Removing older messages lets Kafka reclaim storage space while ensuring that the
         "before": null,
         "after": null, <i class="conum" data-value="1"></i><b>(1)</b>
         "source": { <i class="conum" data-value="2"></i><b>(2)</b>
-            "version": "3.7.0.Beta1",
+            "version": "3.7.0.CR1",
             "connector": "cockroachdb",
             "name": "cockroachdb_connector",
             "ts_ms": 1705312800000,
@@ -3499,6 +3487,19 @@ Specify one of the following options: <code>earliest</code> (start from beginnin
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="cockroachdb-property-kafka-consumer-offset-commit-enabled"></a><a href="#cockroachdb-property-kafka-consumer-offset-commit-enabled"><code>cockroachdb.changefeed.kafka.consumer.offset.commit.enabled</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>false</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specifies whether the connector also commits its consumed positions to the Kafka consumer group after each processed batch, so that external lag tooling such as <code>kafka-consumer-groups</code> reflects the connector&#8217;s progress on the intermediate topics.
+By default, the connector never commits group offsets; it stores its positions in the Debezium offsets and restores them with explicit seeks, so consumer group views show no committed offsets for the intermediate topics.
+The connector always resumes from the positions in the Debezium offsets, never from the group, so enabling this option has no effect on delivery semantics.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="cockroachdb-property-kafka-consumer-override"></a><a href="#cockroachdb-property-kafka-consumer-override"><code>cockroachdb.changefeed.kafka.consumer.override.*</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3963,7 +3964,7 @@ To include the <code>before</code> field in update events, set <code>cockroachdb
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/7a558f51c0191ba7e15f66aedc80a93594f9822a">7a558f51</a></span>)
             
         </div>
     </footer>

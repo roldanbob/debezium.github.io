@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: Debezium Documentation</title>
+    <title>Debezium connector for MongoDB :: Debezium Documentation</title>
     <link rel="canonical" href="https://debezium.io/documentation/reference/stable/connectors/mongodb.html">
     <meta name="generator" content="Antora 3.1.7">
 <link rel="stylesheet" href="../../../debezium-antora/css/site.css">
@@ -437,14 +437,11 @@
 <div class="article-cell1">
 <article class="doc">
         
-    <!-- This partial is a placeholder -->        <div class="paragraph">
-<p>brolda// Category: debezium-using</p>
-</div>
-<h1 id="debezium-connector-for-mongodb" class="sect0"><a class="anchor" href="#debezium-connector-for-mongodb"></a>Debezium connector for MongoDB</h1>
+    <!-- This partial is a placeholder -->            <h1 class="page">Debezium connector for MongoDB</h1>
+        <div id="preamble">
+<div class="sectionbody">
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of Contents</div>
-<ul class="sectlevel0">
-<li><a href="#debezium-connector-for-mongodb">Debezium connector for MongoDB</a>
 <ul class="sectlevel1">
 <li><a href="#mongodb-overview">Overview</a>
 <ul class="sectlevel2">
@@ -513,8 +510,6 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 </div>
 <div class="paragraph">
 <p>Debezium&#8217;s MongoDB connector tracks a MongoDB replica set or a MongoDB sharded cluster for document changes in databases and collections, recording those changes as events in Kafka topics.
@@ -522,6 +517,8 @@ The connector automatically handles the addition or removal of shards in a shard
 </div>
 <div class="paragraph">
 <p>For information about the MongoDB versions that are compatible with this connector, see the <a href="https://debezium.io/releases/">Debezium release overview</a>.</p>
+</div>
+</div>
 </div>
 <div class="sect1">
 <h2 id="mongodb-overview"><a class="anchor" href="#mongodb-overview"></a>Overview</h2>
@@ -2481,7 +2478,7 @@ The event payload contains the full state of the new document in the <code>after
     "payload": {
       "after": "{\"_id\" : {\"$numberLong\" : \"1004\"},\"first_name\" : \"Anne\",\"last_name\" : \"Kretchmar\",\"email\" : \"annek@noanswer.org\"}",
       "source": {
-        "version": "3.6.2.Final",
+        "version": "3.6.3.Final",
         "connector": "mongodb",
         "name": "fulfillment",
         "ts_ms": 1558965508000,
@@ -2670,7 +2667,7 @@ There is a new structured field <code>updateDescription</code> with a few additi
         "truncatedArrays": null
       },
       "source": {
-        "version": "3.6.2.Final",
+        "version": "3.6.3.Final",
         "connector": "mongodb",
         "name": "fulfillment",
         "ts_ms": 1558965508000,
@@ -2807,7 +2804,7 @@ Here is an example of a <em>delete</em> event for a document in the <code>custom
       "ts_ns": 1465495462115748263,
       "before":"{\"_id\": {\"$numberLong\": \"1004\"},\"first_name\": \"Anne Marie\",\"last_name\": \"Kretchmar\",\"email\": \"annek@noanswer.org\"}",
       "source": {
-        "version": "3.6.2.Final",
+        "version": "3.6.3.Final",
         "connector": "mongodb",
         "name": "fulfillment",
         "ts_ms": 1558965508000,
@@ -2998,7 +2995,7 @@ If Debezium were to fail during this time, its last oplog position is likely to 
 <ol class="arabic">
 <li>
 <p>Download the
-<a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/3.6.2.Final/debezium-connector-mongodb-3.6.2.Final-plugin.tar.gz">connector&#8217;s plug-in archive</a>,</p>
+<a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/3.6.3.Final/debezium-connector-mongodb-3.6.3.Final-plugin.tar.gz">connector&#8217;s plug-in archive</a>,</p>
 </li>
 <li>
 <p>Extract the JAR files into your Kafka Connect environment.</p>
@@ -6122,7 +6119,7 @@ As a result, the secondary node that is elected as the new primary node might be
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/3a20156c6cd1bf0f6cea618065cbb2c0e4707d2e">3a20156c</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/0bf5b9c99846a7af2037aae6e69d67a18a0ef7d5">0bf5b9c9</a></span>)
             
         </div>
     </footer>

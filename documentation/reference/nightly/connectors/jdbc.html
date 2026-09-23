@@ -301,6 +301,9 @@
     <span class="nav-text">Debezium AI</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/debezium-ai-python.html">PyDebeziumAI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -595,8 +598,7 @@ The connector supports idempotent write operations by using upsert semantics and
 <p><a href="#jdbc-quoting-case-sensitivity">JDBC quoting and case-sensitivity</a></p>
 </li>
 <li>
-<p><a href="#jdbc-connection-idle-timeouts">Connection idle timeouts</a>
-ifdef::community</p>
+<p><a href="#jdbc-connection-idle-timeouts">Connection idle timeouts</a></p>
 </li>
 <li>
 <p><a href="#jdbc-singlestore-targets">SingleStore sink targets</a></p>
@@ -1140,7 +1142,7 @@ Automatic table creation does not expose SingleStore-specific shard key, sort ke
 If the target table requires explicit shard keys, sort keys, or other SingleStore table options, create the destination table in SingleStore before the connector writes to it.</p>
 </div>
 <div class="paragraph">
-<p>For SingleStore targets, Debezium maps Debezium <code>io.debezium.data.Json</code> logical values and Kafka Connect <code>MAP</code> schema values to the SingleStore <code>JSON</code> column type.
+<p>For SingleStore targets, Debezium maps Debezium <code>io.debezium.data.Json</code> logical values and Kafka Connect <code>ARRAY</code> and <code>MAP</code> schema values to the SingleStore <code>JSON</code> column type.
 The connector maps Debezium <code>io.debezium.data.geometry.Geometry</code> and <code>io.debezium.data.geometry.Geography</code> logical values to the SingleStore <code>GEOGRAPHY</code> column type, and <code>io.debezium.data.geometry.Point</code> logical values to the SingleStore <code>GEOGRAPHYPOINT</code> column type.
 SingleStore supports a subset of WKT geospatial values.
 The connector writes <code>POINT</code>, <code>LINESTRING</code>, and <code>POLYGON</code> WKB values to SingleStore as WKT strings.</p>
@@ -1179,8 +1181,7 @@ The connector writes Debezium <code>io.debezium.time.Time</code>, <code>io.debez
 </div>
 <div class="paragraph">
 <p><code>io.debezium.time.ZonedTimestamp</code> values are normalized to the database time zone and written to <code>DATETIME</code> columns; the original offset is not preserved.
-S
-tarRocks <code>DATETIME</code> columns do not accept a precision argument; StarRocks retains fractional seconds up to microsecond precision.</p>
+StarRocks <code>DATETIME</code> columns do not accept a precision argument; StarRocks retains fractional seconds up to microsecond precision.</p>
 </div>
 <div class="paragraph">
 <p>Note that the StarRocks JDBC driver reports <code>DATETIME</code> columns without fractional second precision, so although values are stored with microsecond precision, reading them through the JDBC driver truncates the fraction unless the value is explicitly cast, for example, to <code>VARCHAR</code>.</p>
@@ -2249,7 +2250,7 @@ After you apply the SMT to an event that includes a field with the name <code>ID
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Download the Debezium <a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-jdbc/3.7.0.Beta1/debezium-connector-jdbc-3.7.0.Beta1-plugin.tar.gz">JDBC connector plug-in archive</a>.</p>
+<p>Download the Debezium <a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-jdbc/3.7.0.CR1/debezium-connector-jdbc-3.7.0.CR1-plugin.tar.gz">JDBC connector plug-in archive</a>.</p>
 </li>
 <li>
 <p>Extract the files into your Kafka Connect environment.</p>
@@ -3054,14 +3055,39 @@ The default is <code>public</code>; however, if the PostGIS extension was instal
 <p><code>false</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies whether to enable <code>UNNEST</code>-based batch inserts for PostgreSQL.</p>
+<p>Specifies whether to enable <code>UNNEST</code>-based batch inserts for PostgreSQL and CockroachDB.</p>
 </div>
 <div class="paragraph">
-<p>When enabled, uses PostgreSQL <code>UNNEST()</code> for batch inserts, which can significantly improve performance by reducing the number of SQL statements executed.
+<p>Set the value to <code>true</code> to enable the connector to use <code>UNNEST()</code> for batch inserts.
+After you enable batching, instead of submitting multiple SQL statements to the target database, the connector accumulates multiple change events up to the <code>batch.size</code> limit, and then submits the events to the target database in a single SQL statement.
+Reducing the number of SQL statements in this way can improve performance for certain workloads.
 This optimization is compatible with <code>INSERT</code> and <code>UPSERT</code> modes.</p>
 </div>
 <div class="paragraph">
-<p>For information about the performance benefits of enabling the UNNEST function, see <a href="https://www.tigerdata.com/blog/boosting-postgres-insert-performance" target="_blank" rel="noopener">"Boosting Postgres Insert Performance"</a> in the Tiger Data blog.</p>
+<p>For topics that receive a high volume of updates for the same primary key, you can further improve the effectiveness of batching by setting <a href="#jdbc-property-use-reduction-buffer"><code>use.reduction.buffer</code></a> to <code>true</code>.
+This setting enables the connector to combine multiple events for a primary key into a single final operation before it writes to the database.</p>
+</div>
+<div class="paragraph">
+<p>If a batch includes multiple events for the same primary key while <code>use.reduction.buffer</code> is set to <code>false</code>, the attempt to combine statements fails, and the database returns the following error:</p>
+</div>
+<div class="paragraph">
+<p><code>ON CONFLICT command cannot affect row a second time.</code></p>
+</div>
+<div class="paragraph">
+<p>The task then stops.</p>
+</div>
+<div class="paragraph">
+<p>For more information about how the connector&#8217;s use of the UNNEST function improves write performance for PostgreSQL and CockroachDB databases, see the following resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.tigerdata.com/blog/boosting-postgres-insert-performance" target="_blank" rel="noopener">"Boosting Postgres Insert Performance"</a> in the Tiger Data blog.</p>
+</li>
+<li>
+<p><a href="https://www.cockroachlabs.com/docs/stable/performance-best-practices-overview#use-multi-row-statements-instead-of-multiple-single-row-statements" target="_blank" rel="noopener">"Use multi-row statements instead of multiple single-row statements"</a> in the CockroachDB documentation.</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -3367,7 +3393,7 @@ Quoting behavior is dialect-specific, and varies among different types of databa
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/7a558f51c0191ba7e15f66aedc80a93594f9822a">7a558f51</a></span>)
             
         </div>
     </footer>

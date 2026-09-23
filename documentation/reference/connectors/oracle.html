@@ -301,6 +301,9 @@
     <span class="nav-text">Debezium AI</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/debezium-ai-python.html">PyDebeziumAI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -465,11 +468,13 @@
 <ul class="sectlevel2">
 <li><a href="#oracle-adapter-modes">Adapter Modes</a></li>
 <li><a href="#oracle-snapshots">Snapshots</a></li>
+<li><a href="#debezium-oracle-chunk-based-parallel-snapshots">Chunk-based parallel snapshots</a></li>
 <li><a href="#oracle-ad-hoc-snapshots">Ad hoc snapshots</a></li>
 <li><a href="#debezium-oracle-incremental-snapshots">Incremental snapshots</a></li>
 <li><a href="#connector-custom-snapshot">Custom snapshotter SPI</a></li>
 <li><a href="#oracle-blocking-snapshots">Blocking snapshots</a></li>
 <li><a href="#oracle-drop-transaction-signal">Dropping a transaction</a></li>
+<li><a href="#oracle-log-pending-transactions-signal">Logging pending transactions</a></li>
 <li><a href="#oracle-topic-names">Topic names</a></li>
 <li><a href="#oracle-schema-history-topic">Schema history topic</a></li>
 <li><a href="#oracle-schema-change-topic">Schema change topic</a></li>
@@ -480,6 +485,7 @@
 <li><a href="#oracle-logminer-query-modes">Query Modes</a></li>
 <li><a href="#oracle-event-buffering">Event buffering</a></li>
 <li><a href="#low-change-frequency-offset-management">Low change frequency offset management</a></li>
+<li><a href="#capturing-large-object-data">Capturing large object data</a></li>
 </ul>
 </li>
 <li><a href="#oracle-events">Data change events</a>
@@ -1224,6 +1230,145 @@ After the snapshot completes, the connector transitions to streaming.</p>
 </dd>
 </dl>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="debezium-oracle-chunk-based-parallel-snapshots"><a class="anchor" href="#debezium-oracle-chunk-based-parallel-snapshots"></a>Chunk-based parallel snapshots</h3>
+<div class="paragraph">
+<p>Chunk-based parallel snapshotting accelerates initial snapshots by distributing smaller units of work across multiple threads, improving workload balance and snapshot resilience.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Chunk-based parallel snapshotting is currently in an incubating state and is subject to change without notice in future releases.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When you set <a href="#oracle-property-snapshot-max-threads"><code>snapshot.max.threads</code></a> to a value greater than <code>1</code>, the connector divides each table into <em>chunks</em> based on primary key ranges and distributes those chunks across the available threads.
+Each thread snapshots its assigned chunks concurrently, and the connector emits <code>READ</code> events for each captured row as it progresses through the chunks.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="#oracle-property-snapshot-max-threads-multiplier"><code>snapshot.max.threads.multiplier</code></a> property controls how many chunks the connector creates per table relative to the thread count.
+By default, the connector creates one chunk per thread.
+Setting a higher multiplier creates more, smaller chunks, which keeps threads more evenly loaded.
+For example, with 4 threads and a multiplier of <code>2</code>, the connector creates 8 chunks instead of 4.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Tables without a primary key, and tables that use snapshot select overrides, are processed as a single chunk and fall back to single-threaded snapshotting.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following table summarizes the differences between the two parallel snapshotting approaches.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Characteristic</th>
+<th class="tableblock halign-left valign-top">Chunk-based (default)</th>
+<th class="tableblock halign-left valign-top">Legacy table-per-thread</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Unit of work per thread</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Each thread processes a chunk of rows from a table.
+Chunks are defined by ranges of primary key values.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Each thread processes an entire table.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Load distribution</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Threads claim available chunks as they complete their current work, helping to balance the workload across threads.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Each thread remains assigned to the same table for the duration of the snapshot.
+Threads that finish processing smaller tables remain idle while other threads continue to process larger tables.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Idle-connection risk</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Low.</p>
+</div>
+<div class="paragraph">
+<p>Threads remain active until the snapshot finishes.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>High.</p>
+</div>
+<div class="paragraph">
+<p>Threads that finish processing a table can remain idle while waiting for other threads to complete.
+In environments that enforce connection timeouts, idle connections can prevent the connector from closing connections cleanly after the snapshot finishes.
+Failure to close a connection can result in an exception, even if a snapshot captures all data successfully.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Chunk-based snapshotting is the default behavior.
+To use chunk-based snapshotting, set <code>legacy.snapshot.max.threads</code> to <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>To revert to the legacy table-per-thread behavior, set <a href="#oracle-property-legacy-snapshot-max-threads"><code>legacy.snapshot.max.threads</code></a> to <code>true</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you use the legacy behavior and experience idle-connection failures after a snapshot completes, set <code>snapshot.max.threads</code> to <code>1</code> as a workaround and retry the snapshot.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The property <code>internal.legacy.snapshot.max.threads</code> is a deprecated alias for <code>legacy.snapshot.max.threads</code> and should not be used in new configurations.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -2392,6 +2537,10 @@ Use the <code>drop-transaction</code> signal only when you are certain that the 
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>The connector processes the signal on its streaming thread at the start of the next mining iteration, so that the buffer is modified in a consistent state.
+On a busy connector the transaction is therefore removed a few seconds after the signal is received, and the connector log reports whether it was found and dropped.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2431,6 +2580,85 @@ In the  <code>data</code> component of the signal, specify the ID of the transac
     "transaction-id": "1a.2b.001f"
   }
 }</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="oracle-log-pending-transactions-signal"><a class="anchor" href="#oracle-log-pending-transactions-signal"></a>Logging pending transactions</h3>
+<div class="paragraph">
+<p>You can use Debezium signaling to send a <code>log-pending-transactions</code> signal to the connector at run time to write the details of every transaction that is currently pending in the LogMiner buffer to the connector log.</p>
+</div>
+<div class="paragraph">
+<p>The connector&#8217;s mining window is bounded by the oldest transaction that it has seen but that has not yet committed or rolled back.
+Identifying these transactions normally requires that you enable verbose logging before the situation occurs, or that you have access to query LogMiner directly.
+The <code>log-pending-transactions</code> signal provides an on-demand view of the transactions that the connector currently tracks, so that you can decide whether to wait for a transaction, or remove it by using the <a href="#oracle-drop-transaction-signal"><code>drop-transaction</code></a> signal.</p>
+</div>
+<div class="paragraph">
+<p>The signal reports two kinds of transactions:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Active transactions</dt>
+<dd>
+<p>Transactions for which the connector has buffered one or more change events.</p>
+</dd>
+<dt class="hdlist1">Deferred transactions</dt>
+<dd>
+<p>Transactions that the connector has seen start, but for which it has not yet buffered any change events.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For each transaction, the connector logs the transaction ID, the SCN and time at which the transaction started, the database user name and client identifier associated with the transaction, and the redo thread on which the transaction was mined.
+For active transactions, the connector also logs the number of buffered events.
+Entries are ordered from the oldest transaction to the newest, so that the first entry is the transaction that currently holds back the mining window.</p>
+</div>
+<div class="paragraph">
+<p>The connector processes the signal on its streaming thread at the start of the next mining iteration, so that the buffer is read in a consistent state.
+On a busy connector the entries can therefore appear a few seconds after the signal is received.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>The connector is configured to use one of the available <a href="configuration/signalling.adoc#sending-signals-to-a-debezium-connector">Debezium signaling channels</a>.</p>
+</li>
+<li>
+<p>You have access to the connector log file.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Procedure</div>
+<ul>
+<li>
+<p>Send a signal that includes the standard <code>id</code> and <code>type</code> properties of a Debezium signal to your preferred signaling channel.
+The signal does not require any <code>data</code>.</p>
+<div class="listingblock">
+<div class="title">Example SQL using the <code>source</code> signal channel</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">INSERT INTO debezium.debezium_signal (id, type) VALUES('log-tx-1', 'log-pending-transactions');</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example message payload using the <code>kafka</code> signal channel</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "type": "log-pending-transactions"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The connector writes entries similar to the following to its log:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Pending transactions in Oracle LogMiner buffer as requested by signal 'log-tx-1': 2 total (1 active, 1 deferred)
+Active transaction 1a.2b.001f: startScn=12345678, changeTime=2024-01-01T10:15:30Z, userName=APP, clientId=batch-loader, redoThread=1, events=1500
+Deferred transaction 1c.2d.0020: startScn=12345900, changeTime=2024-01-01T10:16:02Z, userName=APP, clientId=null, redoThread=1</pre>
 </div>
 </div>
 </li>
@@ -2746,7 +2974,7 @@ The message contains a logical representation of the table schema.</p>
   },
   "payload": {
     "source": {
-      "version": "3.7.0.Beta1",
+      "version": "3.7.0.CR1",
       "connector": "oracle",
       "name": "server1",
       "ts_ms": 1588252618953,
@@ -3477,7 +3705,7 @@ Additionally, the location where the cache is kept is defined by the <code>path<
 <td class="content">
 <div class="paragraph">
 <p>The Debezium Infinispan buffer implementation requires that you configure a set of distinct cache configurations, each identified by a Debezium-defined cache name.
-You must configure caches for the following identifiers: <code>transactions</code>, <code>events</code>, <code>processed-transactions</code>, <code>rollbacks</code>, and <code>schema-changes</code>.</p>
+You must configure caches for the following identifiers: <code>transactions</code>, <code>events</code>, <code>processed-transactions</code>, and <code>schema-changes</code>.</p>
 </div>
 <div class="paragraph">
 <p>Each cache name is a hardcoded identifier that you specify in the XML of a Debezium Oracle connector configuration property in the <code>log.mining.buffer.infinispan.cache</code> namespace.
@@ -3601,7 +3829,7 @@ The following example shows a possible Ehcache configuration:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following example shows an Ehcache configuration that includes both a global setting and specific settings for the <code>transactions</code>, <code>processedtransactions</code>, <code>schemachanges</code>, <code>events</code>, and <code>rollbacks</code> caches.</p>
+<p>The following example shows an Ehcache configuration that includes both a global setting and specific settings for the <code>transactions</code>, <code>processedtransactions</code>, <code>schemachanges</code>, and <code>events</code> caches.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example configuration</div>
@@ -3612,8 +3840,7 @@ The following example shows a possible Ehcache configuration:</p>
   "log.mining.buffer.ehcache.transactions.config": "&lt;resources&gt;&lt;heap unit=\"entries\"&gt;512&lt;/entries&gt;&lt;disk unit=\"B\"&gt;1024000000&lt;/disk&gt;&lt;/resources&gt;",
   "log.mining.buffer.ehcache.processedtransactions.config": "&lt;resources&gt;&lt;heap unit=\"entries\"&gt;512&lt;/entries&gt;&lt;disk unit=\"B\"&gt;1024000000&lt;/disk&gt;&lt;/resources&gt;",
   "log.mining.buffer.ehcache.schemachanges.config": "&lt;resources&gt;&lt;heap unit=\"entries\"&gt;512&lt;/entries&gt;&lt;disk unit=\"B\"&gt;1024000000&lt;/disk&gt;&lt;/resources&gt;",
-  "log.mining.buffer.ehcache.events.config": "&lt;resources&gt;&lt;heap unit=\"entries\"&gt;512&lt;/entries&gt;&lt;disk unit=\"B\"&gt;1024000000&lt;/disk&gt;&lt;/resources&gt;",
-  "log.mining.buffer.ehcache.rollbacks.config": "&lt;resources&gt;&lt;heap unit=\"entries\"&gt;512&lt;/entries&gt;&lt;disk unit=\"B\"&gt;1024000000&lt;/disk&gt;&lt;/resources&gt;"
+  "log.mining.buffer.ehcache.events.config": "&lt;resources&gt;&lt;heap unit=\"entries\"&gt;512&lt;/entries&gt;&lt;disk unit=\"B\"&gt;1024000000&lt;/disk&gt;&lt;/resources&gt;"
 }</code></pre>
 </div>
 </div>
@@ -3649,6 +3876,125 @@ Debezium detects the table changes and emits change events for them, ensuring th
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="capturing-large-object-data"><a class="anchor" href="#capturing-large-object-data"></a>Capturing large object data</h3>
+<div class="paragraph">
+<p>Capturing Oracle LOB data during streaming requires special handling.
+Configure the connector to capture LOB values accurately while balancing mining overhead and performance.</p>
+</div>
+<div class="paragraph">
+<p>To accurately capture LOB column values during streaming, set the <code>lob.enabled</code> connector configuration property to <code>true</code>.
+With this property enabled, the connector can capture the following data types:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>CLOB</code></dt>
+<dd>
+<p>Character large objects.</p>
+</dd>
+<dt class="hdlist1"><code>NCLOB</code></dt>
+<dd>
+<p>National character set large objects.</p>
+</dd>
+<dt class="hdlist1"><code>BLOB</code></dt>
+<dd>
+<p>Binary large objects.</p>
+</dd>
+<dt class="hdlist1"><code>XMLTYPE</code></dt>
+<dd>
+<p>XML data stored as a LOB.</p>
+</dd>
+<dt class="hdlist1"><code>JSON</code></dt>
+<dd>
+<p>JSON data (Oracle 21c and later).</p>
+</dd>
+<dt class="hdlist1"><code>Extended strings</code></dt>
+<dd>
+<p><code>VARCHAR2</code>, <code>NVARCHAR2</code>, and <code>RAW</code> columns that exceed the legacy maximum lengths when the database parameter <code>max_string_size</code> is set to <code>EXTENDED</code>.
+For more information about how the connector supports extended strings, see <a href="#support-for-extended-max-string-size">Extended max string size</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>When <code>lob.enabled</code> is set to <code>false</code> (the default), snapshot events include the current LOB column values, but streamed change events represent LOB columns with the <a href="#oracle-property-unavailable-value-placeholder"><code>unavailable.value.placeholder</code></a> constant.
+Disabling mining of LOB values reduces the volume of data that LogMiner processes by excluding LOB-specific redo log entries.</p>
+</div>
+<div class="paragraph">
+<p>When <code>lob.enabled</code> is <code>true</code>, the connector mines additional redo log operation types that Oracle uses to represent LOB writes.
+During streaming, Oracle includes LOB column values in redo data only when a SQL DML statement explicitly sets or changes an LOB column value.
+If a DML statement does not modify an LOB column, the change event contains the configured unavailable value placeholder rather than the column&#8217;s current value.</p>
+</div>
+<div class="sect3">
+<h4 id="oracle-internal-events-and-rollback-to-savepoint-handling"><a class="anchor" href="#oracle-internal-events-and-rollback-to-savepoint-handling"></a>INTERNAL events and ROLLBACK TO SAVEPOINT handling</h4>
+<div class="paragraph">
+<p>Oracle records INTERNAL events in the redo log for out-of-line LOB operations.
+These events serve two purposes: they associate <code>ROW_ID</code> values with LOB data, and they mark the boundary between successive DML statements.
+The connector uses these boundaries to identify which events belong to a rolled-back statement during <code>ROLLBACK TO SAVEPOINT</code> processing.
+Set the <code>log.mining.include.internal.events</code> property to specify whether the connector captures <code>INTERNAL</code> events.
+The connector requires these events to accurately process <code>ROLLBACK TO SAVEPOINT</code> operations in transactions that modify LOB columns.</p>
+</div>
+<div class="paragraph">
+<p>When a table stores LOB data out-of-line, these events provide the connector with the row identifier that it needs to correctly correlate LOB changes with their parent DML operation.
+This correlation becomes critical when a transaction uses <code>ROLLBACK TO SAVEPOINT</code> to partially undo changes.
+In the absence of the <code>ROW_ID</code> information that an <code>INTERNAL</code> event provides, the connector cannot reliably determine which row a rolled-back LOB operation affects.
+In such scenarios, the connector might emit change events that contain stale LOB field values.</p>
+</div>
+<div class="paragraph">
+<p>The <code>log.mining.include.internal.events</code> property controls whether the connector includes Oracle <code>INTERNAL</code> events in LogMiner queries.
+The <code>log.mining.include.internal.events</code> property accepts the following values:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>false</code></dt>
+<dd>
+<p>(Default) The connector excludes <code>INTERNAL</code> events from LogMiner queries.
+This setting reduces the volume of mined redo log data.
+However, after a partial rollback of a transaction that modifies out-of-line LOB columns, the connector might emit change events that contain stale values for affected LOB fields.</p>
+</dd>
+<dt class="hdlist1"><code>true</code></dt>
+<dd>
+<p>The connector includes <code>INTERNAL</code> events in LogMiner queries.
+This setting increases the volume of mined redo log data, but enables the connector to accurately process <code>ROLLBACK TO SAVEPOINT</code> operations for tables with out-of-line LOB columns.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>log.mining.include.internal.events</code> property has no effect unless <code>lob.enabled</code> is also set to <code>true</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If your application does not use <code>ROLLBACK TO SAVEPOINT</code> in transactions that modify tables with LOB columns, you can safely leave <code>log.mining.include.internal.events</code> set to <code>false</code>.
+Enable it only when you need accurate partial rollback handling for tables that store LOB data out-of-line.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As an alternative to enabling LOB mining and capturing <code>INTERNAL</code> events, you can set <code>lob.enabled</code> to <code>false</code> and configure the <a href="../post-processors/reselect-columns.html" class="xref page">Reselect columns post processor</a> to re-query LOB column values directly from the database.</p>
+</div>
+<div class="paragraph">
+<p>This approach avoids the overhead of mining LOB-specific redo log entries and <code>INTERNAL</code> events while still ensuring that change events contain correct LOB values, because the post processor retrieves the values directly from the source table.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4176,7 +4522,7 @@ This field is only present when using the LogMiner connection adapter.</p>
             "EMAIL": "annek@noanswer.org"
         },
         "source": {
-            "version": "3.7.0.Beta1",
+            "version": "3.7.0.CR1",
             "name": "server1",
             "ts_ms": 1520085154000,
             "ts_us": 1520085154000000,
@@ -4277,7 +4623,7 @@ You can use the <a href="../configuration/avro.html#avro-serialization" class="x
             "EMAIL": "anne@example.com"
         },
         "source": {
-            "version": "3.7.0.Beta1",
+            "version": "3.7.0.CR1",
             "name": "server1",
             "ts_ms": 1520085811000,
             "ts_us": 1520085811000000,
@@ -4380,7 +4726,7 @@ The <code>schema</code> portion of the <em>delete</em> event is identical to the
         },
         "after": null,
         "source": {
-            "version": "3.7.0.Beta1",
+            "version": "3.7.0.CR1",
             "name": "server1",
             "ts_ms": 1520085153000,
             "ts_us": 1520085153000000,
@@ -4457,7 +4803,7 @@ The message key is <code>null</code> in this case, the message value looks like 
         "before": null,
         "after": null,
         "source": {
-            "version": "3.7.0.Beta1",
+            "version": "3.7.0.CR1",
             "connector": "oracle",
             "name": "oracle_server",
             "ts_ms": 1638974535000,
@@ -6904,6 +7250,11 @@ If the standby uses a different database name than the primary, you can also set
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>The data dictionary is exported once, so it does not describe schema changes that are applied to the primary afterwards.
+The connector resolves the affected tables and columns from its own schema model, and rebuilding the dictionary file restores resolution on the LogMiner side.
+For details of what happens when an object cannot be resolved by either, see the <a href="#oracle-property-log-mining-strategy"><code>log.mining.strategy</code></a> property.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="configuring-the-debezium-oracle-connector-to-capture-events-from-a-logical-standby"><a class="anchor" href="#configuring-the-debezium-oracle-connector-to-capture-events-from-a-logical-standby"></a>Configuring the Debezium Oracle connector to capture events from a logical standby</h4>
@@ -7029,7 +7380,7 @@ For more information, see <a href="https://issues.redhat.com/browse/DBZ-8034">DB
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Download the Debezium <a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/3.7.0.Beta1/debezium-connector-oracle-3.7.0.Beta1-plugin.tar.gz">Oracle connector plug-in archive</a>.</p>
+<p>Download the Debezium <a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/3.7.0.CR1/debezium-connector-oracle-3.7.0.CR1-plugin.tar.gz">Oracle connector plug-in archive</a>.</p>
 </li>
 <li>
 <p>Extract the files into your Kafka Connect environment.</p>
@@ -8955,7 +9306,12 @@ This mode performs at the level of the <code>online_catalog</code> LogMiner stra
 <dt class="hdlist1"><code>dictionary_from_file</code></dt>
 <dd>
 <p>The connector uses the dictionary from a flat file located on the database server.
-This strategy is required when streaming changes from a physical standby database.</p>
+This strategy is required when streaming changes from a physical standby database.
+The file is a point-in-time copy, so LogMiner cannot name an object that is created or altered after the file is built, and reports it as <code>OBJ#</code> followed by the object identifier.
+The connector resolves such objects from its own schema model, and reconstructs the column names that LogMiner reports as <code>COL 1</code>, <code>COL 2</code>, and so forth.
+An object that the connector has no schema for, such as a table created after the initial snapshot ran, cannot be resolved this way.
+The connector then applies the <a href="#oracle-property-event-processing-failure-handling-mode"><code>event.processing.failure.handling.mode</code></a> property, which stops the connector by default.
+Rebuild the dictionary file to have LogMiner resolve these objects again.</p>
 </dd>
 </dl>
 </div></div></td>
@@ -9185,18 +9541,6 @@ For more information, see <a href="#oracle-event-buffering-infinispan">Infinispa
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a id="oracle-property-log-mining-buffer-infinispan-cache-rollbacks"></a><a href="#oracle-property-log-mining-buffer-infinispan-cache-rollbacks"><code>log.mining.buffer.infinispan.cache.rollbacks</code></a></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>No default</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The XML configuration for the Infinispan rollback events cache.
-For more information, see <a href="#oracle-event-buffering-infinispan">Infinispan event buffering</a>.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="oracle-property-log-mining-buffer-infinispan-cache-processed-transactions"></a><a href="#oracle-property-log-mining-buffer-infinispan-cache-processed-transactions"><code>log.mining.buffer.infinispan.cache.processed_transactions</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -9275,18 +9619,6 @@ For more information, see <a href="#oracle-event-buffering-ehcache">Ehcache even
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The XML configuration for the Ehcache events configuration.
-For more information, see <a href="#oracle-event-buffering-ehcache">Ehcache event buffering</a>.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a id="oracle-property-log-mining-buffer-ehcache-rollbacks-config"></a><a href="#oracle-property-log-mining-buffer-ehcache-rollbacks-config"><code>log.mining.buffer.ehcache.rollbacks.config</code></a></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>No default</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The XML configuration for the Ehcache rollback events configuration.
 For more information, see <a href="#oracle-event-buffering-ehcache">Ehcache event buffering</a>.</p>
 </div></div></td>
 </tr>
@@ -9559,6 +9891,32 @@ However, if connectors encounter table lock contention errors, use this property
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies whether the redo log constructed SQL statement is included in <code>source.redo_sql</code> field.
 This configuration is ignored when using the XStream or OpenLogReplicator adapters.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="oracle-property-log-mining-include-internal-events"></a><a href="#oracle-property-log-mining-include-internal-events"><code>log.mining.include.internal.events</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>false</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specifies whether the connector captures <code>INTERNAL</code> events.
+Set one of the following values:
+<code>false</code>:: (default) The connector does not capture <code>INTERNAL</code> events.
+Set this option to reduce the volume of redo log data that the connector processes.
+After a partial rollback of a transaction that modifies externally stored LOB data, the change events that the connector emits might contain stale values for the affected LOB fields.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>true</code></dt>
+<dd>
+<p>The connector captures <code>INTERNAL</code> events.
+Set this option to enable the connector to accurately handle <code>ROLLBACK TO SAVEPOINT</code> operations for tables with out-of-line LOB columns.
+This option can result in an increased volume of redo log data.
+For more information, see <a href="#capturing-large-object-data">Capturing large object data</a>.</p>
+</dd>
+</dl>
 </div></div></td>
 </tr>
 <tr>
@@ -9877,8 +10235,8 @@ Set this option to prevent rapid growth of the signaling data collection.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies the number of threads that the connector uses when performing an initial snapshot.
-To enable parallel initial snapshots, set the property to a value greater than 1.
-In a parallel initial snapshot, the connector processes multiple tables concurrently.</p>
+The value must be a positive integer greater than or equal to <code>1</code>.
+When set to a value greater than <code>1</code>, the connector performs a parallel snapshot by dividing each table into chunks based on primary key ranges and processing the chunks concurrently across all available threads.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -9888,13 +10246,39 @@ In a parallel initial snapshot, the connector processes multiple tables concurre
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When you enable parallel initial snapshots, the threads that perform each table snapshot can require varying times to complete their work.
-If a snapshot for one table requires significantly more time to complete than the snapshots for other tables, threads that have completed their work sit idle.
-In some environments, a network device such as a load balancer or firewall, terminates connections that remain idle for an extended interval.
-After the snapshot completes, the connector is unable to close the connection, resulting in an exception, and an incomplete snapshot, even in cases where the connector successfully transmitted all snapshot data.</p>
+<p>Tables without a primary key, and tables that use snapshot select overrides, are processed as a single chunk and fall back to single-threaded snapshotting.</p>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="oracle-property-snapshot-max-threads-multiplier"></a><a href="#oracle-property-snapshot-max-threads-multiplier"><code>snapshot.max.threads.multiplier</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A global multiplier that controls the number of chunks created per table during a parallel snapshot.
+By default, Debezium creates one chunk per thread.
+A higher value causes the connector to create more, smaller chunks per table when running a snapshot.
+Smaller chunks keep threads more evenly loaded.
+For example, with 4 threads and a multiplier of <code>2</code>, Debezium creates 8 chunks instead of 4.</p>
 </div>
 <div class="paragraph">
-<p>If you experience this problem, revert the value of <code>snapshot.max.threads</code> to <code>1</code>, and retry the snapshot.</p>
+<p>To override the multiplier for a specific table, set <code>snapshot.max.threads.multiplier.&lt;fully_qualified_table_name&gt;</code> to the desired value.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Increasing the number of threads is generally more effective for improving snapshot throughput than increasing the multiplier.</p>
 </div>
 </td>
 </tr>
@@ -9909,9 +10293,37 @@ After the snapshot completes, the connector is unable to close the connection, r
 <p><code>false</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Specifies whether the parallel initial snapshot uses the legacy table-per-thread algorithm.
-When set to <code>false</code> (the default), the connector will chunk the contents of the source table across all parallel initial snapshot threads for maximum performance.
-When set to <code>true</code>, the connector will process each table per thread.</p>
+<p>The default value (<code>false</code>) enables the connector to accelerate initial snapshots by dividing tables into chunks and using separate threads to process each chunk concurrently.
+To revert to the legacy parallel snapshot behavior of processing one table per thread, set the value to <code>true</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When the legacy behavior is enabled, threads that complete their table snapshot remain idle while waiting for other threads to complete.
+In environments that enforce connection timeouts, idle connections can prevent the connector from closing connections cleanly after the snapshot finishes.
+An exception can then result, even if the snapshot captures all data successfully.
+If you experience this problem, set <code>snapshot.max.threads</code> to <code>1</code> and retry the snapshot.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The property <code>internal.legacy.snapshot.max.threads</code> is a deprecated alias for <code>legacy.snapshot.max.threads</code> and should not be used in new configurations.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
@@ -11836,6 +12248,18 @@ See <a href="#oracle-property-log-mining-transaction-retention-ms"><code>log.min
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="oracle-streaming-metrics-total-abandoned-transaction-count"></a><a href="#oracle-streaming-metrics-total-abandoned-transaction-count"><code>TotalAbandonedTransactionCount</code></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>long</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The total number of transactions abandoned from the transaction buffer since the connector started.
+Unlike <a href="#oracle-streaming-metrics-abandoned-transaction-count"><code>AbandonedTransactionCount</code></a>, this value is not capped by the size of the abandoned transactions list and increments every time a transaction is abandoned.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="oracle-streaming-metrics-rolled-back-transaction-ids"></a><a href="#oracle-streaming-metrics-rolled-back-transaction-ids"><code>RolledBackTransactionIds</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -13230,13 +13654,20 @@ The following steps describe how to download the Oracle Instant Client and extra
 <h3 id="oracle-xstreams-dbms-lob-package"><a class="anchor" href="#oracle-xstreams-dbms-lob-package"></a>XStream and DBMS_LOB</h3>
 <div class="paragraph">
 <p>Oracle provides a database package called <code>DBMS_LOB</code> that consists of a collection of programs to operate on BLOB, CLOB, and NCLOB columns.
-Most of these programs manipulate the LOB column in totality, however, one program, <code>WRITEAPPEND</code>, is capable of manipulating a subset of the LOB data buffer.</p>
+Most of these programs manipulate the LOB column in totality, however, some programs, such as <code>WRITE</code>, <code>WRITEAPPEND</code>, <code>TRIM</code>, and <code>ERASE</code>, manipulate only a subset of the LOB data buffer.</p>
 </div>
 <div class="paragraph">
-<p>When using XStream, <code>WRITEAPPEND</code> emits a logical change record (LCR) event for each invocation of the program.
-These LCR events are not combined into a single change event as they are when using the Oracle LogMiner adapter.
-As a result, consumers of the topic might receive events with partial column values.
-This diverged behavior is captured in <a href="https://issues.redhat.com/browse/DBZ-4741">DBZ-4741</a> and will be addressed in a future release.</p>
+<p>When using XStream, each invocation of one of these programs emits a dedicated <code>LOB_WRITE</code>, <code>LOB_TRIM</code>, or <code>LOB_ERASE</code> logical change record (LCR).
+Such an LCR carries only the portion of the LOB that the program changed, not the complete column value.</p>
+</div>
+<div class="paragraph">
+<p>The connector emits each of these LCRs as an update change event.
+Because the LCR does not contain the full column value, the connector re-selects the current value of the row&#8217;s LOB columns from the database, using the primary key of the row and the commit SCN of the event, and places the complete values in the <code>after</code> element of the change event.
+The <code>before</code> element contains the unavailable value placeholder for the LOB columns, as described in the <a href="#oracle-property-unavailable-value-placeholder"><code>unavailable.value.placeholder</code></a> property.</p>
+</div>
+<div class="paragraph">
+<p>For the re-selection to succeed, the table must have a primary key, and the connector must be able to read the table.
+If the table has no primary key, or the row was deleted before the connector could re-select it, the connector logs a warning and emits the unavailable value placeholder for the LOB columns in the <code>after</code> element.</p>
 </div>
 </div>
 </div>
@@ -13704,7 +14135,7 @@ The XStream outbound server is a container root database (<code>CDB$ROOT</code>)
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/7a558f51c0191ba7e15f66aedc80a93594f9822a">7a558f51</a></span>)
             
         </div>
     </footer>

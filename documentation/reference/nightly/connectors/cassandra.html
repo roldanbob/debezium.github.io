@@ -301,6 +301,9 @@
     <span class="nav-text">Debezium AI</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai/debezium-ai-python.html">PyDebeziumAI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ai/embeddings.html">Embeddings Transformation</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -1202,7 +1205,7 @@ VALUES (
   }
   },
   "source": {
-    "version": "3.7.0.Beta1",
+    "version": "3.7.0.CR1",
     "connector": "cassandra",
     "cluster": "cassandra-cluster-1",
     "snapshot": false,
@@ -1257,7 +1260,7 @@ WHERE id = 1001 AND registration_date = 1562202942545</code></pre>
   }
   },
   "source": {
-    "version": "3.7.0.Beta1",
+    "version": "3.7.0.CR1",
     "connector": "cassandra",
     "cluster": "cassandra-cluster-1",
     "snapshot": false,
@@ -1328,7 +1331,7 @@ WHERE id = 1001 AND registration_date = 1562202942545;</code></pre>
   "email": null
   },
   "source": {
-    "version": "3.7.0.Beta1",
+    "version": "3.7.0.CR1",
     "connector": "cassandra",
     "cluster": "cassandra-cluster-1",
     "snapshot": false,
@@ -2250,6 +2253,17 @@ The connector has two types of metrics.</p>
 <p>The number of unrecoverable errors while processing commit logs.</p>
 </div></div></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>CdcDirectoryTotalBytes</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>long</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The total size in bytes of the CDC directory on disk, sampled each time the connector scans the directory for new commit logs.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3084,7 +3098,7 @@ com.blueapron.connect.protobuf.ProtobufConverter</code></pre>
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/447059396546d4819f5c99c34e3af928935a4c0c">44705939</a></span>)
+            <div class="copyright">Copyright &copy; 2026 Debezium Community (Rev: <span class="truncated"><a href="https://github.com/debezium/debezium/commit/7a558f51c0191ba7e15f66aedc80a93594f9822a">7a558f51</a></span>)
             
         </div>
     </footer>
